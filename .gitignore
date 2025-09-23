@@ -1,9 +1,9 @@
 # Build results
 bin/
 obj/
+
 x86/
 *.exe
-*.dll
 *.pdb
 
 # Visual Studio cache
