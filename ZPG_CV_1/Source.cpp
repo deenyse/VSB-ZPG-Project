@@ -57,25 +57,7 @@ glm::mat4 View = glm::lookAt(
 glm::mat4 Model = glm::mat4(1.0f);
 
 
-float points[] = {
-	0.0f, 0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-   -0.5f, -0.5f, 0.0f
-};
 
-const char* vertex_shader =
-"#version 330\n"
-"layout(location=0) in vec3 vp;"
-"void main () {"
-"     gl_Position = vec4 (vp, 1.0);"
-"}";
-
-const char* fragment_shader =
-"#version 330\n"
-"out vec4 fragColor;"
-"void main () {"
-"     fragColor = vec4 (0.5, 0.0, 0.5, 1.0);"
-"}";
 
 int main(void)
 {
@@ -139,6 +121,29 @@ int main(void)
 	glfwGetFramebufferSize(window, &width, &height);
 	float ratio = width / (float)height;
 	glViewport(0, 0, width, height);
+
+	float points[] = {
+	0.0f, 0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
+   -0.5f, -0.5f, 0.0f
+	};
+
+	//Здесь задается вершина. В данном случае vp(VertexPosition) для каждой вершины возвращает ее координаты 
+	const char* vertex_shader =
+		"#version 330\n"
+		"layout(location=0) in vec3 vp;"
+		"void main () {"
+		"     gl_Position = vec4 (vp, 1.0);"
+		"}";
+	
+	//Здесь задается цвет фрагмента. В данном случае fragColor для каждой вершины возвращает пурпурный
+	const char* fragment_shader =
+		"#version 330\n"
+		"out vec4 fragColor;"
+		"void main () {"
+		"     fragColor = vec4 (0.5, 0.0, 0.5, 1.0);"
+		"}";
+
 
 
 	//vertex buffer object (VBO)
