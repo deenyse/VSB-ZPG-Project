@@ -104,7 +104,7 @@ int main(void)
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+		glRotatef((float)glfwGetTime() * 50.f, 0.f, 1.f, 1.f);
 
 		glBegin(GL_QUADS);
 		glColor3f(1.f, 0.f, 0.f); // bottom-left: red
@@ -120,6 +120,7 @@ int main(void)
 		glVertex3f(-0.5f, 0.5f, 0.f);
 		glEnd();
 
+	
 
 		glfwSwapBuffers(window);
 
