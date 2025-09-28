@@ -18,3 +18,6 @@ x86/
 # Other
 *.log
 *.vsidx
+
+#compilation files
+./ZPG_CV_1/x64
