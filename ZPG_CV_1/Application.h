@@ -4,11 +4,12 @@
 //Include GLFW  
 #include <GLFW/glfw3.h>  
 
-//Include Model class
-#include "Model.h"
-
 //Include the standard C++ headers
 #include <vector>
+
+//Include Model class
+#include "Model.h"
+//class Model;
 
 class App
 {

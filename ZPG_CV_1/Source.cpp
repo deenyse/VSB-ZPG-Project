@@ -24,11 +24,7 @@ glm::mat4 Model = glm::mat4(1.0f);
 /*
 TODO:
 0. Fix uncompiling shader issue | at create shaders having shaderProgram and VAO as local variables
-1. Fix 	std::vector<Model*> models; -- surving not a type issue
-2. Remoove global VAO definition at App //GLuint VAO = 0;//TEST
 3. Find another place for CallBack definitions | probably moove into separate Function
-4. Implement Model class
-5. Implement Triangle class
 6. Add multiple models rendering
 */
 

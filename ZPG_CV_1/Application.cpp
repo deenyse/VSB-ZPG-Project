@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 static void error_callback(int error, const char* description) { fputs(description, stderr); }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -102,7 +101,7 @@ void App::createShaders() {
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragment_shader, NULL);
 	glCompileShader(fragmentShader);
-	GLuint shaderProgram = glCreateProgram();
+	shaderProgram = glCreateProgram();
 	glAttachShader(shaderProgram, fragmentShader);
 	glAttachShader(shaderProgram, vertexShader);
 	glLinkProgram(shaderProgram);
