@@ -34,7 +34,7 @@
       <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
