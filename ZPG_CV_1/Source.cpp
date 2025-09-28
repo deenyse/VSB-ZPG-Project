@@ -23,9 +23,7 @@ glm::mat4 Model = glm::mat4(1.0f);
 
 /*
 TODO:
-0. Fix uncompiling shader issue | at create shaders having shaderProgram and VAO as local variables
-3. Find another place for CallBack definitions | probably moove into separate Function
-6. Add multiple models rendering
+0. Make 4 coordinates and color for rect and triangles model; so i can easily moove them around instead of hardcoding in points array
 */
 
 int main(void)

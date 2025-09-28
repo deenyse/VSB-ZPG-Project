@@ -1,5 +1,8 @@
 #include "Application.h"
+
+//Include Models
 #include "Triangle.h"
+#include "Rectangle.h"
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
@@ -124,6 +127,10 @@ void App::createModels() {
 	Triangle* tri = new Triangle();
 	tri->create();
 	models.push_back(tri);
+
+	Rectangle* rect = new Rectangle();
+	rect->create();
+	models.push_back(rect);
 
 }
 

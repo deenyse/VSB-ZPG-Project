@@ -1,6 +1,7 @@
-#include "Triangle.h"
+#include "Rectangle.h"
 
-void Triangle::create(){
+
+void Rectangle::create() {
 	//vertex buffer object (VBO) //coordinates of vertices
 	glGenBuffers(1, &VBO); // generate 1 new VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -17,8 +18,8 @@ void Triangle::create(){
 }
 
 
-void Triangle::draw(){
+void Rectangle::draw() {
 	glBindVertexArray(VAO);
 	// draw triangles
-	glDrawArrays(GL_TRIANGLES, 0, 3); //mode,first,count
+	glDrawArrays(GL_TRIANGLES, 0, 6); //mode,first,count
 }
