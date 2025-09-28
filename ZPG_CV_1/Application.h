@@ -13,12 +13,10 @@
 class App
 {
 private:
-	GLuint shaderProgram;
-	GLFWwindow* window;
+	GLuint shaderProgram=0;
+	GLFWwindow* window=0;
 
 	std::vector<Model*> models;
-
-	GLuint VAO = 0;//TEST
 
 	//Здесь задается вершина. В данном случае vp(VertexPosition) для каждой вершины возвращает ее координаты 
 	const char* vertex_shader =
