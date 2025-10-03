@@ -39,7 +39,6 @@ int main(void)
 
 	app->createModels();
 
-
 	app->run();
 
 }
