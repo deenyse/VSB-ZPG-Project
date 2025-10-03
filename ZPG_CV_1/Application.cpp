@@ -2,7 +2,6 @@
 
 //Include Models
 #include "Triangle.h"
-#include "Rectangle.h"
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
@@ -32,6 +31,26 @@ static void button_callback(GLFWwindow* window, int button, int action, int mode
 }
 
 
+//const char* vertex_shader =
+//"#version 330\n"
+//"layout(location=0) in vec3 vp;"
+//"layout(location=1) in vec3 vc;"
+//
+//"out vec3 v_color;"
+//
+//"void main () {"
+//"     gl_Position = vec4 (vp, 1.0);"
+//"	  v_color = vc;"
+//"}";
+//
+//
+//const char* fragment_shader =
+//"#version 330\n"
+//"in vec3 v_color;"
+//"out vec4 fragColor;"
+//"void main () {"
+//"     fragColor = vec4 (v_color, 1.0);"
+//"}";
 
 void App::init() {
 
@@ -42,7 +61,7 @@ void App::init() {
 	}
 
 
-	//inicializace konkretni verze
+	//Init correct GLFW version
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -96,41 +115,12 @@ void App::init() {
 
 }
 
-void App::createShaders() {
-	//create and compile shaders
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertex_shader, NULL);
-	glCompileShader(vertexShader);
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragment_shader, NULL);
-	glCompileShader(fragmentShader);
-	shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, fragmentShader);
-	glAttachShader(shaderProgram, vertexShader);
-	glLinkProgram(shaderProgram);
 
-
-	GLint status;
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &status);
-	if (status == GL_FALSE)
-	{
-		GLint infoLogLength;
-		glGetProgramiv(shaderProgram, GL_INFO_LOG_LENGTH, &infoLogLength);
-		GLchar* strInfoLog = new GLchar[infoLogLength + 1];
-		glGetProgramInfoLog(shaderProgram, infoLogLength, NULL, strInfoLog);
-		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
-		delete[] strInfoLog;
-	}
-}
 
 void App::createModels() {
 	Triangle* tri = new Triangle();
 	tri->create();
 	models.push_back(tri);
-
-	Rectangle* rect = new Rectangle();
-	rect->create();
-	models.push_back(rect);
 
 }
 
@@ -138,7 +128,7 @@ void App::run() {
 	while (!glfwWindowShouldClose(window)) {
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glUseProgram(shaderProgram);
+		//glUseProgram(shaderProgram);
 		
 		for (auto m : models) m->draw();
 

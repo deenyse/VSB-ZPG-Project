@@ -21,10 +21,6 @@ glm::mat4 View = glm::lookAt(
 glm::mat4 Model = glm::mat4(1.0f);
 
 
-/*
-TODO:
-0. Make 4 coordinates and color for rect and triangles model; so i can easily moove them around instead of hardcoding in points array
-*/
 
 int main(void)
 {
@@ -33,9 +29,6 @@ int main(void)
 	auto app = new App();
 
 	app->init();
-
-
-	app->createShaders();
 
 	app->createModels();
 
