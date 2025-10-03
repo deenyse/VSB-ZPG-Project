@@ -1,12 +1,17 @@
 #pragma once
 //Include GLEW
 #include <GL/glew.h>
+
+#include <stdio.h>
 class Model
 {
 protected:
 	GLuint VBO, VAO;
+	int verticiesNum = 0;
 public:
-	//Model();
-	virtual void create()=0;
-	virtual void draw()=0;
+	Model(const float* points, int verticiesNum);
+
+	void bind() {
+		glBindVertexArray(VAO);
+	}
 };

@@ -27,7 +27,7 @@ const char* fragmentShaderSource =
 "     fragColor = vec4 (v_color, 1.0);"
 "}";
 
-void ShaderProgram::createProgram() {
+ShaderProgram::ShaderProgram() {
 	// Create and compile the vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);

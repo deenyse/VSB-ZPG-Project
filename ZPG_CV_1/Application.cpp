@@ -119,9 +119,7 @@ void App::init() {
 
 void App::createModels() {
 	Triangle* tri = new Triangle();
-	tri->create();
 	models.push_back(tri);
-
 }
 
 void App::run() {

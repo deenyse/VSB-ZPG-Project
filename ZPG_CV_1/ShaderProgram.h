@@ -8,7 +8,7 @@ class ShaderProgram
 private: 
 	GLuint idShaderProgram = 0;
 public:
-	void createProgram();
+	ShaderProgram();
 	void useProgram();
 };
 

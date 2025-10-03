@@ -7,9 +7,7 @@
 //Include the standard C++ headers
 #include <vector>
 
-//Include Model class
-#include "Model.h"
-//class Model;
+#include "DrawableObject.h"
 
 class Model;
 
@@ -18,7 +16,7 @@ class App
 private:
 	GLFWwindow* window=0;
 
-	std::vector<Model*> models;
+	std::vector<DrawableObject*> models;
 
 public:
 	void init();

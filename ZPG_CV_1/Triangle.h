@@ -1,24 +1,27 @@
 ﻿#pragma once
-#include "Model.h"
+#include "DrawableObject.h"
 #include "ShaderProgram.h"
 
 #include <stdio.h>
 
-class Triangle : public Model
+const float points[18] = {
+-0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // brm l
+ 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // btm r
+ 0.0f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f  // top
+};
+
+
+class Triangle : public DrawableObject
 {
 private:
-	// Coordinates		//Colors
-	float points[18] = {
-	-0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // brm l
-	 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // btm r
-	 0.0f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f  // top
-	};
-	 
-	ShaderProgram* shaderProgram = NULL;
+	//const float points[18] = {
+	//-0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // brm l
+	// 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // btm r
+	// 0.0f,  0.5f, 0.0f,   0.0f, 0.0f, 1.0f  // top
+	//};
+	//
 public:
-	Triangle() { shaderProgram = new ShaderProgram(); }
-	void create() override;
-	void draw() override;
-	
+	Triangle() :DrawableObject(points, 3) {
+	};
 };
 
