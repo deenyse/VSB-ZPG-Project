@@ -3,6 +3,7 @@
 //Include Models
 #include "Triangle.h"
 #include "Rectangle.h"
+#include "TestModel.h"
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
@@ -94,6 +95,8 @@ void App::init() {
 
 	glfwSetWindowSizeCallback(window, window_size_callback);
 
+	//Do depth comparisons and update the depth buffer.
+	glEnable(GL_DEPTH_TEST);
 }
 
 void App::createShaders() {
@@ -124,14 +127,13 @@ void App::createShaders() {
 }
 
 void App::createModels() {
-	Triangle* tri = new Triangle();
-	tri->create();
-	models.push_back(tri);
+	TestModel* test = new TestModel();
+	test->create();
+	models.push_back(test);
 
-	Rectangle* rect = new Rectangle();
-	rect->create();
-	models.push_back(rect);
-
+	Triangle* triangle = new Triangle();
+	triangle->create();
+	models.push_back(triangle);
 }
 
 void App::run() {
