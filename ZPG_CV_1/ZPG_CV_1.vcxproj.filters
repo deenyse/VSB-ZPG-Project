@@ -39,6 +39,15 @@
     <ClCompile Include="DrawableOboject.cpp">
       <Filter>Source Files\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="IBasicTransform.cpp">
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Rotate.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Scale.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -54,6 +63,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DrawableBoject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IBasicTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rotate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
