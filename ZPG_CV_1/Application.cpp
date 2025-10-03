@@ -31,27 +31,6 @@ static void button_callback(GLFWwindow* window, int button, int action, int mode
 }
 
 
-//const char* vertex_shader =
-//"#version 330\n"
-//"layout(location=0) in vec3 vp;"
-//"layout(location=1) in vec3 vc;"
-//
-//"out vec3 v_color;"
-//
-//"void main () {"
-//"     gl_Position = vec4 (vp, 1.0);"
-//"	  v_color = vc;"
-//"}";
-//
-//
-//const char* fragment_shader =
-//"#version 330\n"
-//"in vec3 v_color;"
-//"out vec4 fragColor;"
-//"void main () {"
-//"     fragColor = vec4 (v_color, 1.0);"
-//"}";
-
 void App::init() {
 
 	glfwSetErrorCallback(error_callback);
