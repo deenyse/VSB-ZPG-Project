@@ -131,24 +131,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="DrawableOboject.cpp" />
-    <ClCompile Include="IBasicTransform.cpp" />
+    <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Rotate.cpp" />
     <ClCompile Include="Scale.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Translate.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
-    <ClInclude Include="DrawableBoject.h" />
+    <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="IBasicTransform.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Rotate.h" />
     <ClInclude Include="Scale.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Translate.h" />
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

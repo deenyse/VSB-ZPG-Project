@@ -1,16 +1,19 @@
 #pragma once
 
-#include <glm/mat4x4.hpp> // glm::mat4
+//Include GLEW
+#include <GL/glew.h>
 
-#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale
+#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
+
 
 #include "IBasicTransform.h"
 
-
-class Rotate : public IBasicTransform
-{
+class Rotate : public IBasicTransform {
+private:
+    float angle;
+    glm::vec3 axis;
 public:
-	Rotate(float angle, glm::vec3 axis);
-	void updateMatrix(glm::mat4& matrix) override;
+    Rotate(float a, const glm::vec3& ax) : angle(a), axis(ax) {}
+    glm::mat4 getMatrix() override;
 };
 

@@ -16,8 +16,8 @@
     <Filter Include="Source Files\Clases">
       <UniqueIdentifier>{4ffe54e1-86d5-41c2-8d18-0091c65acb86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Clases\Transformations">
-      <UniqueIdentifier>{eb579d73-99f7-4a29-aaa2-d0c542404909}</UniqueIdentifier>
+    <Filter Include="Source Files\Clases\Models">
+      <UniqueIdentifier>{b447aa48-e993-4559-9d88-0b4ff824a200}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,25 +28,13 @@
       <Filter>Source Files\Clases</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Source Files\Clases</Filter>
+      <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Clases</Filter>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawableOboject.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="IBasicTransform.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="Rotate.cpp">
-      <Filter>Source Files\Clases\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Scale.cpp">
-      <Filter>Source Files\Clases\Transformations</Filter>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,22 +44,10 @@
     <ClInclude Include="Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawableBoject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IBasicTransform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rotate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scale.h">
+    <ClInclude Include="Rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

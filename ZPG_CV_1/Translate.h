@@ -1,5 +1,4 @@
 #pragma once
-
 //Include GLEW
 #include <GL/glew.h>
 
@@ -8,12 +7,10 @@
 
 #include "IBasicTransform.h"
 
-class Scale : public IBasicTransform
-{
+class Translate : public IBasicTransform {
 private:
-    glm::vec3 factor;
+    glm::vec3 offset;
 public:
-    Scale(const glm::vec3& f) : factor(f) {}
+    Translate(const glm::vec3& o) : offset(o) {}
     glm::mat4 getMatrix() override;
 };
-

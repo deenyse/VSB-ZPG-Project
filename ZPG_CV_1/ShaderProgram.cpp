@@ -1,23 +1,52 @@
 #include "ShaderProgram.h"
+#include <stdio.h>
+#include <iostream>
 
-ShaderProgram::~ShaderProgram() {
-		glDeleteProgram(idShaderProgram);
-	}
 
-void ShaderProgram::create(const char* vertex_shader, const char* fragment_shader) {
+const char* vertexShaderSource =
+"#version 330 core\n"
+"layout(location=0) in vec3 vp;"
+"layout(location=1) in vec3 vc;"
+
+"uniform mat4 modelMatrix;"
+
+"out vec3 v_color;"
+
+"void main () {"
+"     gl_Position = modelMatrix * vec4 (vp, 1.0);"
+"	  v_color = vc;"
+"}";
+
+
+const char* fragmentShaderSource =
+"#version 330 core\n"
+"in vec3 v_color;"
+"out vec4 fragColor;"
+"void main () {"
+"     fragColor = vec4 (v_color, 1.0);"
+"}";
+
+ShaderProgram::ShaderProgram() {
+	// Create and compile the vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertex_shader, NULL);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 
+
+	// Create and compile the fragment shader
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragment_shader, NULL);
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
+
+	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
-	glAttachShader(idShaderProgram, fragmentShader);
 	glAttachShader(idShaderProgram, vertexShader);
+	glAttachShader(idShaderProgram, fragmentShader);
 	glLinkProgram(idShaderProgram);
 
+
+	// Check for linking errors
 	GLint status;
 	glGetProgramiv(idShaderProgram, GL_LINK_STATUS, &status);
 	if (status == GL_FALSE)
@@ -29,8 +58,22 @@ void ShaderProgram::create(const char* vertex_shader, const char* fragment_shade
 		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
 		delete[] strInfoLog;
 	}
+
+	idModelTransform = glGetUniformLocation(idShaderProgram, "modelMatrix");
+
+}
+
+// Set model transformation matrix
+void ShaderProgram::setModelTransform(glm::mat4 model) {
+	modelTransform = model;
+	if (idModelTransform == -1) {
+		std::cerr << "Could not bind uniform modelMatrix" << std::endl;
+	}
 }
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
+
+	//location, count, transpose, *value
+	glUniformMatrix4fv(idModelTransform, 1, GL_FALSE, &modelTransform[0][0]);
 }

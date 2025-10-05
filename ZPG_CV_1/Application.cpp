@@ -1,8 +1,17 @@
 #include "Application.h"
 
+//Include Models
+#include "Triangle.h"
+#include "Rotate.h"
+#include "Scale.h"
+#include "Translate.h"
+
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
+
 
 static void error_callback(int error, const char* description) { fputs(description, stderr); }
 
@@ -29,7 +38,6 @@ static void button_callback(GLFWwindow* window, int button, int action, int mode
 }
 
 
-
 void App::init() {
 
 	glfwSetErrorCallback(error_callback);
@@ -39,7 +47,7 @@ void App::init() {
 	}
 
 
-	//inicializace konkretni verze
+	//Init correct GLFW version
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -91,52 +99,23 @@ void App::init() {
 
 	glfwSetWindowSizeCallback(window, window_size_callback);
 
-	//Do depth comparisons and update the depth buffer.
-	glEnable(GL_DEPTH_TEST);
 }
 
-void App::createShaders() {
-	//create and compile shaders
-	//GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	//glShaderSource(vertexShader, 1, &vertex_shader, NULL);
-	//glCompileShader(vertexShader);
-	//GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	//glShaderSource(fragmentShader, 1, &fragment_shader, NULL);
-	//glCompileShader(fragmentShader);
-	//shaderProgram = glCreateProgram();
-	//glAttachShader(shaderProgram, fragmentShader);
-	//glAttachShader(shaderProgram, vertexShader);
-	//glLinkProgram(shaderProgram);
 
-
-	//GLint status;
-	//glGetProgramiv(shaderProgram, GL_LINK_STATUS, &status);
-	//if (status == GL_FALSE)
-	//{
-	//	GLint infoLogLength;
-	//	glGetProgramiv(shaderProgram, GL_INFO_LOG_LENGTH, &infoLogLength);
-	//	GLchar* strInfoLog = new GLchar[infoLogLength + 1];
-	//	glGetProgramInfoLog(shaderProgram, infoLogLength, NULL, strInfoLog);
-	//	fprintf(stderr, "Linker failure: %s\n", strInfoLog);
-	//	delete[] strInfoLog;
-	//}
-}
 
 void App::createModels() {
-	TestModel* test = new TestModel();
-	test->create();
-	models.push_back(test);
-
-	Triangle* triangle = new Triangle();
-	triangle->create();
-	models.push_back(triangle);
+	Triangle* tri = new Triangle();
+	tri->addTransformation(new Rotate(glm::radians(90.f), glm::vec3(0.0f, 1.0f, 1.0f)));
+	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
+	tri->addTransformation(new Translate(glm::vec3(0.5f, 0.5f, 0.5f)));
+	models.push_back(tri);
 }
 
 void App::run() {
 	while (!glfwWindowShouldClose(window)) {
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glUseProgram(shaderProgram);
+		//glUseProgram(shaderProgram);
 		
 		for (auto m : models) m->draw();
 

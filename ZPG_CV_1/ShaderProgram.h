@@ -1,21 +1,20 @@
 #pragma once
+
 //Include GLEW
 #include <GL/glew.h>
-//Include GLFW  
-#include <GLFW/glfw3.h>  
 
-#include <iostream>
+#include <glm/mat4x4.hpp> // glm::mat4
 
 
-
-class ShaderProgram {
-private:
-	GLuint idShaderProgram =0;
-
+class ShaderProgram
+{
+private: 
+	GLuint idShaderProgram = 0;
+	glm::mat4 modelTransform = glm::mat4(1.0f);
+	GLint idModelTransform = -1;
 public:
-	~ShaderProgram();
-
-	void create(const char* vertex_shader, const char* fragment_shader);
-
+	ShaderProgram();
+	void setModelTransform(glm::mat4 model);
 	void useProgram();
 };
+
