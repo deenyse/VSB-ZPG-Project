@@ -105,9 +105,15 @@ void App::init() {
 
 void App::createModels() {
 	Triangle* tri = new Triangle();
-	tri->addTransformation(new Rotate(glm::radians(90.f), glm::vec3(0.0f, 1.0f, 1.0f)));
+	tri->addTransformation(new Rotate(glm::radians(45.f), glm::vec3(0.0f, 0.0f, 1.0f)));
 	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
 	tri->addTransformation(new Translate(glm::vec3(0.5f, 0.5f, 0.5f)));
+	models.push_back(tri);
+
+	tri = new Triangle();
+	tri->addTransformation(new Rotate(glm::radians(-45.f), glm::vec3(0.0f, 1.0f, 1.0f)));
+	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
+	tri->addTransformation(new Translate(glm::vec3(-0.5f, 0.5f, -0.5f)));
 	models.push_back(tri);
 }
 

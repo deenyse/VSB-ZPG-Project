@@ -11,6 +11,7 @@
 //Overload ShaderRenderer
 //Add folder with models
 //Create Scene class to hold objects
+//Add into app a claback handler
 
 
 int main(void)
