@@ -14,8 +14,6 @@ private:
     glm::vec3 axis;
 public:
     Rotate(float a, const glm::vec3& ax) : angle(a), axis(ax) {}
-    glm::mat4 getMatrix() override{
-        return glm::rotate(glm::mat4(1.0f), angle, axis);
-    }
+    glm::mat4 getMatrix() override;
 };
 

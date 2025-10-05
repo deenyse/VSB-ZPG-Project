@@ -2,9 +2,16 @@
 
 //Include Models
 #include "Triangle.h"
+#include "Rotate.h"
+#include "Scale.h"
+#include "Translate.h"
+
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
+
 
 static void error_callback(int error, const char* description) { fputs(description, stderr); }
 
@@ -98,6 +105,9 @@ void App::init() {
 
 void App::createModels() {
 	Triangle* tri = new Triangle();
+	tri->addTransformation(new Rotate(glm::radians(90.f), glm::vec3(0.0f, 1.0f, 1.0f)));
+	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
+	tri->addTransformation(new Translate(glm::vec3(0.5f, 0.5f, 0.5f)));
 	models.push_back(tri);
 }
 

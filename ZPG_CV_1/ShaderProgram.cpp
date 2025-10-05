@@ -8,10 +8,12 @@ const char* vertexShaderSource =
 "layout(location=0) in vec3 vp;"
 "layout(location=1) in vec3 vc;"
 
+"uniform mat4 modelMatrix;"
+
 "out vec3 v_color;"
 
 "void main () {"
-"     gl_Position = vec4 (vp, 1.0);"
+"     gl_Position = modelMatrix * vec4 (vp, 1.0);"
 "	  v_color = vc;"
 "}";
 
@@ -56,8 +58,22 @@ ShaderProgram::ShaderProgram() {
 		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
 		delete[] strInfoLog;
 	}
+
+	idModelTransform = glGetUniformLocation(idShaderProgram, "modelMatrix");
+
+}
+
+// Set model transformation matrix
+void ShaderProgram::setModelTransform(glm::mat4 model) {
+	modelTransform = model;
+	if (idModelTransform == -1) {
+		std::cerr << "Could not bind uniform modelMatrix" << std::endl;
+	}
 }
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
+
+	//location, count, transpose, *value
+	glUniformMatrix4fv(idModelTransform, 1, GL_FALSE, &modelTransform[0][0]);
 }

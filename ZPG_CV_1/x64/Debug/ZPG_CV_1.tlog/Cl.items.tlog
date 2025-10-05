@@ -1,6 +1,10 @@
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Application.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Application.obj
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\DrawableObject.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\DrawableObject.obj
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Model.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Model.obj
+C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Rotate.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Rotate.obj
+C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Scale.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Scale.obj
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\ShaderProgram.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\ShaderProgram.obj
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Source.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Source.obj
+C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Transform.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Transform.obj
+C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Translate.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Translate.obj
 C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\Triangle.cpp;C:\Users\denve\Desktop\ZPG\ZPG_CV_1\ZPG_CV_1\x64\Debug\Triangle.obj

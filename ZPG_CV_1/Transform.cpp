@@ -10,4 +10,6 @@ glm::mat4 Transform::getTransformMatrix() {
 	for (const auto& t : transforms) {
 		outMatrix = t->getMatrix() * outMatrix;
 	}
+
+	return outMatrix;
 }
