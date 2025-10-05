@@ -8,7 +8,7 @@ void Transform::addTransform(IBasicTransform* transform) {
 glm::mat4 Transform::getTransformMatrix() {
 	glm::mat4 outMatrix = transformMatrix;
 	for (const auto& t : transforms) {
-		outMatrix = t->getMatrix() * outMatrix;
+		outMatrix = outMatrix * t->getMatrix();
 	}
 
 	return outMatrix;

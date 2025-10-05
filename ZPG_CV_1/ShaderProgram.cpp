@@ -1,6 +1,7 @@
 #include "ShaderProgram.h"
 #include <stdio.h>
 #include <iostream>
+#include <string>
 
 
 const char* vertexShaderSource =
@@ -59,21 +60,32 @@ ShaderProgram::ShaderProgram() {
 		delete[] strInfoLog;
 	}
 
-	idModelTransform = glGetUniformLocation(idShaderProgram, "modelMatrix");
+
 
 }
 
-// Set model transformation matrix
-void ShaderProgram::setModelTransform(glm::mat4 model) {
-	modelTransform = model;
-	if (idModelTransform == -1) {
-		std::cerr << "Could not bind uniform modelMatrix" << std::endl;
+void ShaderProgram::setUniform(const GLchar* name, glm::mat4 value) {
+	GLint id = glGetUniformLocation(idShaderProgram, name);
+
+	if (id == -1) {
+		std::cerr << "Could not bind uniform "<< name << std::endl;
 	}
+
+	//location, count, transpose, *value
+	glUniformMatrix4fv(id, 1, GL_FALSE, &value[0][0]);
+}
+
+void ShaderProgram::setUniform(const GLchar* name, glm::vec3 value) {
+	GLint id = glGetUniformLocation(idShaderProgram, name);
+
+	if (id == -1) {
+		std::cerr << "Could not bind uniform " << name << std::endl;
+	}
+	glUniform3f(id, value.x, value.y, value.z);
 }
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
 
-	//location, count, transpose, *value
-	glUniformMatrix4fv(idModelTransform, 1, GL_FALSE, &modelTransform[0][0]);
+
 }

@@ -16,7 +16,7 @@ protected:
 	int verticiesNum = 0;
 public:
 	DrawableObject(const float* points, int verticiesNum);
-	void addTransformation(IBasicTransform* t);
+	DrawableObject* addTransformation(IBasicTransform* t);
 	void draw();
 };
 

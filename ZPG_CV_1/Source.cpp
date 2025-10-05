@@ -10,15 +10,12 @@
 // TODO:
 //1. Overload ShaderRenderer
 //2. Create different test scenes
-//3. Add into app class a claback handler
-//4. Add ability to switch between scenes by keyboard input
+//3. Add ability to chain transformations on DrawableObject
+//		// Maby do it with operator overloading? by vector?
+// 
+// Is there sence in making Scene manager like i have with Transorm?
+//
 
-
-//const float points[18] = {
-//-0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // brm l
-// 0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // btm r
-// 0.0f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f  // top
-//};
 
 int main(void)
 {
