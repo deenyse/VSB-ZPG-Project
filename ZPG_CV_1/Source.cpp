@@ -7,12 +7,18 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 
-//Figure out how to represent object. 
-//Overload ShaderRenderer
-//Add folder with models
-//Create Scene class to hold objects
-//Add into app a claback handler
+// TODO:
+//1. Overload ShaderRenderer
+//2. Create different test scenes
+//3. Add into app class a claback handler
+//4. Add ability to switch between scenes by keyboard input
 
+
+//const float points[18] = {
+//-0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // brm l
+// 0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // btm r
+// 0.0f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f  // top
+//};
 
 int main(void)
 {
@@ -22,7 +28,7 @@ int main(void)
 
 	app->init();
 
-	app->createModels();
+	app->createScenes();
 
 	app->run();
 

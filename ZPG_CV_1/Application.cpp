@@ -1,14 +1,12 @@
 #include "Application.h"
 
-//Include Models
-#include "Triangle.h"
-#include "Rotate.h"
-#include "Scale.h"
-#include "Translate.h"
+
 
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
+
+#include "Scene_1.h"
 
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
@@ -69,6 +67,9 @@ void App::init() {
 	glewInit();
 
 
+	glEnable(GL_DEPTH_TEST);//Do depth comparisons and update the depth buffer.
+
+
 	// get version info
 	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
 	printf("Using GLEW %s\n", glewGetString(GLEW_VERSION));
@@ -103,18 +104,9 @@ void App::init() {
 
 
 
-void App::createModels() {
-	Triangle* tri = new Triangle();
-	tri->addTransformation(new Rotate(glm::radians(45.f), glm::vec3(0.0f, 0.0f, 1.0f)));
-	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
-	tri->addTransformation(new Translate(glm::vec3(0.5f, 0.5f, 0.5f)));
-	models.push_back(tri);
-
-	tri = new Triangle();
-	tri->addTransformation(new Rotate(glm::radians(-45.f), glm::vec3(0.0f, 1.0f, 1.0f)));
-	tri->addTransformation(new Scale(glm::vec3(0.5f, 0.5f, 0.5f)));
-	tri->addTransformation(new Translate(glm::vec3(-0.5f, 0.5f, -0.5f)));
-	models.push_back(tri);
+void App::createScenes() {
+	Scene* scene1 = new Scene_1();
+	scenes.push_back(scene1);
 }
 
 void App::run() {
@@ -123,7 +115,7 @@ void App::run() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//glUseProgram(shaderProgram);
 		
-		for (auto m : models) m->draw();
+		for (auto s : scenes) s->renderAll();
 
 		// update other events like input handling
 		glfwPollEvents();
