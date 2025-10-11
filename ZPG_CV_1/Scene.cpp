@@ -1,8 +1,10 @@
 #include "Scene.h"
 
 
-void Scene::addObject(DrawableObject* object) {
+DrawableObject* Scene::addObject(DrawableObject* object) {
 	objects.push_back(object);
+	
+	return object;
 }
 
 void Scene::renderAll() {

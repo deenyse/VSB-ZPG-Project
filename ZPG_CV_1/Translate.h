@@ -5,9 +5,9 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 
-#include "IBasicTransform.h"
+#include "TransformBase.h"
 
-class Translate : public IBasicTransform {
+class Translate : public TransformBase {
 private:
     glm::vec3 offset;
 public:

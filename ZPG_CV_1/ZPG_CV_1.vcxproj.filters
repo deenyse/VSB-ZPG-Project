@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Clases\Models">
       <UniqueIdentifier>{b447aa48-e993-4559-9d88-0b4ff824a200}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Clases\Transformations">
+      <UniqueIdentifier>{ca3d65dc-65af-430c-a4fc-d80eea19a667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clases\Scenes">
+      <UniqueIdentifier>{f2019b46-fc21-4bb3-bfe7-366ca7486dc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -30,11 +36,35 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Source Files\Clases\Models</Filter>
+    <ClCompile Include="DrawableObject.cpp">
+      <Filter>Source Files\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files\Clases\Models</Filter>
+    <ClCompile Include="Rotate.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Scale.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_3.cpp">
+      <Filter>Source Files\Clases\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_1.cpp">
+      <Filter>Source Files\Clases\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_2.cpp">
+      <Filter>Source Files\Clases\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Translate.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Clases\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\Clases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,10 +74,37 @@
     <ClInclude Include="Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
+    <ClInclude Include="DrawableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.h">
+    <ClInclude Include="Rotate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Translate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

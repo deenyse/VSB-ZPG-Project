@@ -147,7 +147,6 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="DrawableObject.h" />
-    <ClInclude Include="IBasicTransform.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Rotate.h" />
     <ClInclude Include="Scale.h" />
@@ -157,6 +156,7 @@
     <ClInclude Include="Scene_3.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="TransformBase.h" />
     <ClInclude Include="Translate.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,15 +1,17 @@
 #pragma once
 
 #include <vector>
-#include "IBasicTransform.h"
-class Transform
+
+#include "TransformBase.h"
+
+class Transform : public TransformBase
 {
 private:
-	std::vector<IBasicTransform*> transforms;
+	std::vector<TransformBase*> transforms;
 	glm::mat4 transformMatrix = glm::mat4(1.0f);
 public:
-	void addTransform(IBasicTransform* transform);
+	Transform* addTransform(TransformBase* transform);
 
-	glm::mat4 getTransformMatrix();
+	glm::mat4 getMatrix() override;
 };
 

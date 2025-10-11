@@ -2,7 +2,7 @@
 #include "ShaderProgram.h"
 #include "Model.h"
 #include "Transform.h"
-#include "IBasicTransform.h"
+#include "TransformBase.h"
 
 #include <GL/glew.h>
 #include <stdio.h>
@@ -16,7 +16,7 @@ protected:
 	int verticiesNum = 0;
 public:
 	DrawableObject(const float* points, int verticiesNum);
-	DrawableObject* addTransformation(IBasicTransform* t);
+	Transform* getTransformations();
 	void draw();
 };
 

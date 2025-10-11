@@ -9,7 +9,7 @@ private:
 	std::vector<DrawableObject*> objects;
 public:
 	
-	void addObject(DrawableObject* object);
+	DrawableObject* addObject(DrawableObject* object);
 	void renderAll();
 };
 

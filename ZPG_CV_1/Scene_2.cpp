@@ -18,10 +18,8 @@ const float points[18] = {
 Scene_2::Scene_2() {
 	// Add initialization code specific to Scene_1 here
 	
-	addObject(
-		(new DrawableObject(points, 3))
-		->addTransformation(new Scale(glm::vec3(1.2f, 1.2f, 1.f)))
-		->addTransformation(new Rotate(glm::radians(90.f), glm::vec3(0.0f, 0.0f, 1.0f)))
-		//->addTransformation(new Translate(glm::vec3(-0.5f, 0.0f, 0.0f)))
-	);
+	addObject(new DrawableObject(points, 3))
+		->getTransformations()
+		->addTransform(new Scale(glm::vec3(1.2f, 1.2f, 1.f)))
+		->addTransform(new Rotate(glm::radians(90.f), glm::vec3(0.0f, 0.0f, 1.0f)));
 }

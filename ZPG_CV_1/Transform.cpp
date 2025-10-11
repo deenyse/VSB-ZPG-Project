@@ -1,11 +1,13 @@
 #include "Transform.h"
 
-void Transform::addTransform(IBasicTransform* transform) {
+Transform* Transform::addTransform(TransformBase* transform) {
 	transforms.push_back(transform);
+
+	return this;
 }
 
 
-glm::mat4 Transform::getTransformMatrix() {
+glm::mat4 Transform::getMatrix() {
 	glm::mat4 outMatrix = transformMatrix;
 	for (const auto& t : transforms) {
 		outMatrix = outMatrix * t->getMatrix();
