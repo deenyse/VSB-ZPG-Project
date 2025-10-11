@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Clases\Scenes">
       <UniqueIdentifier>{f2019b46-fc21-4bb3-bfe7-366ca7486dc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Clases\Shader">
+      <UniqueIdentifier>{2217c32e-568e-4c3d-82b3-296ba2be16b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clases\Camera">
+      <UniqueIdentifier>{9ceef248-0d53-4b80-9d18-19f567339b03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -60,14 +66,17 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files\Clases\Transformations</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Clases\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShaderSources.h">
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
