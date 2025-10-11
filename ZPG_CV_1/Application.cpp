@@ -124,14 +124,14 @@ void App::run() {
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//glUseProgram(shaderProgram);
-		
+
 		if (currentScene)
 			currentScene->renderAll();
 
 
 		// update other events like input handling
 		glfwPollEvents();
-		// put the stuff we’ve been drawing onto the display
+		// put the stuff weâ€™ve been drawing onto the display
 		glfwSwapBuffers(window);
 	}
 }

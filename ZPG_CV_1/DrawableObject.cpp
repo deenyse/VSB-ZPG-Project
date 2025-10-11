@@ -1,8 +1,9 @@
 #include "DrawableObject.h"
+#include "ShaderSources.h"
 
 
 DrawableObject::DrawableObject(const float* points, int verticiesNum) : verticiesNum(verticiesNum){
-	shaderProgram = new ShaderProgram();  // create the shader program (vertex and fragment shaders)
+	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, vertexShaderSource), new Shader(GL_FRAGMENT_SHADER ,fragmentShaderSource));  // create the shader program (vertex and fragment shaders)
 	model = new Model(points, verticiesNum); // create the model (VAO,VBO)
 	transformations = new Transform();
 

@@ -139,6 +139,7 @@
     <ClCompile Include="Scene_1.cpp" />
     <ClCompile Include="Scene_2.cpp" />
     <ClCompile Include="Scene_3.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -154,7 +155,9 @@
     <ClInclude Include="Scene_1.h" />
     <ClInclude Include="Scene_2.h" />
     <ClInclude Include="Scene_3.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="ShaderSources.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformBase.h" />
     <ClInclude Include="Translate.h" />

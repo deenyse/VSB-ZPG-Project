@@ -1,11 +1,14 @@
 #pragma once
+#include "Shader.h"
 #include "ShaderProgram.h"
+
 #include "Model.h"
 #include "Transform.h"
 #include "TransformBase.h"
 
 #include <GL/glew.h>
 #include <stdio.h>
+
 
 class DrawableObject
 {
