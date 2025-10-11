@@ -14,6 +14,10 @@ class Model;
 class App
 {
 private:
+	// Mouse temp handler
+	glm::vec2 lastMousePos;
+	bool firstMouse = true; // Перший рух миші
+
 	GLFWwindow* window=0;
 	std::vector<Scene*> scenes;
 	Scene* currentScene = NULL;

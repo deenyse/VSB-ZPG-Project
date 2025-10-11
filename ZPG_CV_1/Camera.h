@@ -13,6 +13,8 @@
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 
 #include <vector>
+
+#include "Observer.h"
 class Camera
 {
 private:
@@ -23,7 +25,7 @@ private:
 	float fi;// vertical rotation angle
 	glm::mat4 viewMatrix = 0; //view matrix
 	glm::mat4 projectionMatrix= 0;// projection matrics
-	//std::vector<Observer> liteners;
+	std::vector<Observer*> observers;
 public:
 	Camera(const glm::vec3& eye, const glm::vec3& up);
 
@@ -41,9 +43,8 @@ public:
 
 
 	// Register Shader Program (Observer)
-	/*void attachShaderProgram(ShaderProgram* shaderProgram);
-	void detachShaderProgram(ShaderProgram* shaderProgram);
-	void notifyShaderPrograms();*/
+	void attachObserver(Observer* Observer);
+	void notifyObservers();
 
 };
 

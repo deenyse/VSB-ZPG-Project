@@ -26,21 +26,35 @@ void App::key_callback(GLFWwindow* window, int key, int scancode, int action, in
 	if (action == GLFW_PRESS) {
 		if (key == GLFW_KEY_1)
 			app->setScene(1);
-		else if (key == GLFW_KEY_2)
-			app->setScene(2);
-		else if (key == GLFW_KEY_3)
-			app->setScene(3);
+		//else if (key == GLFW_KEY_2)
+		//	app->setScene(2);
+		//else if (key == GLFW_KEY_3)
+		//	app->setScene(3);
 	}
 
 	printf("key_callback [%d,%d,%d,%d] \n", key, scancode, action, mods);
 }
+
+
 void App::window_focus_callback(GLFWwindow* window, int focused) { printf("window_focus_callback \n"); }
 void App::window_iconify_callback(GLFWwindow* window, int iconified) { printf("window_iconify_callback \n"); }
 void App::window_size_callback(GLFWwindow* window, int width, int height) {
 	printf("resize %d, %d \n", width, height);
 	glViewport(0, 0, width, height);
 }
-void App::cursor_callback(GLFWwindow* window, double x, double y) { printf("cursor_callback \n"); }
+void App::cursor_callback(GLFWwindow* window, double x, double y) {
+	App* app = static_cast<App*>(glfwGetWindowUserPointer(window));
+	if (app->firstMouse) {
+		app->lastMousePos = glm::vec2(x, y);
+		app->firstMouse = false;
+	}
+	float deltaX = static_cast<float>(x - app->lastMousePos.x);
+	float deltaY = static_cast<float>(app->lastMousePos.y - y); // Inversiion Y
+	app->lastMousePos = glm::vec2(x, y);
+	if (app->currentScene)
+		app->currentScene->camera->updateOrientation(deltaX, deltaY);
+	
+}
 void App::button_callback(GLFWwindow* window, int button, int action, int mode) {
 	if (action == GLFW_PRESS) printf("button_callback [%d,%d,%d]\n", button, action, mode);
 }
@@ -107,11 +121,11 @@ void App::init() {
 
 
 void App::createScenes() {
-	scenes.push_back(new Scene_1());
-	scenes.push_back(new Scene_2());
+	//scenes.push_back(new Scene_1());
+	//scenes.push_back(new Scene_2());
 	scenes.push_back(new Scene_3());
 
-	currentScene = scenes[2];
+	currentScene = scenes[0];
 }
 void App::setScene(int i) {
 	if (i < 1 || i > scenes.size()) return;
@@ -126,8 +140,9 @@ void App::run() {
 		//glUseProgram(shaderProgram);
 
 		if (currentScene)
+		{
 			currentScene->renderAll();
-
+		}
 
 		// update other events like input handling
 		glfwPollEvents();

@@ -8,15 +8,20 @@
 #include <glm/vec3.hpp> // glm::vec3
 
 #include "Shader.h"
+#include "Observer.h"
 
-class ShaderProgram
+class Camera;
+
+class ShaderProgram : public Observer
 {
 private: 
 	GLuint idShaderProgram = 0;
+	Camera* camera = nullptr;
 public:
-	ShaderProgram(Shader* vertexShader, Shader* fragmentShader);
+	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera);
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
 	void useProgram();
+	void update() override;
 };
 

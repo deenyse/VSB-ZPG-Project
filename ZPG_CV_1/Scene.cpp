@@ -1,9 +1,9 @@
 #include "Scene.h"
 
 
-DrawableObject* Scene::addObject(DrawableObject* object) {
+DrawableObject* Scene::addObject(const float* points, int verticiesNum) {
+	DrawableObject* object = new DrawableObject(points, verticiesNum, camera);
 	objects.push_back(object);
-	
 	return object;
 }
 

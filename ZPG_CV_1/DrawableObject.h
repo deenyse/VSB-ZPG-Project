@@ -18,7 +18,7 @@ protected:
 	Transform* transformations;
 	int verticiesNum = 0;
 public:
-	DrawableObject(const float* points, int verticiesNum);
+	DrawableObject(const float* points, int verticiesNum, Camera* camera);
 	Transform* getTransformations();
 	void draw();
 };

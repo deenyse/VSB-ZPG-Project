@@ -3,17 +3,23 @@
 #include <iostream>
 #include <string>
 
+#include "Camera.h"
 
-
-ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader)
+ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera * camera)
 {	
+	this->camera = camera;
+
 	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
 	vertexShader->attachShader(idShaderProgram);
 	fragmentShader->attachShader(idShaderProgram);
-
+	
 
 	glLinkProgram(idShaderProgram);
+
+	if (camera) {
+		camera->attachObserver(this);
+	}
 }
 
 void ShaderProgram::setUniform(const GLchar* name, glm::mat4 value) {
@@ -40,4 +46,12 @@ void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
 
 
+}
+
+void ShaderProgram::update() {
+	if (camera) {
+		useProgram();
+		setUniform("viewMatrix", camera->getViewMatrix());
+		setUniform("projectionMatrix", camera->getProjectionMatrix(4.0f / 3.0f)); // FIXIT -> update aspect ratio on window resize
+	}
 }

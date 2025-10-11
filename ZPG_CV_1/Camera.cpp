@@ -13,7 +13,7 @@ glm::mat4 Camera::getViewMatrix() {
 }
 
 glm::mat4 Camera::getProjectionMatrix(float aspectRatio) {
-    // Projection perspective: FOV=60°, near plane =0.1, far plane=100
+    // Projection perspective: FOV=60Â°, near plane =0.1, far plane=100
     projectionMatrix = glm::perspective(glm::radians(60.0f), aspectRatio, 0.1f, 100.0f);
     return projectionMatrix;
 }
@@ -40,16 +40,16 @@ void Camera::updateOrientation(float deltaX, float deltaY) {
 }
 
 
-//void Camera::attachShaderProgram(ShaderProgram* shaderProgram) {
-//    observers.push_back(shaderProgram);
-//}
+void Camera::attachObserver(Observer* observer) {
+    observers.push_back(observer);
+}
 //
 //void Camera::detachShaderProgram(ShaderProgram* shaderProgram) {
 //    observers.erase(std::remove(observers.begin(), observers.end(), shaderProgram), observers.end());
 //}
 //
-//void Camera::notifyShaderPrograms() {
-//    for (auto* shaderProgram : observers) {
-//        shaderProgram->updateCameraMatrices();
-//    }
-//}
+void Camera::notifyObservers() {
+    for (auto* observer : observers) {
+        observer->update();
+    }
+}
