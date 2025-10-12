@@ -78,11 +78,11 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Clases\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Clases\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

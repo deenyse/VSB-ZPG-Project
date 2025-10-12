@@ -3,26 +3,23 @@
 
 void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	//Get the pointer to the application class
-	//App* app = static_cast<App*>(glfwGetWindowUserPointer(window));
+	InputManager* inputManager = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
 
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
-	//if (action == GLFW_PRESS) {
-	//	if (key == GLFW_KEY_1)
-	//		app->setScene(1);
-		//else if (key == GLFW_KEY_2)
-		//	app->setScene(2);
-		//else if (key == GLFW_KEY_3)
-		//	app->setScene(3);
-	//}
+	if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+		inputManager->sceneManager->handleBtnPress(key);
+	}
 
 	printf("key_callback [%d,%d,%d,%d] \n", key, scancode, action, mods);
 }
 void InputManager::window_focus_callback(GLFWwindow* window, int focused) { printf("window_focus_callback \n"); }
 void InputManager::window_iconify_callback(GLFWwindow* window, int iconified) { printf("window_iconify_callback \n"); }
 void InputManager::window_size_callback(GLFWwindow* window, int width, int height) {
+	InputManager* inputManager = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
+
+	inputManager->sceneManager->handleScreenResize(width, height);
 	printf("resize %d, %d \n", width, height);
 	glViewport(0, 0, width, height);
 }
@@ -60,7 +57,10 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
 		}
 	}
 
-	if (action == GLFW_PRESS) printf("button_callback [%d,%d,%d]\n", button, action, mode);
+	if (action == GLFW_PRESS) {
+		printf("button_callback [%d,%d,%d]\n", button, action, mode);
+
+	}
 }
 
 

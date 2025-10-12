@@ -9,19 +9,21 @@ Camera::Camera(const glm::vec3& eye, const glm::vec3& up)
 }
 
 glm::mat4 Camera::getViewMatrix() {
+    // Update view matrix
+    viewMatrix = glm::lookAt(eye, eye + target, up);
     return viewMatrix;
 }
 
-glm::mat4 Camera::getProjectionMatrix(float aspectRatio) {
+glm::mat4 Camera::getProjectionMatrix() {
     // Projection perspective: FOV=60°, near plane =0.1, far plane=100
-    projectionMatrix = glm::perspective(glm::radians(60.0f), aspectRatio, 0.1f, 100.0f);
+    projectionMatrix = glm::perspective(glm::radians(60.0f), screenAspectRatio, 0.1f, 100.0f);
     return projectionMatrix;
 }
 
 void Camera::updateOrientation(float deltaX, float deltaY) {
 	// Update angles based on mouse movement
-    alpha += deltaX * 0.01f; // Mouse sensivity
-    fi += deltaY * 0.01f;
+    alpha += deltaX * mouseSensitivity; // Mouse sensivity
+    fi += deltaY * mouseSensitivity;
 
 	//angle limits
 	alpha = glm::mod(alpha, glm::radians(360.0f)); // Cyclic horizontal rotation
@@ -31,13 +33,36 @@ void Camera::updateOrientation(float deltaX, float deltaY) {
     target.x = cos(fi) * sin(alpha);
     target.y = sin(fi);
     target.z = -cos(fi) * cos(alpha);
-	// Update view matrix
-    viewMatrix = glm::lookAt(eye, eye + target, up);
+	
 
     //notify observers
     notifyObservers();
 }
 
+void Camera::updateScreenSize(int width, int height) {
+    screenAspectRatio = width / (float)height;
+    notifyObservers();
+}
+
+void Camera::forward() {
+	this->eye += glm::normalize(glm::vec3(this->target)) * movementSpeed;
+    notifyObservers();
+}
+
+void Camera::left() {
+	this->eye -= glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
+    notifyObservers();
+}
+
+void Camera::backward() {
+	this->eye -= glm::normalize(glm::vec3(this->target)) * movementSpeed;
+    notifyObservers();
+}
+
+void Camera::right() {
+	this->eye += glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
+    notifyObservers();
+}
 
 void Camera::attachObserver(Observer* observer) {
     observers.push_back(observer);

@@ -61,6 +61,6 @@ void ShaderProgram::update() {
 	if (camera) {
 		useProgram();
 		setUniform("viewMatrix", camera->getViewMatrix());
-		setUniform("projectionMatrix", camera->getProjectionMatrix(4.0f / 3.0f)); // FIXIT -> update aspect ratio on window resize
+		setUniform("projectionMatrix", camera->getProjectionMatrix()); 
 	}
 }

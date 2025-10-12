@@ -23,6 +23,9 @@ private:
 	glm::vec3 up;// up vec
 	float alpha;// horisontal rotational angle
 	float fi;// vertical rotation angle
+	float mouseSensitivity = 0.01f;
+	float movementSpeed = 0.1f;
+	float screenAspectRatio = 4.0f / 3.0f;
 	glm::mat4 viewMatrix = 0; //view matrix
 	glm::mat4 projectionMatrix= 0;// projection matrics
 	std::vector<Observer*> observers;
@@ -32,15 +35,18 @@ public:
 
 	// Matrix getter
 	glm::mat4 getViewMatrix();
-	glm::mat4 getProjectionMatrix(float aspectRatio);
+	glm::mat4 getProjectionMatrix();
+
+	void updateScreenSize(int width, int height);
 
 	// update angle based on mouse orientation
 	void updateOrientation(float deltaX, float deltaY);
+	void forward();
+	void backward();
+	void left();
+	void right();
 
-	/*glm::mat4 getCamera(void) {
-		return glm::lookAt(eye, eye + target, up);
-	}*/
-
+	
 
 	// Register Shader Program (Observer)
 	void attachObserver(Observer* Observer);
