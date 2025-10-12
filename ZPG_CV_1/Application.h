@@ -22,9 +22,8 @@ private:
 	SceneManager* sceneManager = NULL;
 	InputManager* inputManager = NULL;
 
-
 public:
-	void init();
+	App();
 	void run();
 	~App();
 };

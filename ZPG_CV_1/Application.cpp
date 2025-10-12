@@ -10,12 +10,8 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 
-//Callback functions
-void App::error_callback(int error, const char* description) { fputs(description, stderr); }
 
-
-
-void App::init() {
+App::App() {
 
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
@@ -88,6 +84,8 @@ void App::run() {
 }
 
 
+//Callback functions
+void App::error_callback(int error, const char* description) { fputs(description, stderr); }
 
 
 App::~App() {

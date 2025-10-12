@@ -21,10 +21,7 @@ int main(void)
 {
 
 	
-	auto app = new App();
-
-	app->init();
-
+	App* app = new App();
 	app->run();
 
 }

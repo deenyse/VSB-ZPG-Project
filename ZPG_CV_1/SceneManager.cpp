@@ -1,5 +1,16 @@
 #include "SceneManager.h"
 
+SceneManager::SceneManager() {
+	//addScene(new Scene_1());
+	addScene(new Scene_2());
+	//addScene(new Scene_3());
+	if (!scenes.empty()) currentScene = scenes[0];
+}
+
+void SceneManager::addScene(Scene* scene) 
+{ 
+	scenes.push_back(scene); 
+}
 
 void SceneManager::setScene(int i) 
 {

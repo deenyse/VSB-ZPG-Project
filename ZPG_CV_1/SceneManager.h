@@ -7,21 +7,17 @@
 #include "Scene_2.h"
 #include "Scene_3.h"
 
+//Make singleton???
 class SceneManager
 {
 private:
 	std::vector<Scene*> scenes;
 	Scene* currentScene = NULL;
-	void addScene(Scene* scene) { scenes.push_back(scene); }
+	void addScene(Scene* scene);
+	void setScene(int i);
 
 public:
-	SceneManager() {
-		addScene(new Scene_1());
-		//addScene(new Scene_2());
-		//addScene(new Scene_3());
-		if (!scenes.empty()) currentScene = scenes[0];
-	}
-	void setScene(int i);
+	SceneManager();
 	void renderCurrentScene();
 	void handleMouseMovement(float deltaX, float deltaY);
 	void handleBtnPress(int key);
