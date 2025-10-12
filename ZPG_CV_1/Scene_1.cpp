@@ -13,8 +13,8 @@
 Scene_1::Scene_1() {
 	// Add initialization code specific to Scene_1 here
 
-	addObject(sphere, 2880)
-		->getTransformations()
+	addObject(sphere, 2880);
+		/*->getTransformations()
 		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
 		->addTransform(new Translate(glm::vec3(1.f, 1.f, 1)));
 
@@ -32,6 +32,6 @@ Scene_1::Scene_1() {
 	addObject(sphere, 2880)
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
-		->addTransform(new Translate(glm::vec3(-1.f, -1.f, 1)));
+		->addTransform(new Translate(glm::vec3(-1.f, -1.f, 1)));*/
 	
 }

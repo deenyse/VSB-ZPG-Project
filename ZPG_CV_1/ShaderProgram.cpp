@@ -14,9 +14,18 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 	vertexShader->attachShader(idShaderProgram);
 	fragmentShader->attachShader(idShaderProgram);
 	
-
+	GLint status;
 	glLinkProgram(idShaderProgram);
 
+	glGetProgramiv(idShaderProgram, GL_LINK_STATUS, &status);
+	if (status == GL_FALSE) {
+		GLint infoLogLength;
+		glGetProgramiv(idShaderProgram, GL_INFO_LOG_LENGTH, &infoLogLength);
+		GLchar* strInfoLog = new GLchar[infoLogLength + 1];
+		glGetProgramInfoLog(idShaderProgram, infoLogLength, NULL, strInfoLog);
+		fprintf(stderr, "Link failure: %s\n", strInfoLog);
+		delete[] strInfoLog;
+	}
 	if (camera) {
 		camera->attachObserver(this);
 	}

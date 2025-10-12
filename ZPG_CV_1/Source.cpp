@@ -25,8 +25,6 @@ int main(void)
 
 	app->init();
 
-	app->createScenes();
-
 	app->run();
 
 }

@@ -1,63 +1,18 @@
 #include "Application.h"
-
+#include "InputManager.h"//Do i need here this declaration?
 
 
 //Include the standard C++ headers  
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Scene_1.h"
-#include "Scene_2.h"
-#include "Scene_3.h"
 
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 
 //Callback functions
 void App::error_callback(int error, const char* description) { fputs(description, stderr); }
-void App::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-	//Get the pointer to the application class
-	App* app = static_cast<App*>(glfwGetWindowUserPointer(window));
 
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-
-	if (action == GLFW_PRESS) {
-		if (key == GLFW_KEY_1)
-			app->setScene(1);
-		//else if (key == GLFW_KEY_2)
-		//	app->setScene(2);
-		//else if (key == GLFW_KEY_3)
-		//	app->setScene(3);
-	}
-
-	printf("key_callback [%d,%d,%d,%d] \n", key, scancode, action, mods);
-}
-
-
-void App::window_focus_callback(GLFWwindow* window, int focused) { printf("window_focus_callback \n"); }
-void App::window_iconify_callback(GLFWwindow* window, int iconified) { printf("window_iconify_callback \n"); }
-void App::window_size_callback(GLFWwindow* window, int width, int height) {
-	printf("resize %d, %d \n", width, height);
-	glViewport(0, 0, width, height);
-}
-void App::cursor_callback(GLFWwindow* window, double x, double y) {
-	App* app = static_cast<App*>(glfwGetWindowUserPointer(window));
-	if (app->firstMouse) {
-		app->lastMousePos = glm::vec2(x, y);
-		app->firstMouse = false;
-	}
-	float deltaX = static_cast<float>(x - app->lastMousePos.x);
-	float deltaY = static_cast<float>(app->lastMousePos.y - y); // Inversiion Y
-	app->lastMousePos = glm::vec2(x, y);
-	if (app->currentScene)
-		app->currentScene->camera->updateOrientation(deltaX, deltaY);
-	
-}
-void App::button_callback(GLFWwindow* window, int button, int action, int mode) {
-	if (action == GLFW_PRESS) printf("button_callback [%d,%d,%d]\n", button, action, mode);
-}
 
 
 void App::init() {
@@ -74,6 +29,7 @@ void App::init() {
 		exit(EXIT_FAILURE);
 	}
 
+	
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); //vsync
 
@@ -99,8 +55,7 @@ void App::init() {
 	float ratio = width / (float)height;
 	glViewport(0, 0, width, height);
 
-	//Set the pointer to this class for the callbacks
-	glfwSetWindowUserPointer(window, this);
+
 
 	//Init correct GLFW version
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -108,29 +63,12 @@ void App::init() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	//Bind the key callbakcs to the window
-	glfwSetKeyCallback(window, key_callback);
-	glfwSetCursorPosCallback(window, cursor_callback);
-	glfwSetMouseButtonCallback(window, button_callback);
-	glfwSetWindowFocusCallback(window, window_focus_callback);
-	glfwSetWindowIconifyCallback(window, window_iconify_callback);
-	glfwSetWindowSizeCallback(window, window_size_callback);
+	sceneManager = new SceneManager();
 
-}
+	inputManager = new InputManager(window, sceneManager);
+	//Set the pointer to this class for the callbacks
+	glfwSetWindowUserPointer(window, inputManager);
 
-
-
-void App::createScenes() {
-	//scenes.push_back(new Scene_1());
-	//scenes.push_back(new Scene_2());
-	scenes.push_back(new Scene_3());
-
-	currentScene = scenes[0];
-}
-void App::setScene(int i) {
-	if (i < 1 || i > scenes.size()) return;
-	currentScene = scenes[i - 1];
-	printf("Switched to scene %d \n", i);
 }
 
 void App::run() {
@@ -139,15 +77,13 @@ void App::run() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//glUseProgram(shaderProgram);
 
-		if (currentScene)
-		{
-			currentScene->renderAll();
-		}
+		sceneManager->renderCurrentScene();
 
 		// update other events like input handling
 		glfwPollEvents();
 		// put the stuff we’ve been drawing onto the display
 		glfwSwapBuffers(window);
+
 	}
 }
 

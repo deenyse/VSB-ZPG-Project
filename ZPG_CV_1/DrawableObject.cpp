@@ -11,13 +11,15 @@ DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* ca
 
 void DrawableObject::draw()
 {
+	//shaderProgram->update(); // TEMP
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
-	setUniform("viewMatrix", camera->getViewMatrix());
-	setUniform("projectionMatrix", camera->getProjectionMatrix(4.0f / 3.0f));
+
 	model->bind(); //bind the VAO of the model
 
 	glDrawArrays(GL_TRIANGLES, 0, verticiesNum); //mode,first,count
+
+	//glBindVertexArray(0);
 }
 
 Transform* DrawableObject::getTransformations() {

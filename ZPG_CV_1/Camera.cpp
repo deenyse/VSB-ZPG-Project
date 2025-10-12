@@ -28,26 +28,21 @@ void Camera::updateOrientation(float deltaX, float deltaY) {
 	fi = glm::clamp(fi, -glm::radians(89.0f), glm::radians(89.0f)); // vertical rotation limit 
 
 	// Calculating new target vector
-    target.x = sin(alpha) * cos(fi);
-    target.z = sin(alpha) * sin(fi);
-    target.y = cos(alpha);
-
+    target.x = cos(fi) * sin(alpha);
+    target.y = sin(fi);
+    target.z = -cos(fi) * cos(alpha);
 	// Update view matrix
     viewMatrix = glm::lookAt(eye, eye + target, up);
 
-    // notify observers
-    //notifyShaderPrograms();
+    //notify observers
+    notifyObservers();
 }
 
 
 void Camera::attachObserver(Observer* observer) {
     observers.push_back(observer);
 }
-//
-//void Camera::detachShaderProgram(ShaderProgram* shaderProgram) {
-//    observers.erase(std::remove(observers.begin(), observers.end(), shaderProgram), observers.end());
-//}
-//
+
 void Camera::notifyObservers() {
     for (auto* observer : observers) {
         observer->update();
