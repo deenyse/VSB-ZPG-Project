@@ -41,6 +41,7 @@ public:
 
 	// update angle based on mouse orientation
 	void updateOrientation(float deltaX, float deltaY);
+	// Movement
 	void forward();
 	void backward();
 	void left();
@@ -51,6 +52,5 @@ public:
 	// Register Shader Program (Observer)
 	void attachObserver(Observer* Observer);
 	void notifyObservers();
-
 };
 
