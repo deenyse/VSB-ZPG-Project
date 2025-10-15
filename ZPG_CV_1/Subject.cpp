@@ -1,0 +1,13 @@
+#include "Subject.h"
+
+
+void Subject::attach(Observer* observer) {
+	observers.push_back(observer);
+}
+
+
+void Subject::notify() {
+	for (auto* observer : observers) {
+		observer->update();
+	}
+}

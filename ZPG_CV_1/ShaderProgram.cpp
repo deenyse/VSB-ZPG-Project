@@ -27,7 +27,7 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 		delete[] strInfoLog;
 	}
 	if (camera) {
-		camera->attachObserver(this);
+		camera->attach(this);
 	}
 }
 

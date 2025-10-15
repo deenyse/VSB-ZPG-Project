@@ -15,7 +15,8 @@
 #include <vector>
 
 #include "Observer.h"
-class Camera
+#include "Subject.h"
+class Camera : public Subject
 {
 private:
 	glm::vec3 eye; //camera location
@@ -28,7 +29,7 @@ private:
 	float screenAspectRatio = 4.0f / 3.0f;
 	glm::mat4 viewMatrix = 0; //view matrix
 	glm::mat4 projectionMatrix= 0;// projection matrics
-	std::vector<Observer*> observers;
+
 public:
 	Camera(const glm::vec3& eye, const glm::vec3& up);
 
@@ -48,9 +49,5 @@ public:
 	void right();
 
 	
-
-	// Register Shader Program (Observer)
-	void attachObserver(Observer* Observer);
-	void notifyObservers();
 };
 

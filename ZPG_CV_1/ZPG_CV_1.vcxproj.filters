@@ -84,6 +84,9 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Source Files\Clases\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

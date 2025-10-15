@@ -145,6 +145,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Subject.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translate.cpp" />
   </ItemGroup>
@@ -165,6 +166,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderSources.h" />
+    <ClInclude Include="Subject.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformBase.h" />
     <ClInclude Include="Translate.h" />
