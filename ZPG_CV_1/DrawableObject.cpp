@@ -1,10 +1,9 @@
 #include "DrawableObject.h"
-#include "ShaderSources.h"
+
 
 
 DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera) : verticiesNum(verticiesNum){
-	//shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, vertexCameraShaderSource), new Shader(GL_FRAGMENT_SHADER ,fragmentShaderSource), camera);  // create the shader program (vertex and fragment shaders) || SAFE
-	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, std::string("ShaderSource/constant.vert")), new Shader(GL_FRAGMENT_SHADER, std::string("ShaderSource/constant.frag")), camera);
+	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, std::string(ShaderSources::VertexConstant)), new Shader(GL_FRAGMENT_SHADER, std::string(ShaderSources::FragmentConstant)), camera);
 	model = new Model(points, verticiesNum); // create the model (VAO,VBO)
 	transformations = new Transform();
 

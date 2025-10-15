@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\Clases">
       <UniqueIdentifier>{4ffe54e1-86d5-41c2-8d18-0091c65acb86}</UniqueIdentifier>
     </Filter>
@@ -33,6 +29,12 @@
     </Filter>
     <Filter Include="Source Files\ObserverPattern">
       <UniqueIdentifier>{2b4e9913-c99d-46fa-8019-2755036b3ab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{88b6343f-836b-4494-97ce-590dca041529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderSource">
+      <UniqueIdentifier>{51e4a593-a0ad-4c10-95be-af5730cf56ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +92,9 @@
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClCompile>
+    <ClCompile Include="StructShaderSources.h">
+      <Filter>ShaderSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -134,9 +139,6 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderSources.h">
-      <Filter>Source Files\Clases\Shader</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -155,5 +157,37 @@
     <ClInclude Include="SubjectsEnum.h">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClInclude>
+    <ClInclude Include="Models\tree.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\suzi_smooth.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\suzi_flat.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\sphere.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\plain.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\gift.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\bushes.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantShaderSources.h">
+      <Filter>ShaderSource</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ShaderSource\constant.frag">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\constant.vert">
+      <Filter>ShaderSource</Filter>
+    </None>
   </ItemGroup>
 </Project>

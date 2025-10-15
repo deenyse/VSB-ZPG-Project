@@ -145,6 +145,7 @@
     <ClCompile Include="Scene_3.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="StructShaderSources.h" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Subject.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -156,6 +157,13 @@
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="Models\bushes.h" />
+    <ClInclude Include="Models\gift.h" />
+    <ClInclude Include="Models\plain.h" />
+    <ClInclude Include="Models\sphere.h" />
+    <ClInclude Include="Models\suzi_flat.h" />
+    <ClInclude Include="Models\suzi_smooth.h" />
+    <ClInclude Include="Models\tree.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Rotate.h" />
     <ClInclude Include="Scale.h" />
@@ -166,12 +174,16 @@
     <ClInclude Include="Scene_3.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="ShaderSources.h" />
+    <ClInclude Include="ConstantShaderSources.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="SubjectsEnum.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformBase.h" />
     <ClInclude Include="Translate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ShaderSource\constant.frag" />
+    <None Include="ShaderSource\constant.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
