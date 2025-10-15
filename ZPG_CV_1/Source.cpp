@@ -19,7 +19,7 @@
 
 int main(void)
 {
-
+	std::cout << "__cplusplus = " << __cplusplus << std::endl;
 	
 	App* app = new App();
 	app->run();
