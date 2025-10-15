@@ -1,7 +1,10 @@
 #pragma once
 
-#include "Observer.h"
 #include <vector>
+
+#include "Observer.h"
+#include "SubjectsEnum.h"
+
 class Subject
 {
 protected:
@@ -12,5 +15,5 @@ public:
 
 	void attach(Observer* observer);
 
-	void notify();
+	void notify(SubjectsEnum subject);
 };

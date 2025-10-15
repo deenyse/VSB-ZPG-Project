@@ -6,8 +6,8 @@ void Subject::attach(Observer* observer) {
 }
 
 
-void Subject::notify() {
+void Subject::notify(SubjectsEnum subject) {
 	for (auto* observer : observers) {
-		observer->update();
+		observer->update(subject);
 	}
 }

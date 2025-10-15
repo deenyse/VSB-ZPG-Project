@@ -57,8 +57,9 @@ void ShaderProgram::useProgram() {
 
 }
 
-void ShaderProgram::update() {
-	if (camera) {
+void ShaderProgram::update(SubjectsEnum subject) {
+
+	if (subject == SubjectsEnum::SCamera) {
 		useProgram();
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix()); 

@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Clases\Camera">
       <UniqueIdentifier>{9ceef248-0d53-4b80-9d18-19f567339b03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ObserverPattern">
+      <UniqueIdentifier>{2b4e9913-c99d-46fa-8019-2755036b3ab5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -85,7 +88,7 @@
       <Filter>Source Files\Clases\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Subject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ObserverPattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,17 +140,20 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Source Files\ObserverPattern</Filter>
+    </ClInclude>
     <ClInclude Include="Subject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\ObserverPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="SubjectsEnum.h">
+      <Filter>Source Files\ObserverPattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

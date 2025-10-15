@@ -16,8 +16,8 @@
 Scene_2::Scene_2() {
 	// Add initialization code specific to Scene_1 here
 
-	for (int i = 0; i < 25; i++) {
-		for (int j = 0; j < 25; j++) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
 			addObject(tree, 92814)
 				->getTransformations()
 				->addTransform(new Scale(glm::vec3(0.1f)))
@@ -25,8 +25,8 @@ Scene_2::Scene_2() {
 		}
 	}
 
-	for (int i = 0; i < 25; i++) {
-		for (int j = 0; j < 25; j++) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
 			addObject(bushes, 8730)
 				->getTransformations()
 				->addTransform(new Scale(glm::vec3(0.1f)))

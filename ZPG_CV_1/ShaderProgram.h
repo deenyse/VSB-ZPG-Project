@@ -9,6 +9,7 @@
 
 #include "Shader.h"
 #include "Observer.h"
+#include "SubjectsEnum.h"
 
 class Camera;
 
@@ -22,6 +23,6 @@ public:
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
 	void useProgram();
-	void update() override;
+	void update(SubjectsEnum subject) override;
 };
 

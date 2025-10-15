@@ -167,6 +167,7 @@
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderSources.h" />
     <ClInclude Include="Subject.h" />
+    <ClInclude Include="SubjectsEnum.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformBase.h" />
     <ClInclude Include="Translate.h" />

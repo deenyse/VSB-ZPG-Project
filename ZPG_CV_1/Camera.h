@@ -16,6 +16,7 @@
 
 #include "Observer.h"
 #include "Subject.h"
+#include "SubjectsEnum.h"
 class Camera : public Subject
 {
 private:
