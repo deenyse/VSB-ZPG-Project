@@ -72,9 +72,6 @@ InputManager::InputManager(GLFWwindow* win, SceneManager* sceneManager) {
 	firstMouse = true;
 	lastMousePos = glm::vec2(0, 0);
 
-	if (sceneManager) {
-		sceneManager->handleMouseMovement(0.0f, 0.0f); 
-	}
 
 	//Set the pointer to this class for the callbacks
 	glfwSetWindowUserPointer(window, this);

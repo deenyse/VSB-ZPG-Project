@@ -4,6 +4,8 @@ SceneManager::SceneManager() {
 	addScene(new Scene_1());
 	addScene(new Scene_2());
 	addScene(new Scene_3());
+
+
 	if (!scenes.empty()) currentScene = scenes[0];
 }
 

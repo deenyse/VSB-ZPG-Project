@@ -20,11 +20,13 @@
 class Camera : public Subject
 {
 private:
+	float alpha;// horisontal rotational angle
+	float fi;// vertical rotation angle
+
 	glm::vec3 eye; //camera location
 	glm::vec3 target;//view direction vector
 	glm::vec3 up;// up vec
-	float alpha;// horisontal rotational angle
-	float fi;// vertical rotation angle
+
 	float mouseSensitivity = 0.01f;
 	float movementSpeed = 0.1f;
 	float screenAspectRatio = 4.0f / 3.0f;

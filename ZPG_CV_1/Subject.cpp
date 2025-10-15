@@ -2,6 +2,7 @@
 
 
 void Subject::attach(Observer* observer) {
+	observer->update(SubjectsEnum::SCamera);
 	observers.push_back(observer);
 }
 
