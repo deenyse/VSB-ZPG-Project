@@ -95,6 +95,9 @@
     <ClCompile Include="StructShaderSources.h">
       <Filter>ShaderSource</Filter>
     </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -154,9 +157,6 @@
     <ClInclude Include="Subject.h">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClInclude>
-    <ClInclude Include="SubjectsEnum.h">
-      <Filter>Source Files\ObserverPattern</Filter>
-    </ClInclude>
     <ClInclude Include="Models\tree.h">
       <Filter>Models</Filter>
     </ClInclude>
@@ -181,12 +181,24 @@
     <ClInclude Include="ConstantShaderSources.h">
       <Filter>ShaderSource</Filter>
     </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SubjectsEnum.h">
+      <Filter>Source Files\ObserverPattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderSource\constant.frag">
       <Filter>ShaderSource</Filter>
     </None>
     <None Include="ShaderSource\constant.vert">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\lamb.frag">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\lamb.vert">
       <Filter>ShaderSource</Filter>
     </None>
   </ItemGroup>

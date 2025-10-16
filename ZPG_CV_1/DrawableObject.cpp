@@ -3,10 +3,10 @@
 
 
 DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera) : verticiesNum(verticiesNum){
-	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, std::string(ShaderSources::VertexConstant)), new Shader(GL_FRAGMENT_SHADER, std::string(ShaderSources::FragmentConstant)), camera);
+	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, std::string(ShaderSources::VertexLamb)), new Shader(GL_FRAGMENT_SHADER, std::string(ShaderSources::FragmentLamb)), camera);
 	model = new Model(points, verticiesNum); // create the model (VAO,VBO)
 	transformations = new Transform();
-
+	//this->light = new Light(glm::vec3(0.0f, 0.0f, 0.0f));
 };
 
 void DrawableObject::draw()

@@ -11,6 +11,7 @@
 
 #include "StructShaderSources.h"
 
+#include "Light.h"
 class DrawableObject
 {
 protected:
@@ -18,6 +19,8 @@ protected:
 	Model* model = NULL;
 	Transform* transformations;
 	int verticiesNum = 0;
+
+	Light* light = nullptr;
 public:
 	DrawableObject(const float* points, int verticiesNum, Camera* camera);
 	Transform* getTransformations();

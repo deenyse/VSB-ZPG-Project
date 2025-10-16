@@ -9,7 +9,6 @@
 
 #include "Shader.h"
 #include "Observer.h"
-#include "SubjectsEnum.h"
 
 class Camera;
 

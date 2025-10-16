@@ -16,4 +16,4 @@ public:
 	void attach(Observer* observer);
 
 	void notify(SubjectsEnum subject);
-};
+}; 
