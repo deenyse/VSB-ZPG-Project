@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "Light.h"
 
+#include "StructShaderSources.h"
 class Scene
 {
 protected:
@@ -13,7 +14,7 @@ protected:
 private:
 	std::vector<DrawableObject*> objects;
 public:
-	DrawableObject* addObject(const float* points, int verticiesNum);
+	DrawableObject* addObject(const float* points, int verticiesNum, const char* const shSource[2]);
 	void renderAll();
 	Camera* getCamera() { return camera; }
 };

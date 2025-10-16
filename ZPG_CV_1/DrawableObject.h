@@ -22,7 +22,7 @@ protected:
 
 	Light* light = nullptr;
 public:
-	DrawableObject(const float* points, int verticiesNum, Camera* camera);
+	DrawableObject(const float* points, int verticiesNum, Camera* camera, const char* const shSource[2]);
 	Transform* getTransformations();
 	void draw();
 };

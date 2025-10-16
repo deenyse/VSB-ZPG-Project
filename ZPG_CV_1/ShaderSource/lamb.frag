@@ -6,7 +6,7 @@ in vec3 worldNormal;
 out vec4 out_Color;
 
 void main(void) {
-    vec3 lightPosition = vec3(10.0, 10.0, 10.0);
+    vec3 lightPosition = vec3(0.0, 0.0, 0.0);
     vec3 lightToVector = lightPosition - worldPosition.xyz;
 
     float dotProduct = max(dot(normalize(lightToVector), normalize(worldNormal)), 0.0);

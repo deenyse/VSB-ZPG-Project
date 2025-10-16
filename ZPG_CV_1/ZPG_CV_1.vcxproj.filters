@@ -44,9 +44,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Clases\Models</Filter>
     </ClCompile>
-    <ClCompile Include="DrawableObject.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="Rotate.cpp">
       <Filter>Source Files\Clases\Transformations</Filter>
     </ClCompile>
@@ -92,11 +89,14 @@
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClCompile>
-    <ClCompile Include="StructShaderSources.h">
-      <Filter>ShaderSource</Filter>
-    </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StructShaderSources.h">
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObject.cpp">
+      <Filter>Source Files\Clases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +199,12 @@
       <Filter>ShaderSource</Filter>
     </None>
     <None Include="ShaderSource\lamb.vert">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\phong.frag">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\phong.vert">
       <Filter>ShaderSource</Filter>
     </None>
   </ItemGroup>

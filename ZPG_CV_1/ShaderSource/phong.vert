@@ -11,10 +11,13 @@ out vec4 worldPosition;
 out vec3 worldNormal;
 
 void main(void) {
+    // Transform vertex position to world space
     worldPosition = modelMatrix * vec4(vp, 1.0);
 
+    // Transform normal correctly using transpose-inverse of model
     mat3 normalMatrix = transpose(inverse(mat3(modelMatrix)));
     worldNormal = normalize(normalMatrix * vn);
 
+    // Compute clip-space position
     gl_Position = projectionMatrix * viewMatrix * worldPosition;
 }

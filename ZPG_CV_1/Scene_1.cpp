@@ -13,25 +13,21 @@
 Scene_1::Scene_1() {
 	// Add initialization code specific to Scene_1 here
 
-	addObject(sphere, 2880);
-		/*->getTransformations()
-		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
-		->addTransform(new Translate(glm::vec3(1.f, 1.f, 1)));
-
-
-	addObject(sphere, 2880)
+	addObject(sphere, 2880, ShaderSources::Phong)
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
-		->addTransform(new Translate(glm::vec3(-1.f, 1.f, 1)));
+		->addTransform(new Translate(glm::vec3(2.f, 0.f, 0)));
+
+
+	addObject(sphere, 2880, ShaderSources::Phong)
+		->getTransformations()
+		->addTransform(new Translate(glm::vec3(-2.f, 0.f, 0)));
 	
-	addObject(sphere, 2880)
+	addObject(sphere, 2880, ShaderSources::Phong)
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
-		->addTransform(new Translate(glm::vec3(1.f, -1.f, 1)));
+		->addTransform(new Translate(glm::vec3(0, 2.f, 0)));
 
-	addObject(sphere, 2880)
+	addObject(sphere, 2880, ShaderSources::Phong)
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(0.5, 0.5, 0.5)))
-		->addTransform(new Translate(glm::vec3(-1.f, -1.f, 1)));*/
+		->addTransform(new Translate(glm::vec3(0, -2.f, 0)));
 	
 }
