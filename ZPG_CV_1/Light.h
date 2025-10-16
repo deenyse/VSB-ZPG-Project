@@ -15,6 +15,7 @@ private:
 public:
 	Light(glm::vec3 pos);
 	void setPosition(glm::vec3 pos);
+	glm::vec3 getPosition();
 };
 
 

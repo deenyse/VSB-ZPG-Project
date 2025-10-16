@@ -5,11 +5,11 @@ in vec3 worldNormal;
 
 out vec4 fragColor;
 
-void main(void) {
-    // Hardcoded light and camera positions
-    const vec3 lightPosition = vec3(0.0, 5.0, 5.0);
-    const vec3 viewPosition  = vec3(0.0, 0.0, 5.0);
+uniform vec3 lightPosition;
 
+uniform vec3 viewPosition;
+
+void main(void) {
     // Material color
     vec3 objectColor = vec3(0.385, 0.647, 0.812);
 

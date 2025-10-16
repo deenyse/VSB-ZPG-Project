@@ -2,8 +2,8 @@
 
 
 
-DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource) : verticiesNum(verticiesNum){
-	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, shaderSource.vertex), new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment), camera);
+DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, Light* light) : verticiesNum(verticiesNum){
+	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, shaderSource.vertex), new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment), camera, light);
 	model = new Model(points, verticiesNum); // create the model (VAO,VBO)
 	transformations = new Transform();
 	//this->light = new Light(glm::vec3(0.0f, 0.0f, 0.0f));

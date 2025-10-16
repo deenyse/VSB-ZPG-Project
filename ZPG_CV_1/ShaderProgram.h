@@ -10,15 +10,16 @@
 #include "Shader.h"
 #include "Observer.h"
 
-class Camera;
-
+#include "Camera.h"
+#include "Light.h"
 class ShaderProgram : public Observer
 {
 private: 
 	GLuint idShaderProgram = 0;
 	Camera* camera = nullptr;
+	Light* light = nullptr;
 public:
-	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera);
+	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, Light* light);
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
 	void useProgram();

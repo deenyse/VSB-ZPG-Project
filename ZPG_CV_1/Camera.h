@@ -40,7 +40,7 @@ public:
 	// Matrix getter
 	glm::mat4 getViewMatrix();
 	glm::mat4 getProjectionMatrix();
-
+	glm::vec3 getPosition();
 	void updateScreenSize(int width, int height);
 
 	// update angle based on mouse orientation

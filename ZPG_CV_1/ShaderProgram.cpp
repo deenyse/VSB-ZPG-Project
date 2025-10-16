@@ -3,11 +3,10 @@
 #include <iostream>
 #include <string>
 
-#include "Camera.h"
+//#include "Camera.h"
 
-ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera * camera)
+ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, Light* light) : camera(camera), light(light)
 {	
-	this->camera = camera;
 
 	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
@@ -28,6 +27,9 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 	}
 	if (camera) {
 		camera->attach(this);
+	}
+	if (light) {
+		light->attach(this);
 	}
 }
 
@@ -62,6 +64,12 @@ void ShaderProgram::update(SubjectsEnum subject) {
 	if (subject == SubjectsEnum::SCamera) {
 		useProgram();
 		setUniform("viewMatrix", camera->getViewMatrix());
-		setUniform("projectionMatrix", camera->getProjectionMatrix()); 
+		setUniform("projectionMatrix", camera->getProjectionMatrix());
+		setUniform("viewPosition", camera->getPosition());
+
+	} 
+	else if (subject == SubjectsEnum::SLight) {
+		useProgram();
+		setUniform("lightPosition", light->getPosition());
 	}
 }

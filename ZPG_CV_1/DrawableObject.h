@@ -19,10 +19,8 @@ protected:
 	Model* model = NULL;
 	Transform* transformations;
 	int verticiesNum = 0;
-
-	Light* light = nullptr;
 public:
-	DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource);
+	DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, Light* light);
 	Transform* getTransformations();
 	void draw();
 };

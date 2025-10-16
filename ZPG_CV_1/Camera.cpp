@@ -20,6 +20,10 @@ glm::mat4 Camera::getProjectionMatrix() {
     return projectionMatrix;
 }
 
+glm::vec3 Camera::getPosition() {
+    return eye;
+}
+
 void Camera::updateOrientation(float deltaX, float deltaY) {
 	// Update angles based on mouse movement
     alpha += deltaX * mouseSensitivity; // Mouse sensivity

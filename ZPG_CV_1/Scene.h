@@ -11,10 +11,11 @@ class Scene
 {
 protected:
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f)); 
+	Light* light;
 private:
 	std::vector<DrawableObject*> objects;
 public:
-	DrawableObject* addObject(const float* points, int verticiesNum, ShaderPair shaderSource);
+	DrawableObject* addObject(const float* points, int verticiesNum, ShaderPair shaderSource, Light* light);
 	void renderAll();
 	Camera* getCamera() { return camera; }
 };
