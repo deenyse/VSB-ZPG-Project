@@ -98,6 +98,9 @@
     <ClCompile Include="DrawableObject.cpp">
       <Filter>Source Files\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="StructShaderSources.cpp">
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -177,9 +180,6 @@
     </ClInclude>
     <ClInclude Include="Models\bushes.h">
       <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="ConstantShaderSources.h">
-      <Filter>ShaderSource</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Header Files</Filter>

@@ -14,7 +14,7 @@ protected:
 private:
 	std::vector<DrawableObject*> objects;
 public:
-	DrawableObject* addObject(const float* points, int verticiesNum, const char* const shSource[2]);
+	DrawableObject* addObject(const float* points, int verticiesNum, ShaderPair shaderSource);
 	void renderAll();
 	Camera* getCamera() { return camera; }
 };

@@ -1,8 +1,8 @@
 #include "Scene.h"
 
 
-DrawableObject* Scene::addObject(const float* points, int verticiesNum, const char* const shSource[2]) {
-	DrawableObject* object = new DrawableObject(points, verticiesNum, camera, shSource);
+DrawableObject* Scene::addObject(const float* points, int verticiesNum, ShaderPair shaderSource) {
+	DrawableObject* object = new DrawableObject(points, verticiesNum, camera, shaderSource);
 	objects.push_back(object);
 	return object;
 }

@@ -15,8 +15,7 @@ private:
 	GLuint shaderID = 0;
 	void compileShader(GLenum shaderType, const char* source);
 public:
-	Shader(GLenum shaderType, const char* source);
-	Shader(GLenum shaderType, const std::string filePath);
+	Shader(GLenum shaderType, const char* shaderFile);
 	void attachShader(GLuint shaderProgram);
 };
 

@@ -146,6 +146,7 @@
     <ClCompile Include="Scene_3.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="StructShaderSources.cpp" />
     <ClCompile Include="StructShaderSources.h" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Subject.cpp" />
@@ -176,7 +177,6 @@
     <ClInclude Include="Scene_3.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="ConstantShaderSources.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="SubjectsEnum.h" />
     <ClInclude Include="Transform.h" />

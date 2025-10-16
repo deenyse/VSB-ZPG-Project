@@ -13,16 +13,16 @@
 Scene_1::Scene_1() {
 	// Add initialization code specific to Scene_1 here
 
-	addObject(sphere, 2880, ShaderSources::Phong)
+	addObject(sphere, 2880, ShaderSources::Constant)
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(2.f, 0.f, 0)));
 
 
-	addObject(sphere, 2880, ShaderSources::Phong)
+	addObject(sphere, 2880, ShaderSources::Lamb)
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(-2.f, 0.f, 0)));
 	
-	addObject(sphere, 2880, ShaderSources::Phong)
+	addObject(sphere, 2880, ShaderSources::Constant)
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, 2.f, 0)));
 

@@ -21,25 +21,20 @@ void Shader::compileShader(GLenum shaderType, const char* source) {
 	}
 }
 
-Shader::Shader(GLenum shaderType, const char* source) {
-	compileShader(shaderType, source);
-}
-
-Shader::Shader(GLenum shaderType, const std::string filePath) {
+Shader::Shader(GLenum shaderType, const char* shaderFile) {
 
 
-    std::ifstream file(filePath);
-    if (!file.is_open())
-    {
-        std::cerr << "Failed to open shader file: " << filePath << std::endl;
-        return;
-    }
 
-	std::stringstream buffer;
-	buffer << file.rdbuf();
-	std::string source = buffer.str();
-    
-	compileShader(shaderType, source.c_str());
+	//Loading the contents of a file into a variable
+	std::ifstream file(shaderFile);
+	if (!file.is_open())
+	{
+		std::cout << "Unable to open file " << shaderFile << std::endl;
+		exit(-1);
+	}
+	std::string shaderCode((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+   
+	compileShader(shaderType, shaderCode.c_str());
 }
 
 
