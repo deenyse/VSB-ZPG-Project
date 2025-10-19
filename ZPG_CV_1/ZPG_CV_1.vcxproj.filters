@@ -101,6 +101,9 @@
     <ClCompile Include="StructShaderSources.cpp">
       <Filter>Source Files\Clases\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicRotation.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -187,6 +190,12 @@
     <ClInclude Include="SubjectsEnum.h">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClInclude>
+    <ClInclude Include="DynamicRotation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\triangle.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderSource\constant.frag">
@@ -205,6 +214,12 @@
       <Filter>ShaderSource</Filter>
     </None>
     <None Include="ShaderSource\phong.vert">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="bling.frag">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="bling.vert">
       <Filter>ShaderSource</Filter>
     </None>
   </ItemGroup>

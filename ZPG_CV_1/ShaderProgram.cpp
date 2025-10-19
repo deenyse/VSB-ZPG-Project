@@ -27,9 +27,11 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 	}
 	if (camera) {
 		camera->attach(this);
+		update(SubjectsEnum::SCamera);
 	}
 	if (light) {
 		light->attach(this);
+		update(SubjectsEnum::SLight);
 	}
 }
 
@@ -66,7 +68,6 @@ void ShaderProgram::update(SubjectsEnum subject) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
 		setUniform("viewPosition", camera->getPosition());
-
 	} 
 	else if (subject == SubjectsEnum::SLight) {
 		useProgram();

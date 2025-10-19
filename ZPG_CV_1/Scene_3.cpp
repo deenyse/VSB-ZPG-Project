@@ -4,10 +4,9 @@
 
 //Models
 #include "./Models/bushes.h" // 8730 || bushes
-#include "./Models/gift.h" // 66624 || gift
-#include "./Models/sphere.h"// 2880 || sphere
-#include "./Models/suzi_flat.h"// 2904 || suziFlat
+
 #include "./Models/tree.h"// 92814 || tree
+#include "./Models/plain.h"// 6 || house
 
 //Transformations
 #include "Scale.h"
@@ -16,122 +15,27 @@
 
 Scene_3::Scene_3() {
 	// Add initialization code specific to Scene_3 here
-	camera = new Camera(glm::vec3(0.f, 0.f, 10.f), glm::vec3(0.f, 1.f, 0.f));
+	light->setPosition(glm::vec3(0.f, 10.f, 0.f));
+	
+	for (int i = 0; i < 25; i++) {
+		for (int j = 0; j < 25; j++) {
+			addObject(tree, 92814, ShaderSources::Phong, light)
+				->getTransformations()
+				->addTransform(new Scale(glm::vec3(0.1f)))
+				->addTransform(new Translate(glm::vec3(5.f * i, 0, 5.f * j)));
+		}
+	}
+	for (int i = 0; i < 25; i++) {
+		for (int j = 0; j < 25; j++) {
+			addObject(bushes, 8730, ShaderSources::Phong, light)
+				->getTransformations()
+				->addTransform(new Scale(glm::vec3(0.1f)))
+				->addTransform(new Translate(glm::vec3(4.5f * i, 0, 4.5f * j)));
+		}
+	}
 
-	//addObject(suziFlat, 2904)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.2f)))
-	//	->addTransform(new Rotate(glm::radians(195.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(4.f, 3.f, 0.f)));
+	addObject(plain, 6, ShaderSources::Phong, light)
+		->getTransformations()
+		->addTransform(new Scale(glm::vec3(70.f)));
 
-	//addObject(tree, 92814)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.1f)))
-	//	->addTransform(new Rotate(glm::radians(90.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(0.f, -10.f, 0.f)));
-
-	//addObject(tree, 92814)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.2f)))
-	//	->addTransform(new Translate(glm::vec3(-2.f, -5.f, 0.f)));
-
-	//addObject(tree, 92814)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.1f)))
-	//	->addTransform(new Rotate(glm::radians(45.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(6.f, -10.f, 0.f)));
-
-	//addObject(tree, 92814)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.1f)))
-	//	->addTransform(new Translate(glm::vec3(8.f, -10.f, 0.f)));
-
-	//// Bushes
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Rotate(glm::radians(45.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(-1.f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Rotate(glm::radians(90.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(1.f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Rotate(glm::radians(-45.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(2.f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(-1.5f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(1.9f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(2.2f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(1.2f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(0.3f, -2.f, 0.f)));
-
-	//addObject(bushes, 8730)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Translate(glm::vec3(0.7f, -2.f, 0.f)));
-
-	//// Gifts
-	//addObject(gift, 66624)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.5f)))
-	//	->addTransform(new Rotate(glm::radians(110.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Rotate(glm::radians(40.f), glm::vec3(1.f, 0.f, 0.f)))
-	//	->addTransform(new Rotate(glm::radians(-40.f), glm::vec3(0.f, 0.f, 1.f)));
-
-	//addObject(gift, 66624)
-	//	->getTransformations()
-	//	->addTransform(new Rotate(glm::radians(110.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(0.4f, 0.4f, 0.f)));
-
-	//addObject(gift, 66624)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.4f)))
-	//	->addTransform(new Rotate(glm::radians(110.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Rotate(glm::radians(40.f), glm::vec3(1.f, 0.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(-1.4f, 0.4f, 0.f)));
-
-	//// Spheres
-	//addObject(sphere, 2880)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.3f)))
-	//	->addTransform(new Rotate(glm::radians(25.f), glm::vec3(1.f, 0.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(-1.f, -3.f, 2.f)));
-
-	//addObject(sphere, 2880)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.2f)))
-	//	->addTransform(new Rotate(glm::radians(25.f), glm::vec3(1.f, 0.f, 1.f)))
-	//	->addTransform(new Translate(glm::vec3(5.f, 3.f, 0.f)));
-
-	//// Suzi
-	//addObject(suziFlat, 2904)
-	//	->getTransformations()
-	//	->addTransform(new Scale(glm::vec3(0.4f)))
-	//	->addTransform(new Rotate(glm::radians(165.f), glm::vec3(0.f, 1.f, 0.f)))
-	//	->addTransform(new Translate(glm::vec3(-1.3f, -0.5f, 0.f)));
 }

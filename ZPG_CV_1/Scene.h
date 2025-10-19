@@ -11,7 +11,7 @@ class Scene
 {
 protected:
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f)); 
-	Light* light;
+	Light* light = new Light(glm::vec3(0.f));
 private:
 	std::vector<DrawableObject*> objects;
 public:
