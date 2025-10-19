@@ -187,8 +187,8 @@
     <ClInclude Include="Translate.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bling.vert" />
-    <None Include="bling.frag" />
+    <None Include="ShaderSource\bling.frag" />
+    <None Include="ShaderSource\bling.vert" />
     <None Include="ShaderSource\constant.frag" />
     <None Include="ShaderSource\constant.vert" />
     <None Include="ShaderSource\lamb.frag" />

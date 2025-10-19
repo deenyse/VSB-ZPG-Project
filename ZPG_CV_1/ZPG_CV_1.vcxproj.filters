@@ -216,10 +216,10 @@
     <None Include="ShaderSource\phong.vert">
       <Filter>ShaderSource</Filter>
     </None>
-    <None Include="bling.frag">
+    <None Include="ShaderSource\bling.frag">
       <Filter>ShaderSource</Filter>
     </None>
-    <None Include="bling.vert">
+    <None Include="ShaderSource\bling.vert">
       <Filter>ShaderSource</Filter>
     </None>
   </ItemGroup>
