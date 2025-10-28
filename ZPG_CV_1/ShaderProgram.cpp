@@ -57,6 +57,17 @@ void ShaderProgram::setUniform(const GLchar* name, glm::vec3 value) {
 	glUniform3f(id, value.x, value.y, value.z);
 }
 
+void ShaderProgram::setUniform(const GLchar* name, int value) {
+	GLint id = glGetUniformLocation(idShaderProgram, name);
+
+	if (id == -1) {
+		std::cerr << "Could not bind uniform " << name << std::endl;
+	}
+
+	glUniform1i(id, value);
+}
+
+
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
 
@@ -75,12 +86,16 @@ void ShaderProgram::update(SubjectsEnum subject) {
 	else if (subject == SubjectsEnum::SLight) {
 		useProgram();
 
-		for (int i =0; i < lights.size(); i++)
-		{	
-			if (lights[i])
-				setUniform("lightPosition", lights[i]->getPosition());
-		}
+		for (int i = 0; i < lights.size(); i++)
+		{
+			std::string lightUniformStr = "lights[" + std::to_string(i) + "]";
+			if (lights[i]) {
+				std::string structProperty = lightUniformStr + ".position";
+				setUniform(structProperty.c_str(), lights[i]->getPosition());
 
+			}
+		}
+		setUniform("numberOfLights", lights.size());
 		glUseProgram(0);
 	}
 }

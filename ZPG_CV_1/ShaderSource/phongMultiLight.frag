@@ -1,13 +1,20 @@
 #version 330 core
+#define MAX_LIGHTS 4
+
+
+struct Light {
+    vec3 position;
+};
+
+uniform Light lights[MAX_LIGHTS];
+uniform int numberOfLights;
+
+uniform vec3 viewPosition;
 
 in vec4 worldPosition;
 in vec3 worldNormal;
 
 out vec4 fragColor;
-
-uniform vec3 lightPosition;
-
-uniform vec3 viewPosition;
 
 void main(void) {
     // Material color
@@ -18,18 +25,25 @@ void main(void) {
 
     // Diffuse lighting
     vec3 norm = normalize(worldNormal);
-    vec3 lightDir = normalize(lightPosition - worldPosition.xyz);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * objectColor;
+    vec3 result = ambient;
+    for (int i = 0; i < numberOfLights; i++) {
+        // Light direction
+        vec3 lightDir = normalize(lights[i].position.xyz - worldPosition.xyz);
+    
+        // Diffuse component Lambert
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 diffuse = diff * objectColor;
 
-    // Specular lighting
-    float specularStrength = 0.5;
-    vec3 viewDir = normalize(viewPosition - worldPosition.xyz);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
-    vec3 specular = specularStrength * spec * vec3(1.0);
-
-    // Combine lighting
-    vec3 result = ambient + diffuse + specular;
+        // Specular lighting
+        float specularStrength = 0.5;
+        vec3 viewDir = normalize(viewPosition - worldPosition.xyz);
+        vec3 reflectDir = reflect(-lightDir, norm);
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
+        vec3 specular = specularStrength * spec * vec3(1.0);
+    
+        // Combine lighting
+        result += diffuse + specular;
+    }
+    
     fragColor = vec4(result, 1.0);
 }

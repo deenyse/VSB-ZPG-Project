@@ -22,6 +22,7 @@ public:
 	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights);
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
+	void setUniform(const GLchar* name, int value);
 	void useProgram();
 	void update(SubjectsEnum subject) override;
 };
