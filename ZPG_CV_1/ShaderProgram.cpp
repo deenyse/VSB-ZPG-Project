@@ -78,8 +78,6 @@ void ShaderProgram::setUniform(const GLchar* name, float value) {
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
-
-
 }
 
 void ShaderProgram::update(ObservableSubjects subject) {

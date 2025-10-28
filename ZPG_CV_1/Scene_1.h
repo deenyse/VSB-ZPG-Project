@@ -6,6 +6,9 @@
 #include "Models/sphere.h"
 
 #include "PointLight.h"
+#include "DirectionalLight.h"
+#include "SpotLight.h"
+#include "HeadLight.h"
 
 class Scene_1 : public Scene
 {

@@ -24,6 +24,10 @@ glm::vec3 Camera::getPosition() {
     return eye;
 }
 
+glm::vec3 Camera::getTarget() {
+    return target;
+}
+
 void Camera::updateOrientation(float deltaX, float deltaY) {
 	// Update angles based on mouse movement
     alpha += deltaX * mouseSensitivity; // Mouse sensivity

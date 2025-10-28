@@ -119,6 +119,9 @@
     <ClCompile Include="SpotLight.cpp">
       <Filter>Source Files\Clases\Light</Filter>
     </ClCompile>
+    <ClCompile Include="HeadLight.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -221,6 +224,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
