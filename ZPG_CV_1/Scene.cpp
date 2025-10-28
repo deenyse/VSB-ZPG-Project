@@ -1,5 +1,9 @@
 #include "Scene.h"
 
+void Scene::initScene() {
+	initLights();
+	initObjects();
+}
 
 DrawableObject* Scene::addObject(DrawableObject * object) {
 	objects.push_back(object);
@@ -21,3 +25,4 @@ void Scene::renderAll() {
 		obj->draw();
 	}						    
 } 
+

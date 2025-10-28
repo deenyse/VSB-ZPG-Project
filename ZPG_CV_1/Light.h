@@ -11,11 +11,12 @@
 
 class Light : public Subject
 {
-public:
+private:
 	LightType type;
+public:
 	glm::vec3 color;
 
 	Light(LightType t, const glm::vec3 c);
-
+	LightType getType();
 	virtual ~Light() = 0;
 };

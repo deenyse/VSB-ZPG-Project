@@ -102,22 +102,22 @@ void ShaderProgram::update(ObservableSubjects subject) {
 			if (!lights[i]) continue;
 			
 			// Set common uniforms
-			setUniform((prefix + ".type").c_str(), static_cast<int>(lights[i]->type));
+			setUniform((prefix + ".type").c_str(), static_cast<int>(lights[i]->getType()));
 			setUniform((prefix + ".color").c_str(), lights[i]->color);
 
 			// Set uniforms depending on the light type
-			if (lights[i]->type == LightType::DIRECTIONAL) {
+			if (lights[i]->getType() == LightType::DIRECTIONAL) {
 				DirectionalLight* dirLight = (DirectionalLight*)lights[i];
 				setUniform((prefix + ".direction").c_str(), dirLight->direction);
 			}
-			else if (lights[i]->type == LightType::POINT) {
+			else if (lights[i]->getType() == LightType::POINT) {
 				PointLight* pointLight = (PointLight*)lights[i];
 				setUniform((prefix + ".position").c_str(), pointLight->position);
 				setUniform((prefix + ".constant").c_str(), pointLight->constant);
 				setUniform((prefix + ".linear").c_str(), pointLight->linear);
 				setUniform((prefix + ".quadratic").c_str(), pointLight->quadratic);
 			}
-			else if (lights[i]->type == LightType::SPOT) {
+			else if (lights[i]->getType() == LightType::SPOT) {
 				SpotLight* spotLight = (SpotLight*)lights[i];
 				setUniform((prefix + ".position").c_str(), spotLight->position);
 				setUniform((prefix + ".direction").c_str(), spotLight->direction);

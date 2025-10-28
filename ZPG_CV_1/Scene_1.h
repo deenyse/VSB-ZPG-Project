@@ -14,8 +14,7 @@ private:
 	void initObjects() override;
 public:
 	Scene_1() {
-		initLights();
-		initObjects();
+		initScene();
 	}
 };
 
