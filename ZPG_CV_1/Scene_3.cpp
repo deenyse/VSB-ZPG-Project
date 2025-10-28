@@ -17,7 +17,7 @@ Scene_3::Scene_3() {
 	// Add initialization code specific to Scene_3 here
 	light->setPosition(glm::vec3(0.f, 10.f, 0.f));
 	
-	for (int i = 0; i < 25; i++) {
+	/*for (int i = 0; i < 25; i++) {
 		for (int j = 0; j < 25; j++) {
 			addObject(tree, 92814, ShaderSources::Phong, light)
 				->getTransformations()
@@ -36,6 +36,6 @@ Scene_3::Scene_3() {
 
 	addObject(plain, 6, ShaderSources::Phong, light)
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(70.f)));
+		->addTransform(new Scale(glm::vec3(70.f)));*/
 
 }

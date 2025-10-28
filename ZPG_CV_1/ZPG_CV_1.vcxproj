@@ -147,7 +147,9 @@
     <ClCompile Include="Scene_3.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="StructShaderSources.cpp" />
+    <ClCompile Include="StructShaderSources.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="StructShaderSources.h" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Subject.cpp" />
