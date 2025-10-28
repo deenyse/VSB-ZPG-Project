@@ -68,9 +68,11 @@ void ShaderProgram::update(SubjectsEnum subject) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
 		setUniform("viewPosition", camera->getPosition());
+		glUseProgram(0);
 	} 
 	else if (subject == SubjectsEnum::SLight) {
 		useProgram();
 		setUniform("lightPosition", light->getPosition());
+		glUseProgram(0);
 	}
 }

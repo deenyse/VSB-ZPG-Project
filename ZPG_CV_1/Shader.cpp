@@ -23,8 +23,6 @@ void Shader::compileShader(GLenum shaderType, const char* source) {
 
 Shader::Shader(GLenum shaderType, const char* shaderFile) {
 
-
-
 	//Loading the contents of a file into a variable
 	std::ifstream file(shaderFile);
 	if (!file.is_open())
