@@ -1,5 +1,14 @@
 #include "Scene.h"
 
+Scene::Scene() {
+	addLight(headLight);
+}
+
+void Scene::switchHeadLight() {
+	headLight->isOn = !headLight->isOn;
+	headLight->notify(ObservableSubjects::SLight);
+}
+
 void Scene::initScene() {
 	initLights();
 	initObjects();

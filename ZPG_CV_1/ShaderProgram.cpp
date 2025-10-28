@@ -75,6 +75,17 @@ void ShaderProgram::setUniform(const GLchar* name, float value) {
 	glUniform1f(id, value);
 }
 
+void ShaderProgram::setUniform(const GLchar* name, bool value) {
+	GLint id = glGetUniformLocation(idShaderProgram, name);
+
+	if (id == -1) {
+		std::cerr << "Could not bind uniform " << name << std::endl;
+		return;
+	}
+
+	glUniform1i(id, static_cast<GLint>(value));
+}
+
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
@@ -102,7 +113,7 @@ void ShaderProgram::update(ObservableSubjects subject) {
 			// Set common uniforms
 			setUniform((prefix + ".type").c_str(), static_cast<int>(lights[i]->getType()));
 			setUniform((prefix + ".color").c_str(), lights[i]->color);
-
+			setUniform((prefix + ".isOn").c_str(), lights[i]->isOn);
 			// Set uniforms depending on the light type
 			if (lights[i]->getType() == LightType::DIRECTIONAL) {
 				DirectionalLight* dirLight = (DirectionalLight*)lights[i];

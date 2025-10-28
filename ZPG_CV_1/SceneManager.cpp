@@ -39,6 +39,8 @@ void SceneManager::handleBtnPress(int key)
 		currentScene->getCamera()->left();
 	else if (key == GLFW_KEY_D)
 		currentScene->getCamera()->right();
+	else if (key == GLFW_KEY_F)
+		currentScene->switchHeadLight();
 	else if (key == GLFW_KEY_1)
 		setScene(0);
 	else if (key == GLFW_KEY_2)

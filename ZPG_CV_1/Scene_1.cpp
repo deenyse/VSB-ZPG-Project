@@ -1,8 +1,8 @@
 #include "Scene_1.h"
 
 void Scene_1::initLights() {
-	//addLight(new PointLight(glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
-	//
+	addLight(new PointLight(glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
+	
 
 	//// Spot light above the scene, pointing down
 	//addLight(new SpotLight(
@@ -18,7 +18,7 @@ void Scene_1::initLights() {
 	//	glm::vec3(0.5f, 0.5f, 0.5f)          // color
 	//));
 
-	addLight(new HeadLight(getCamera()));
+	//addLight(new HeadLight(getCamera()));
 }
 
 void Scene_1::initObjects() {

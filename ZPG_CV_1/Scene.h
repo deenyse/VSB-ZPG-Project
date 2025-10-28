@@ -7,6 +7,8 @@
 #include "Light.h"
 #define MAX_LIGHTS 4
 #include "StructShaderSources.h"
+
+#include "HeadLight.h"
 class Scene
 {
 protected:
@@ -18,11 +20,13 @@ protected:
 private:	
 	std::vector<DrawableObject*> objects;
 	std::vector<Light*> lights;
-
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f));
+	HeadLight* headLight = new HeadLight(camera);
 public:
+	Scene();
 	void renderAll();
 	Camera* getCamera() { return camera; }
+	void switchHeadLight();
 	std::vector<Light*> getLights() { return lights; }
 };
 

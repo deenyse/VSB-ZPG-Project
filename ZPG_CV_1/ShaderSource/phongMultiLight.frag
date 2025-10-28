@@ -3,6 +3,7 @@
 
 struct Light {
     int type;            // LightType: 0 = directional, 1 = point, 2 = spot
+    bool isOn;           // Is the light on?
     vec3 position;       // Podition (for point/spot)
     vec3 direction;      // direction(for directional/spot)
     vec3 color;          // Color
@@ -43,6 +44,8 @@ void main(void) {
     
     
     for (int i = 0; i < numberOfLights; i++) {
+
+        if (!lights[i].isOn) continue;
         vec3 lightDir;
         float attenuation = 1.0;
 
