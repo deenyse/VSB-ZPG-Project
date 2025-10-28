@@ -222,5 +222,11 @@
     <None Include="ShaderSource\bling.vert">
       <Filter>ShaderSource</Filter>
     </None>
+    <None Include="ShaderSource\phongMultiLight.frag">
+      <Filter>ShaderSource</Filter>
+    </None>
+    <None Include="ShaderSource\phongMultiLight.vert">
+      <Filter>ShaderSource</Filter>
+    </None>
   </ItemGroup>
 </Project>

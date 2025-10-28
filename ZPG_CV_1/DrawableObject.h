@@ -8,7 +8,7 @@
 
 #include <GL/glew.h>
 #include <stdio.h>
-
+#include <vector>
 #include "StructShaderSources.h"
 
 #include "Light.h"
@@ -20,7 +20,7 @@ protected:
 	Transform* transformations;
 	int verticiesNum = 0;
 public:
-	DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, Light* light);
+	DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, std::vector<Light*> lights);
 	Transform* getTransformations();
 	void draw();
 };

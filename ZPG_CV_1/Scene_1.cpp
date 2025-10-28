@@ -3,24 +3,24 @@
 
 
 void Scene_1::initObjects() {
-	addObject(sphere, 2880, ShaderSources::Constant, light)
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(2.f, 0.f, 0)));
 
 
-	addObject(sphere, 2880, ShaderSources::Phong, light)
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(-2.f, 0.f, 0)));
 
-	addObject(sphere, 2880, ShaderSources::Lamb, light)
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, 2.f, 0)));
 
-	addObject(sphere, 2880, ShaderSources::Bling, light)
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, -2.f, 0)));
 }
 
 void Scene_1::initLights() {
-	return;
+	addLight(new Light(glm::vec3(0.f, 0.f, 0.f)));
 }

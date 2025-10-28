@@ -5,7 +5,7 @@
 
 //#include "Camera.h"
 
-ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, Light* light) : camera(camera), light(light)
+ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights) : camera(camera), lights(lights)
 {	
 
 	// Link shaders to create a shader program
@@ -29,9 +29,11 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 		camera->attach(this);
 		update(SubjectsEnum::SCamera);
 	}
-	if (light) {
-		light->attach(this);
-		update(SubjectsEnum::SLight);
+	for (Light* light : lights) {
+		if (light) {
+			light->attach(this);
+			update(SubjectsEnum::SLight);
+		}
 	}
 }
 
@@ -72,7 +74,13 @@ void ShaderProgram::update(SubjectsEnum subject) {
 	} 
 	else if (subject == SubjectsEnum::SLight) {
 		useProgram();
-		setUniform("lightPosition", light->getPosition());
+
+		for (int i =0; i < lights.size(); i++)
+		{	
+			if (lights[i])
+				setUniform("lightPosition", lights[i]->getPosition());
+		}
+
 		glUseProgram(0);
 	}
 }

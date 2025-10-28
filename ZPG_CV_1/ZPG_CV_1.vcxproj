@@ -197,6 +197,8 @@
     <None Include="ShaderSource\lamb.vert" />
     <None Include="ShaderSource\phong.frag" />
     <None Include="ShaderSource\phong.vert" />
+    <None Include="ShaderSource\phongMultiLight.frag" />
+    <None Include="ShaderSource\phongMultiLight.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
