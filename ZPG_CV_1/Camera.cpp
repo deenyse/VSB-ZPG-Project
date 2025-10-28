@@ -40,30 +40,30 @@ void Camera::updateOrientation(float deltaX, float deltaY) {
 	
 
     //notify observers
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }
 
 void Camera::updateScreenSize(int width, int height) {
     screenAspectRatio = width / (float)height;
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }
 
 void Camera::forward() {
 	this->eye += glm::normalize(glm::vec3(this->target)) * movementSpeed;
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }
 
 void Camera::left() {
 	this->eye -= glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }
 
 void Camera::backward() {
 	this->eye -= glm::normalize(glm::vec3(this->target)) * movementSpeed;
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }
 
 void Camera::right() {
 	this->eye += glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
-    notify(SubjectsEnum::SCamera);
+    notify(ObservableSubjects::SCamera);
 }

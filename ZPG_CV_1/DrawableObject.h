@@ -9,7 +9,7 @@
 #include <GL/glew.h>
 #include <stdio.h>
 #include <vector>
-#include "StructShaderSources.h"
+#include "StructShaderPair.h"
 
 #include "Light.h"
 class DrawableObject

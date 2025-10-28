@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "Observer.h"
-#include "SubjectsEnum.h"
+#include "EnumObservableSubjects.h"
 
 class Subject
 {
@@ -15,5 +15,5 @@ public:
 
 	void attach(Observer* observer);
 
-	void notify(SubjectsEnum subject);
+	void notify(ObservableSubjects subject);
 }; 

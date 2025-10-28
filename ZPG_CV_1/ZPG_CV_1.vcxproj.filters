@@ -36,6 +36,9 @@
     <Filter Include="ShaderSource">
       <UniqueIdentifier>{51e4a593-a0ad-4c10-95be-af5730cf56ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Clases\Light">
+      <UniqueIdentifier>{bb290c76-6431-4e09-9565-993819e24489}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -89,9 +92,6 @@
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StructShaderSources.h">
       <Filter>Source Files\Clases\Shader</Filter>
     </ClCompile>
@@ -103,6 +103,21 @@
     </ClCompile>
     <ClCompile Include="DynamicRotation.cpp">
       <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="StructShaderPair.h">
+      <Filter>Source Files\Clases\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +202,7 @@
     <ClInclude Include="Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SubjectsEnum.h">
+    <ClInclude Include="EnumObservableSubjects.h">
       <Filter>Source Files\ObserverPattern</Filter>
     </ClInclude>
     <ClInclude Include="DynamicRotation.h">
@@ -195,6 +210,18 @@
     </ClInclude>
     <ClInclude Include="Models\triangle.h">
       <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumLightType.h">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

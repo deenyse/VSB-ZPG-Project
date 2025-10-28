@@ -3,8 +3,6 @@
 #include <iostream>
 #include <string>
 
-//#include "Camera.h"
-
 ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights) : camera(camera), lights(lights)
 {	
 
@@ -27,12 +25,12 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 	}
 	if (camera) {
 		camera->attach(this);
-		update(SubjectsEnum::SCamera);
+		update(ObservableSubjects::SCamera);
 	}
 	for (Light* light : lights) {
 		if (light) {
 			light->attach(this);
-			update(SubjectsEnum::SLight);
+			update(ObservableSubjects::SLight);
 		}
 	}
 }
@@ -67,6 +65,16 @@ void ShaderProgram::setUniform(const GLchar* name, int value) {
 	glUniform1i(id, value);
 }
 
+void ShaderProgram::setUniform(const GLchar* name, float value) {
+	GLint id = glGetUniformLocation(idShaderProgram, name);
+
+	if (id == -1) {
+		std::cerr << "Could not bind uniform " << name << std::endl;
+	}
+
+	glUniform1f(id, value);
+}
+
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
@@ -74,28 +82,52 @@ void ShaderProgram::useProgram() {
 
 }
 
-void ShaderProgram::update(SubjectsEnum subject) {
+void ShaderProgram::update(ObservableSubjects subject) {
+	useProgram();
+	
+	if (subject == ObservableSubjects::SCamera) {
 
-	if (subject == SubjectsEnum::SCamera) {
-		useProgram();
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
 		setUniform("viewPosition", camera->getPosition());
-		glUseProgram(0);
 	} 
-	else if (subject == SubjectsEnum::SLight) {
-		useProgram();
+	else if (subject == ObservableSubjects::SLight) {
+		setUniform("numberOfLights", (int)lights.size());
 
 		for (int i = 0; i < lights.size(); i++)
 		{
-			std::string lightUniformStr = "lights[" + std::to_string(i) + "]";
-			if (lights[i]) {
-				std::string structProperty = lightUniformStr + ".position";
-				setUniform(structProperty.c_str(), lights[i]->getPosition());
+			std::string prefix = "lights[" + std::to_string(i) + "]";
+			
 
+			if (!lights[i]) continue;
+			
+			// Set common uniforms
+			setUniform((prefix + ".type").c_str(), static_cast<int>(lights[i]->type));
+			setUniform((prefix + ".color").c_str(), lights[i]->color);
+
+			// Set uniforms depending on the light type
+			if (lights[i]->type == LightType::DIRECTIONAL) {
+				DirectionalLight* dirLight = (DirectionalLight*)lights[i];
+				setUniform((prefix + ".direction").c_str(), dirLight->direction);
+			}
+			else if (lights[i]->type == LightType::POINT) {
+				PointLight* pointLight = (PointLight*)lights[i];
+				setUniform((prefix + ".position").c_str(), pointLight->position);
+				setUniform((prefix + ".constant").c_str(), pointLight->constant);
+				setUniform((prefix + ".linear").c_str(), pointLight->linear);
+				setUniform((prefix + ".quadratic").c_str(), pointLight->quadratic);
+			}
+			else if (lights[i]->type == LightType::SPOT) {
+				SpotLight* spotLight = (SpotLight*)lights[i];
+				setUniform((prefix + ".position").c_str(), spotLight->position);
+				setUniform((prefix + ".direction").c_str(), spotLight->direction);
+				setUniform((prefix + ".cutOff").c_str(), spotLight->cutOff);
+				setUniform((prefix + ".outerCutOff").c_str(), spotLight->outerCutOff);
+				setUniform((prefix + ".constant").c_str(), 1.0f);
+				setUniform((prefix + ".linear").c_str(), 0.09f);
+				setUniform((prefix + ".quadratic").c_str(), 0.032f);
 			}
 		}
-		setUniform("numberOfLights", lights.size());
-		glUseProgram(0);
 	}
+	glUseProgram(0);
 }

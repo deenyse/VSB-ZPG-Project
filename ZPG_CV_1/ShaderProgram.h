@@ -11,7 +11,11 @@
 #include "Observer.h"
 
 #include "Camera.h"
+
 #include "Light.h"
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
 class ShaderProgram : public Observer
 {
 private: 
@@ -23,7 +27,8 @@ public:
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
 	void setUniform(const GLchar* name, int value);
+	void setUniform(const GLchar* name, float value);
 	void useProgram();
-	void update(SubjectsEnum subject) override;
+	void update(ObservableSubjects subject) override;
 };
 

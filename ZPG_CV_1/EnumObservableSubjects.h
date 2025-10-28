@@ -1,8 +1,7 @@
 #pragma once
 
-enum SubjectsEnum
+enum ObservableSubjects
 {
 	SCamera,
 	SLight,
-	SEarth
 };
