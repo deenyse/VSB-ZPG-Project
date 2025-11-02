@@ -5,13 +5,11 @@
 class Scene_2 : public Scene
 {
 	private:
-	void initLights() override {
-		return;
-	}
-	void initObjects() override {
-		return;
-	}
+		void initLights() override;
+		void initObjects() override;
 public:
-	Scene_2();
+	Scene_2() {
+		initScene();
+	}
 };
 

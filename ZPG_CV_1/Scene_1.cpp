@@ -22,9 +22,11 @@ void Scene_1::initLights() {
 }
 
 void Scene_1::initObjects() {
-	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
+	DrawableObject* o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights());
+	addObject(o)
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(2.f, 0.f, 0)));
+
 
 	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()

@@ -10,7 +10,7 @@ public:
 	float linear;
 	float quadratic;
 
-	PointLight(const glm::vec3& pos, const glm::vec3& col, float c = 1.0f, float l = 0.09f, float q = 0.032f);
+	PointLight(glm::vec3 pos, const glm::vec3& col, float c = 1.0f, float l = 0.09f, float q = 0.032f);
 
 };
 

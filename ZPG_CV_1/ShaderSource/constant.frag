@@ -9,5 +9,6 @@ void main () {
     // Ambient lighting
     vec3 ambient = 0.1 * objectColor;
 
-    fragColor = vec4(ambient, 1.0);
+    //fragColor = vec4(ambient, 1.0);
+    fragColor = vec4(1.0, 1.0, 1.0, 1.0);
 }

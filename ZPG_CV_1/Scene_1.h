@@ -3,13 +3,15 @@
 
 
 #include "Translate.h"
+#include "RandomTranslation.h"
+
 #include "Models/sphere.h"
 
 #include "PointLight.h"
 #include "DirectionalLight.h"
 #include "SpotLight.h"
 #include "HeadLight.h"
-
+#include "FollowingLight.h"
 class Scene_1 : public Scene
 {
 private:

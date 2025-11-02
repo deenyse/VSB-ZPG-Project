@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\External\glew-2.1.0\include;$(ProjectDir)\External\glm;$(ProjectDir)\External\glfw-3.4.bin.WIN64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\External\tinyobjloader-release;$(ProjectDir)\External\glew-2.1.0\include;$(ProjectDir)\External\glm;$(ProjectDir)\External\glfw-3.4.bin.WIN64\include</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -137,11 +137,13 @@
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="DrawableObject.cpp" />
     <ClCompile Include="DynamicRotation.cpp" />
+    <ClCompile Include="FollowingLight.cpp" />
     <ClCompile Include="HeadLight.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="RandomTranslation.cpp" />
     <ClCompile Include="Rotate.cpp" />
     <ClCompile Include="Scale.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -159,6 +161,7 @@
     <ClCompile Include="StructShaderSources.h" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Subject.cpp" />
+    <ClCompile Include="tinyobjloader.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translate.cpp" />
   </ItemGroup>
@@ -169,6 +172,7 @@
     <ClInclude Include="DrawableObject.h" />
     <ClInclude Include="DynamicRotation.h" />
     <ClInclude Include="EnumLightType.h" />
+    <ClInclude Include="FollowingLight.h" />
     <ClInclude Include="HeadLight.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
@@ -183,6 +187,7 @@
     <ClInclude Include="Models\triangle.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="RandomTranslation.h" />
     <ClInclude Include="Rotate.h" />
     <ClInclude Include="Scale.h" />
     <ClInclude Include="Scene.h" />

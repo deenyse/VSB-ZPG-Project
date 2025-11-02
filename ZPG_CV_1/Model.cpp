@@ -1,24 +1,38 @@
 #include "Model.h"
 
 Model::Model(const float* points, int verticiesNum){
-	this->verticiesNum = verticiesNum;
-	//Vertex Array Object (VAO) // instructions how to handle the vertex buffer
-	glGenVertexArrays(1, &VAO); //generate 1 new VAO
-	glBindVertexArray(VAO); //bind the VAO
+    this->verticiesNum = verticiesNum;
+    // Copy data into vector to ensure pointer stays valid
+    vertices.assign(points, points + verticiesNum * 6);
 
-
-	//vertex buffer object (VBO) //coordinates of vertices
-	glGenBuffers(1, &VBO); // generate 1 new VBO
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, verticiesNum * 6 * sizeof(float), points, GL_STATIC_DRAW);
-
-
-	/*glBindBuffer(GL_ARRAY_BUFFER, VBO);*/
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid*)0);
-	glEnableVertexAttribArray(0); //enable vertex attributes // 0-> layout(location=0) in vec3 vp;
-
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1); //enable vertex attributes 1
+    setupBuffers();
 
 }
 
+Model::Model(const std::vector<float>& points) {
+    vertices = points;
+    verticiesNum = vertices.size() / 6; // Assuming stride=6 (pos + normal)
+
+    setupBuffers();
+}
+
+void Model::setupBuffers() {
+    // Generate VAO and bind it
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
+
+    // Generate VBO and upload vertex data
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+    // Vertex attributes: position (layout 0) and normal (layout 1)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    // Unbind VAO for safety
+    glBindVertexArray(0);
+}

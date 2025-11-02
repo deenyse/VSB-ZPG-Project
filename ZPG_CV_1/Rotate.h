@@ -7,7 +7,7 @@
 
 #include "TransformBase.h"
 class Rotate : public TransformBase {
-private:
+protected:
     float angle;
     glm::vec3 axis;
 public:

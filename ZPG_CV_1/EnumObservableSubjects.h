@@ -4,4 +4,5 @@ enum ObservableSubjects
 {
 	SCamera,
 	SLight,
+	SObject
 };

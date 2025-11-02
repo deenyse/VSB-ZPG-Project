@@ -9,11 +9,11 @@ class Subject
 {
 protected:
 	std::vector<Observer*> observers;
+
 public:
 	Subject() = default;
 	~Subject() = default;
 
-	void attach(Observer* observer);
-
 	void notify(ObservableSubjects subject);
+	void attach(Observer* observer);
 }; 

@@ -27,9 +27,6 @@
     <Filter Include="Source Files\Clases\Camera">
       <UniqueIdentifier>{9ceef248-0d53-4b80-9d18-19f567339b03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ObserverPattern">
-      <UniqueIdentifier>{2b4e9913-c99d-46fa-8019-2755036b3ab5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Models">
       <UniqueIdentifier>{88b6343f-836b-4494-97ce-590dca041529}</UniqueIdentifier>
     </Filter>
@@ -38,6 +35,15 @@
     </Filter>
     <Filter Include="Source Files\Clases\Light">
       <UniqueIdentifier>{bb290c76-6431-4e09-9565-993819e24489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clases\Objects">
+      <UniqueIdentifier>{9720147a-fac2-4242-8864-01509f695edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clases\Application">
+      <UniqueIdentifier>{35ed41ca-179c-43f8-8479-eb46d508f37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Clases\ObserverPattern">
+      <UniqueIdentifier>{2b4e9913-c99d-46fa-8019-2755036b3ab5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +77,6 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files\Clases\Transformations</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Clases\Shader</Filter>
     </ClCompile>
@@ -83,20 +86,14 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Clases\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Source Files\Clases\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Subject.cpp">
-      <Filter>Source Files\ObserverPattern</Filter>
+      <Filter>Source Files\Clases\ObserverPattern</Filter>
     </ClCompile>
     <ClCompile Include="StructShaderSources.h">
       <Filter>Source Files\Clases\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawableObject.cpp">
-      <Filter>Source Files\Clases</Filter>
     </ClCompile>
     <ClCompile Include="StructShaderSources.cpp">
       <Filter>Source Files\Clases\Shader</Filter>
@@ -121,6 +118,24 @@
     </ClCompile>
     <ClCompile Include="HeadLight.cpp">
       <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomTranslation.cpp">
+      <Filter>Source Files\Clases\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObject.cpp">
+      <Filter>Source Files\Clases\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Clases\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files\Clases\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowingLight.cpp">
+      <Filter>Source Files\Clases\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyobjloader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,10 +191,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Observer.h">
-      <Filter>Source Files\ObserverPattern</Filter>
+      <Filter>Source Files\Clases\ObserverPattern</Filter>
     </ClInclude>
     <ClInclude Include="Subject.h">
-      <Filter>Source Files\ObserverPattern</Filter>
+      <Filter>Source Files\Clases\ObserverPattern</Filter>
     </ClInclude>
     <ClInclude Include="Models\tree.h">
       <Filter>Models</Filter>
@@ -206,7 +221,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnumObservableSubjects.h">
-      <Filter>Source Files\ObserverPattern</Filter>
+      <Filter>Source Files\Clases\ObserverPattern</Filter>
     </ClInclude>
     <ClInclude Include="DynamicRotation.h">
       <Filter>Header Files</Filter>
@@ -227,6 +242,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HeadLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomTranslation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowingLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

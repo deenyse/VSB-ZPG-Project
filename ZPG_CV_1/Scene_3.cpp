@@ -7,35 +7,52 @@
 
 #include "./Models/tree.h"// 92814 || tree
 #include "./Models/plain.h"// 6 || house
+#include "./Models/sphere.h"// 2880 || sphere
 
-//Transformations
-#include "Scale.h"
-#include "Translate.h"
-#include "Rotate.h"
 
-Scene_3::Scene_3() {
-	// Add initialization code specific to Scene_3 here
-	//light->setPosition(glm::vec3(0.f, 10.f, 0.f));
-	
-	/*for (int i = 0; i < 25; i++) {
-		for (int j = 0; j < 25; j++) {
-			addObject(tree, 92814, ShaderSources::Phong, light)
+
+void Scene_3::initLights() {
+	addLight(new DirectionalLight(glm::vec3(-1.f, 0.3f, 0.3f), glm::vec3(0.6f)));
+}
+void Scene_3::initObjects() {
+	FollowingLight* l = new FollowingLight(glm::vec3(1.f),1.f,0.0001f,0.0005f);
+	addLight(l);
+
+	DrawableObject* o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Constant, getLights());
+	addObject(o)
+		->getTransformations()
+		->addTransform(new Translate(glm::vec3(0.f, 0.5f, 0)))
+		->addTransform(new RandomTranslation(0.01f, 0.3f))
+		->addTransform(new Scale(glm::vec3(0.02f)))
+		;
+
+	l->follow(o);
+
+	l = new FollowingLight(glm::vec3(1.f), 1.f, 0.0001f, 0.0005f);
+	addLight(l);
+
+	o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Constant, getLights());
+	addObject(o)
+		->getTransformations()
+		->addTransform(new Translate(glm::vec3(5.f, 0.5f, 5)))
+		->addTransform(new RandomTranslation(0.01f, 0.3f))
+		->addTransform(new Scale(glm::vec3(0.05f)))
+		;
+
+	l->follow(o);
+
+	for (int i = 0; i < 11; i++) {
+		for (int j = 0; j < 11; j++) {
+			addObject(new DrawableObject(tree, 92814, getCamera(), ShaderSources::Phong, getLights()))
 				->getTransformations()
 				->addTransform(new Scale(glm::vec3(0.1f)))
 				->addTransform(new Translate(glm::vec3(5.f * i, 0, 5.f * j)));
 		}
 	}
-	for (int i = 0; i < 25; i++) {
-		for (int j = 0; j < 25; j++) {
-			addObject(bushes, 8730, ShaderSources::Phong, light)
-				->getTransformations()
-				->addTransform(new Scale(glm::vec3(0.1f)))
-				->addTransform(new Translate(glm::vec3(4.5f * i, 0, 4.5f * j)));
-		}
-	}
 
-	addObject(plain, 6, ShaderSources::Phong, light)
+
+	addObject(new DrawableObject(plain, 6, getCamera(), ShaderSources::Phong, getLights()))
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(70.f)));*/
-
+		->addTransform(new Scale(glm::vec3(70.f)));
 }
+

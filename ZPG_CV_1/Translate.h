@@ -8,7 +8,7 @@
 #include "TransformBase.h"
 
 class Translate : public TransformBase {
-private:
+protected:
     glm::vec3 offset;
 public:
     Translate(const glm::vec3& o) : offset(o) {}
