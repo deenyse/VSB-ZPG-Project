@@ -43,5 +43,6 @@ void SceneManager::switchHeadLight() {
 }
 
 void SceneManager::handleScreenResize(int width, int height) {
-	currentScene->getCamera()->updateScreenSize(width, height);
+	for (auto scene : scenes)
+		scene->getCamera()->updateScreenSize(width, height);
 }
