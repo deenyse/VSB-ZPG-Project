@@ -7,14 +7,6 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 
-// TODO:
-//1. Overload ShaderRenderer
-//2. Create different test scenes
-//3. Add ability to chain transformations on DrawableObject
-//		// Maby do it with operator overloading? by vector?
-// 
-// Is there sence in making Scene manager like i have with Transorm?
-//
 
 
 int main(void)

@@ -18,7 +18,6 @@ private:
 
 
 	GLFWwindow* window=0;
-	std::vector<Scene*> scenes;
 	SceneManager* sceneManager = NULL;
 	InputManager* inputManager = NULL;
 

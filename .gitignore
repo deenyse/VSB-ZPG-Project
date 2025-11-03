@@ -6,14 +6,17 @@ x86/
 *.exe
 *.pdb
 
-# Visual Studio cache
+# Visual Studio / Intelij cache
 .vs/
+.idea/
 
 # User-specific files
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
+
+.DS_Store
 
 # Other
 *.log
