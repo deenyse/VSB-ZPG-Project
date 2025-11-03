@@ -1,14 +1,17 @@
 #pragma once
 
 #include <vector>
-#include "DrawableObject.h"
+#include "../Object/DrawableObject.h"
 
-#include "Camera.h"
-#include "Light.h"
+#include "../Camera/Camera.h"
+
+#include "../Light/Light.h"
+#include "../Light/HeadLight.h"
+
+
+#include "../Shader/StructShaderSources.h"
 #define MAX_LIGHTS 4
-#include "StructShaderSources.h"
 
-#include "HeadLight.h"
 class Scene
 {
 protected:

@@ -3,6 +3,11 @@
 #include <iostream>
 #include <string>
 
+
+#include "../Light/DirectionalLight.h"
+#include "../Light/PointLight.h"
+#include "../Light/SpotLight.h"
+
 ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights) : camera(camera), lights(lights)
 {	
 

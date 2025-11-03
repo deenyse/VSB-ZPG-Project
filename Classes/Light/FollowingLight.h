@@ -1,7 +1,7 @@
 #pragma once
 #include "PointLight.h"
-#include "Observer.h"
-#include "DrawableObject.h"
+#include "../Observer/Observer.h"
+#include "../Object/DrawableObject.h"
 
 
 class FollowingLight : public PointLight, public Observer

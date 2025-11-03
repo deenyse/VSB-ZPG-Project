@@ -3,11 +3,11 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 //Models
-#include "./Models/bushes.h" // 8730 || bushes
+#include "../../Models/bushes.h" // 8730 || bushes
 
-#include "./Models/tree.h"// 92814 || tree
-#include "./Models/plain.h"// 6 || house
-#include "./Models/sphere.h"// 2880 || sphere
+#include "../../Models/tree.h"// 92814 || tree
+#include "../../Models/plain.h"// 6 || house
+#include "../../Models/sphere.h"// 2880 || sphere
 
 
 

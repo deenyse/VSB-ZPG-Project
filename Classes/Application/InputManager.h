@@ -10,8 +10,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "SceneManager.h"
+#include "../Scene/SceneManager.h"
 
+#include "EnumMooveDirections.h"
 
 class InputManager
 {
@@ -23,6 +24,9 @@ private:
 	glm::vec2 lastMousePos;
 	bool firstMouse = true; 
 	bool isCursorLocked = false;
+	//Camera movement
+	int moveDirection = 0;
+
 
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void window_focus_callback(GLFWwindow* window, int focused);
@@ -30,9 +34,9 @@ private:
 	static void window_size_callback(GLFWwindow* window, int width, int height);
 	static void cursor_callback(GLFWwindow* window, double x, double y);
 	static void button_callback(GLFWwindow* window, int button, int action, int mode);
-
 public:
 
+	int getMoveDirection();
 	InputManager(GLFWwindow* win, SceneManager* sceneManager);
 
 };

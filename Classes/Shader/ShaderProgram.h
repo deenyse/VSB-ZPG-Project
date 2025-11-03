@@ -8,14 +8,13 @@
 #include <glm/vec3.hpp> // glm::vec3
 
 #include "Shader.h"
-#include "Observer.h"
+#include "../Observer/Observer.h"
 
-#include "Camera.h"
+#include "../Camera/Camera.h"
 
-#include "Light.h"
-#include "DirectionalLight.h"
-#include "PointLight.h"
-#include "SpotLight.h"
+#include "../Light/Light.h"
+
+
 class ShaderProgram : public Observer
 {
 private: 

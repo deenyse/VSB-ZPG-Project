@@ -2,14 +2,14 @@
 #include "Scene.h"
 
 //Transformations
-#include "Scale.h"
-#include "Translate.h"
-#include "Rotate.h"
-#include "RandomTranslation.h"
+#include "../Transformation/Scale.h"
+#include "../Transformation/Translate.h"
+#include "../Transformation/Rotate.h"
+#include "../Transformation/RandomTranslation.h"
 
 //Lights
-#include "DirectionalLight.h"
-#include "FollowingLight.h"
+#include "../Light/DirectionalLight.h"
+#include "../Light/FollowingLight.h"
 
 class Scene_3 : public Scene
 {

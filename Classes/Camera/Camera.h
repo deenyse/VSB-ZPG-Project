@@ -14,9 +14,8 @@
 
 #include <vector>
 
-#include "Observer.h"
-#include "Subject.h"
-#include "EnumObservableSubjects.h"
+#include "../Observer/Subject.h"
+#include "../Observer/EnumObservableSubjects.h"
 class Camera : public Subject
 {
 private:
@@ -28,7 +27,7 @@ private:
 	glm::vec3 up;// up vec
 
 	float mouseSensitivity = 0.01f;
-	float movementSpeed = 0.1f;
+	float movementSpeed = 0.07f;
 	float screenAspectRatio = 4.0f / 3.0f;
 	glm::mat4 viewMatrix = 0; //view matrix
 	glm::mat4 projectionMatrix= 0;// projection matrics
@@ -46,6 +45,7 @@ public:
 
 	// update angle based on mouse orientation
 	void updateOrientation(float deltaX, float deltaY);
+
 	// Movement
 	void forward();
 	void backward();

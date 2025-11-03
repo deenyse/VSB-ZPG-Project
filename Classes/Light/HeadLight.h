@@ -1,9 +1,9 @@
 #pragma once
 
 #include "SpotLight.h"
-#include "Observer.h"
-#include "EnumObservableSubjects.h"
-#include "Camera.h"
+#include "../Observer/Observer.h"
+#include "../Observer/EnumObservableSubjects.h"
+#include "../Camera/Camera.h"
 
 class HeadLight : public SpotLight, public Observer
 {

@@ -8,9 +8,23 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
-	if (action == GLFW_PRESS || action == GLFW_REPEAT) {
-		inputManager->sceneManager->handleBtnPress(key);
+	if (action == GLFW_PRESS){
+		if (key == GLFW_KEY_1)		inputManager->sceneManager->setScene(0);
+		else if (key == GLFW_KEY_2) inputManager->sceneManager->setScene(1);
+		else if (key == GLFW_KEY_3) inputManager->sceneManager->setScene(2);
+		else if (key == GLFW_KEY_W)	inputManager->moveDirection = inputManager->moveDirection | Direction::Forward;
+		else if (key == GLFW_KEY_S)	inputManager->moveDirection = inputManager->moveDirection | Direction::Backward;
+		else if (key == GLFW_KEY_A)	inputManager->moveDirection = inputManager->moveDirection | Direction::Left;
+		else if (key == GLFW_KEY_D)	inputManager->moveDirection = inputManager->moveDirection | Direction::Right;
 	}
+	else if (action == GLFW_RELEASE) {
+		if (key == GLFW_KEY_W)		inputManager->moveDirection = inputManager->moveDirection & ~Direction::Forward;
+		else if (key == GLFW_KEY_S) inputManager->moveDirection = inputManager->moveDirection & ~Direction::Backward;
+		else if (key == GLFW_KEY_A) inputManager->moveDirection = inputManager->moveDirection & ~Direction::Left;
+		else if (key == GLFW_KEY_D) inputManager->moveDirection = inputManager->moveDirection & ~Direction::Right;
+		else if (key == GLFW_KEY_F) inputManager->sceneManager->switchHeadLight();
+	}
+
 
 	printf("key_callback [%d,%d,%d,%d] \n", key, scancode, action, mods);
 }
@@ -63,6 +77,9 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
 	}
 }
 
+int InputManager::getMoveDirection() {
+	return moveDirection;
+}
 
 InputManager::InputManager(GLFWwindow* win, SceneManager* sceneManager) {
 	window = win;

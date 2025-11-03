@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
-#include "StructShaderSources.h"
+
+#include "../Transformation/Scale.h"
 
 class Scene_2 : public Scene
 {

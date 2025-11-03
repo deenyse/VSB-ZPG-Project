@@ -74,10 +74,14 @@ void App::run() {
 		// clear color and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		sceneManager->renderCurrentScene();
-
 		// update other events like input handling
 		glfwPollEvents();
+
+		sceneManager->moveCamera(inputManager->getMoveDirection());
+
+		sceneManager->renderCurrentScene();
+
+
 		// put the stuff we’ve been drawing onto the display
 		glfwSwapBuffers(window);
 

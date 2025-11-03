@@ -2,16 +2,17 @@
 #include "Scene.h"
 
 
-#include "Translate.h"
-#include "RandomTranslation.h"
+#include "../Transformation/Transform.h"
+#include "../Transformation/RandomTranslation.h"
 
-#include "Models/sphere.h"
+#include "../../Models/sphere.h"
 
-#include "PointLight.h"
-#include "DirectionalLight.h"
-#include "SpotLight.h"
-#include "HeadLight.h"
-#include "FollowingLight.h"
+#include "../Light/PointLight.h"
+#include "../Light/DirectionalLight.h"
+#include "../Light/SpotLight.h"
+#include "../Light/HeadLight.h"
+#include "../Light/FollowingLight.h"
+
 class Scene_1 : public Scene
 {
 private:

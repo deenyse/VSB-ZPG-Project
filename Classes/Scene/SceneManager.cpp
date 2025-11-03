@@ -14,13 +14,13 @@ void SceneManager::addScene(Scene* scene)
 	scenes.push_back(scene); 
 }
 
-void SceneManager::setScene(int i) 
+void SceneManager::setScene(int id)
 {
-	if (i >= 0 && i < scenes.size()) currentScene = scenes[i]; 
+	if (id >= 0 && id < scenes.size()) currentScene = scenes[id];
 }
 
 void SceneManager::renderCurrentScene() 
-{ 
+{
 	if (currentScene) currentScene->renderAll(); 
 }
 
@@ -29,26 +29,17 @@ void SceneManager::handleMouseMovement(float deltaX, float deltaY)
 	if (currentScene) currentScene->getCamera()->updateOrientation(deltaX, deltaY); 
 }
 
-void SceneManager::handleBtnPress(int key) 
-{
-	if(key == GLFW_KEY_W)
-		currentScene->getCamera()->forward();
-	else if (key == GLFW_KEY_S)
-		currentScene->getCamera()->backward();
-	else if (key == GLFW_KEY_A)
-		currentScene->getCamera()->left();
-	else if (key == GLFW_KEY_D)
-		currentScene->getCamera()->right();
-	else if (key == GLFW_KEY_F)
-		currentScene->switchHeadLight();
-	else if (key == GLFW_KEY_1)
-		setScene(0);
-	else if (key == GLFW_KEY_2)
-		setScene(1);
-	else if (key == GLFW_KEY_3)
-		setScene(2);
-	else if (key == GLFW_KEY_4)
-		setScene(3);
+
+void SceneManager::moveCamera(int direction) {
+	if (!direction) return;
+	if (direction & Direction::Forward) currentScene->getCamera()->forward();
+	if (direction & Direction::Backward) currentScene->getCamera()->backward();
+	if (direction & Direction::Left) currentScene->getCamera()->left();
+	if (direction & Direction::Right) currentScene->getCamera()->right();
+}
+
+void SceneManager::switchHeadLight() {
+	currentScene->switchHeadLight();
 }
 
 void SceneManager::handleScreenResize(int width, int height) {

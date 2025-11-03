@@ -1,19 +1,19 @@
 #pragma once
-#include "Shader.h"
-#include "ShaderProgram.h"
-#include "StructShaderPair.h"
+#include "../Shader/Shader.h"
+#include "../Shader/ShaderProgram.h"
+#include "../Shader/StructShaderPair.h"
 
-#include "Model.h"
-#include "Transform.h"
-#include "TransformBase.h"
+#include "../Model/Model.h"
+#include "../Transformation/Transform.h"
+#include "../Transformation/TransformBase.h"
 
 #include <GL/glew.h>
 #include <stdio.h>
 #include <vector>
 
-#include "Light.h"
+#include "../Light/Light.h"
 
-#include "Subject.h"
+#include "../Observer/Subject.h"
 #include "tiny_obj_loader.h"
 
 class DrawableObject : public Subject

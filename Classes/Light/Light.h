@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Subject.h"
+#include "../Observer/Subject.h"
 #include "EnumLightType.h"	
 
 //Include GLEW

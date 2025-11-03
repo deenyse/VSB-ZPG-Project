@@ -29,7 +29,8 @@ file(GLOB_RECURSE HEADERS
 # ------------------------------------------------------------------
 # STEP C: EXECUTABLE
 # ------------------------------------------------------------------
-add_executable(ZPG_App ${SOURCES} ${HEADERS})
+add_executable(ZPG_App ${SOURCES} ${HEADERS}
+        Classes/Application/EnumMooveDirections.h)
 
 # ------------------------------------------------------------------
 # STEP D: INCLUDE DIRECTORIES

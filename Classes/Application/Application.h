@@ -7,9 +7,9 @@
 //Include the standard C++ headers
 #include <vector>
 
-#include "Scene.h"
+#include "../Scene/Scene.h"
+#include "../Scene/SceneManager.h"
 #include "InputManager.h"
-#include "SceneManager.h"
 
 class App
 {
