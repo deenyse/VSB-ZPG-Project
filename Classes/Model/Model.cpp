@@ -1,9 +1,9 @@
 #include "Model.h"
 
-Model::Model(const float* points, int verticiesNum){
-    this->verticiesNum = verticiesNum;
+Model::Model(const float* points, int verticesNum){
+    this->verticesNum = verticesNum;
     // Copy data into vector to ensure pointer stays valid
-    vertices.assign(points, points + verticiesNum * 6);
+    vertices.assign(points, points + verticesNum * 6);
 
     setupBuffers();
 
@@ -11,7 +11,7 @@ Model::Model(const float* points, int verticiesNum){
 
 Model::Model(const std::vector<float>& points) {
     vertices = points;
-    verticiesNum = vertices.size() / 6; // Assuming stride=6 (pos + normal)
+    verticesNum = vertices.size() / 6; // Assuming stride=6 (pos + normal)
 
     setupBuffers();
 }

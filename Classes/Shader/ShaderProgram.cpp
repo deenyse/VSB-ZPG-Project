@@ -104,7 +104,8 @@ void ShaderProgram::update(ObservableSubjects subject) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
 		setUniform("viewPosition", camera->getPosition());
-	} 
+	}
+	//glGetUniformLocation(idShaderProgram, "numberOfLights") != -1 || is uniform exist check
 	else if (subject == ObservableSubjects::SLight) {
 		setUniform("numberOfLights", (int)lights.size());
 

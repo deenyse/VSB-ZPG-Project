@@ -17,9 +17,9 @@ private:
 	static void error_callback(int error, const char* description);
 
 
-	GLFWwindow* window=0;
-	SceneManager* sceneManager = NULL;
-	InputManager* inputManager = NULL;
+	GLFWwindow* window=nullptr;
+	SceneManager* sceneManager = nullptr;
+	InputManager* inputManager = nullptr;
 
 public:
 	App();

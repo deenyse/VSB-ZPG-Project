@@ -12,7 +12,8 @@ protected:
 
 public:
 	Subject() = default;
-	~Subject() = default;
+
+	virtual ~Subject() = default;
 
 	void notify(ObservableSubjects subject);
 	void attach(Observer* observer);

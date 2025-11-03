@@ -11,7 +11,7 @@ class SceneManager
 {
 private:
 	std::vector<Scene*> scenes;
-	Scene* currentScene = NULL;
+	Scene* currentScene = nullptr;
 	void addScene(Scene* scene);
 
 public:
