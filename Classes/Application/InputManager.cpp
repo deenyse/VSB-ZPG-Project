@@ -28,24 +28,26 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
 
 	printf("key_callback [%d,%d,%d,%d] \n", key, scancode, action, mods);
 }
-void InputManager::window_focus_callback(GLFWwindow* window, int focused) { printf("window_focus_callback \n"); }
+void InputManager::window_focus_callback(GLFWwindow* window, int focused) {
+	InputManager* inputManager = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
+
+	if (focused) {
+		inputManager->window_size_callback(window);
+		printf("window_focus_callback \n");
+	}
+}
 void InputManager::window_iconify_callback(GLFWwindow* window, int iconified) { printf("window_iconify_callback \n"); }
-void InputManager::window_size_callback(GLFWwindow* window, int width, int height) {
-	// Получаем указатель на InputManager
+void InputManager::window_size_callback(GLFWwindow* window, int width, int height ) {
 	InputManager* inputManager = static_cast<InputManager*>(glfwGetWindowUserPointer(window));
 	if (!inputManager || !inputManager->sceneManager) return;
 
-	// Получаем реальные размеры frame buffer
 	int fbWidth, fbHeight;
 	glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
 
-	// Устанавливаем viewport на весь буфер
 	glViewport(0, 0, fbWidth, fbHeight);
 
-	// Вычисляем соотношение сторон для камеры
 	float ratio = fbWidth / static_cast<float>(fbHeight);
 
-	// Передаём новые размеры сцене/камере
 	inputManager->sceneManager->handleScreenResize(fbWidth, fbHeight);
 
 	printf("resize window: %d x %d, framebuffer: %d x %d, ratio: %.2f\n",
