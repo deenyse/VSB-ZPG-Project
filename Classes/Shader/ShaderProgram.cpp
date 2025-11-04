@@ -8,7 +8,7 @@
 #include "../Light/PointLight.h"
 #include "../Light/SpotLight.h"
 
-ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights) : camera(camera), lights(lights)
+ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, LightManager* lightManager) : camera(camera), lightManager(lightManager)
 {	
 
 	// Link shaders to create a shader program
@@ -32,11 +32,9 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 		camera->attach(this);
 		update(ObservableSubjects::SCamera);
 	}
-	for (Light* light : lights) {
-		if (light) {
-			light->attach(this);
-			update(ObservableSubjects::SLight);
-		}
+	for (int i = 0; i < lightManager->getLightsAmount(); i++) {
+		lightManager->getLight(i)->attach(this);
+		update(ObservableSubjects::SLight);
 	}
 }
 
@@ -107,33 +105,33 @@ void ShaderProgram::update(ObservableSubjects subject) {
 	}
 	//glGetUniformLocation(idShaderProgram, "numberOfLights") != -1 || is uniform exist check
 	else if (subject == ObservableSubjects::SLight) {
-		setUniform("numberOfLights", (int)lights.size());
+		setUniform("numberOfLights", (int)lightManager->getLightsAmount());
 
-		for (int i = 0; i < lights.size(); i++)
+		for (int i = 0; i < lightManager->getLightsAmount(); i++)
 		{
 			std::string prefix = "lights[" + std::to_string(i) + "]";
 			
 
-			if (!lights[i]) continue;
+			if (!lightManager->getLight(i)) continue;
 			
 			// Set common uniforms
-			setUniform((prefix + ".type").c_str(), static_cast<int>(lights[i]->getType()));
-			setUniform((prefix + ".color").c_str(), lights[i]->color);
-			setUniform((prefix + ".isOn").c_str(), lights[i]->isOn);
+			setUniform((prefix + ".type").c_str(), static_cast<int>(lightManager->getLight(i)->getType()));
+			setUniform((prefix + ".color").c_str(), lightManager->getLight(i)->color);
+			setUniform((prefix + ".isOn").c_str(), lightManager->getLight(i)->isOn);
 			// Set uniforms depending on the light type
-			if (lights[i]->getType() == LightType::DIRECTIONAL) {
-				DirectionalLight* dirLight = (DirectionalLight*)lights[i];
+			if (lightManager->getLight(i)->getType() == LightType::DIRECTIONAL) {
+				DirectionalLight* dirLight = (DirectionalLight*)lightManager->getLight(i);
 				setUniform((prefix + ".direction").c_str(), dirLight->direction);
 			}
-			else if (lights[i]->getType() == LightType::POINT) {
-				PointLight* pointLight = (PointLight*)lights[i];
+			else if (lightManager->getLight(i)->getType() == LightType::POINT) {
+				PointLight* pointLight = (PointLight*)lightManager->getLight(i);
 				setUniform((prefix + ".position").c_str(), pointLight->position);
 				setUniform((prefix + ".constant").c_str(), pointLight->constant);
 				setUniform((prefix + ".linear").c_str(), pointLight->linear);
 				setUniform((prefix + ".quadratic").c_str(), pointLight->quadratic);
 			}
-			else if (lights[i]->getType() == LightType::SPOT) {
-				SpotLight* spotLight = (SpotLight*)lights[i];
+			else if (lightManager->getLight(i)->getType() == LightType::SPOT) {
+				SpotLight* spotLight = (SpotLight*)lightManager->getLight(i);
 				setUniform((prefix + ".position").c_str(), spotLight->position);
 				setUniform((prefix + ".direction").c_str(), spotLight->direction);
 				setUniform((prefix + ".cutOff").c_str(), spotLight->cutOff);

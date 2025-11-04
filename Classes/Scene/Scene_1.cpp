@@ -1,7 +1,9 @@
 #include "Scene_1.h"
 
+#include "Shader/StructShaderSources.h"
+
 void Scene_1::initLights() {
-	addLight(new PointLight(glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
+	lightManager->addLight(new PointLight(glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
 	
 
 	//// Spot light above the scene, pointing down
@@ -22,21 +24,21 @@ void Scene_1::initLights() {
 }
 
 void Scene_1::initObjects() {
-	DrawableObject* o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights());
+	DrawableObject* o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, lightManager);
 	addObject(o)
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(2.f, 0.f, 0)));
 
 
-	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, lightManager))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(-2.f, 0.f, 0)));
 
-	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, lightManager))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, 2.f, 0)));
 
-	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, getLights()))
+	addObject(new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, lightManager))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, -2.f, 0)));
 }

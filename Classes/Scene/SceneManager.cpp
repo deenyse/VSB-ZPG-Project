@@ -1,9 +1,14 @@
 #include "SceneManager.h"
 
+#include "../Application/EnumMooveDirections.h"
+#include "Scene_1.h"
+#include "Scene_2.h"
+#include "Scene_3.h"
+
 SceneManager::SceneManager() {
 	addScene(new Scene_1());
-	// addScene(new Scene_2());
-	// addScene(new Scene_3());
+	addScene(new Scene_2());
+	addScene(new Scene_3());
 
 
 	if (!scenes.empty()) currentScene = scenes[0];

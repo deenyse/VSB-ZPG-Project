@@ -13,6 +13,7 @@
 #include "../Camera/Camera.h"
 
 #include "../Light/Light.h"
+#include "Light/LightManager.h"
 
 
 class ShaderProgram : public Observer
@@ -20,9 +21,9 @@ class ShaderProgram : public Observer
 private: 
 	GLuint idShaderProgram = 0;
 	Camera* camera = nullptr;
-	std::vector<Light*> lights;
+	LightManager* lightManager = nullptr;
 public:
-	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, std::vector<Light*> lights);
+	ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, LightManager* lightManager);
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);
 	void setUniform(const GLchar* name, int value);

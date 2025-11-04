@@ -5,12 +5,8 @@
 
 #include "../Camera/Camera.h"
 
-#include "../Light/Light.h"
 #include "../Light/HeadLight.h"
-
-
-#include "../Shader/StructShaderSources.h"
-#define MAX_LIGHTS 4
+#include "../Light/LightManager.h"
 
 class Scene
 {
@@ -19,17 +15,17 @@ protected:
 	void virtual initObjects() =0;
 	void initScene();
 	DrawableObject* addObject(DrawableObject* object);
-	Light* addLight(Light* light);
-private:	
+	LightManager* lightManager = new LightManager();
+private:
 	std::vector<DrawableObject*> objects;
-	std::vector<Light*> lights;
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f));
 	HeadLight* headLight = new HeadLight(camera);
+
 public:
 	Scene();
 	void renderAll();
 	Camera* getCamera() { return camera; }
 	void switchHeadLight();
-	std::vector<Light*> getLights() { return lights; }
+	// LightManager* getLightsManager() { return lightManager; }
 };
 

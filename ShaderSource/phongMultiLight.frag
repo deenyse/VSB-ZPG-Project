@@ -1,5 +1,5 @@
 #version 330 core
-#define MAX_LIGHTS 4
+#define MAX_LIGHTS 16
 
 struct Light {
     int type;            // LightType: 0 = directional, 1 = point, 2 = spot

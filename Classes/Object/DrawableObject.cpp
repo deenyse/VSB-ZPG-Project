@@ -2,18 +2,18 @@
 
 
 
-DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, std::vector<Light*> lights) : verticiesNum(verticiesNum){
-	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, shaderSource.vertex), new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment), camera, lights);
+DrawableObject::DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager) : verticesNum(verticiesNum){
+	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, shaderSource.vertex), new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment), camera, lighMmanager);
 	model = new Model(points, verticiesNum); // create the model (VAO,VBO)
 	transformations = new Transform();
 };
 
-DrawableObject::DrawableObject(const std::string& objPath, Camera* camera, ShaderPair shaderSource, std::vector<Light*> lights) {
+DrawableObject::DrawableObject(const std::string& objPath, Camera* camera, ShaderPair shaderSource, LightManager* lightManager) {
     // Initialize shader program
     shaderProgram = new ShaderProgram(
         new Shader(GL_VERTEX_SHADER, shaderSource.vertex),
         new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment),
-        camera, lights
+        camera, lightManager
     );
 
     // TinyOBJLoader structures
@@ -53,7 +53,7 @@ DrawableObject::DrawableObject(const std::string& objPath, Camera* camera, Shade
 
     // Create model using vector constructor
     model = new Model(vertices);
-    verticiesNum = vertices.size() / 6;
+    verticesNum = vertices.size() / 6;
 
     transformations = new Transform();
 }
@@ -66,7 +66,7 @@ void DrawableObject::draw()
 
 	model->bind(); //bind the VAO of the model
 
-	glDrawArrays(GL_TRIANGLES, 0, verticiesNum); //mode,first,count
+	glDrawArrays(GL_TRIANGLES, 0, verticesNum); //mode,first,count
 
 	glBindVertexArray(0);
 	glUseProgram(0);
