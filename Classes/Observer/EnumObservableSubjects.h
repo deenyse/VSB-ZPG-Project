@@ -2,7 +2,7 @@
 
 enum ObservableSubjects
 {
-	SCamera,
-	SLight,
-	SObject
+    SCamera,
+    SLight,
+    SObject
 };

@@ -11,10 +11,9 @@
 #include "../Shader/StructShaderSources.h"
 
 
-void Scene_3::initLights() {
+Scene_3::Scene_3() {
 	lightManager->addLight(new DirectionalLight(glm::vec3(-1.f, 0.3f, 0.3f), glm::vec3(0.6f)));
-}
-void Scene_3::initObjects() {
+
 	FollowingLight* l = new FollowingLight(glm::vec3(1.f),1.f,0.0001f,0.0005f);
 	lightManager->addLight(l);
 
@@ -55,4 +54,5 @@ void Scene_3::initObjects() {
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(70.f)));
 }
+
 

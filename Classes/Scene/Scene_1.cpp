@@ -2,28 +2,9 @@
 
 #include "Shader/StructShaderSources.h"
 
-void Scene_1::initLights() {
+Scene_1::Scene_1() {
 	lightManager->addLight(new PointLight(glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));
-	
 
-	//// Spot light above the scene, pointing down
-	//addLight(new SpotLight(
-	//	glm::vec3(5.f, 10.f, 0.f),           // position
-	//	glm::vec3(0.f, -1.f, 0.f),           // direction
-	//	glm::vec3(1.f, 0.8f, 0.6f),          // color
-	//	glm::cos(glm::radians(12.5f)),       // cutOff (inner angle)
-	//	glm::cos(glm::radians(17.5f))        // outerCutOff (outer angle)
-	//));
-
-	//addLight(new DirectionalLight(
-	//	glm::vec3(-0.2f, -1.0f, -0.3f),      // direction
-	//	glm::vec3(0.5f, 0.5f, 0.5f)          // color
-	//));
-
-	//addLight(new HeadLight(getCamera()));
-}
-
-void Scene_1::initObjects() {
 	DrawableObject* o = new DrawableObject(sphere, 2880, getCamera(), ShaderSources::Phong, lightManager);
 	addObject(o)
 		->getTransformations()
@@ -42,4 +23,3 @@ void Scene_1::initObjects() {
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0, -2.f, 0)));
 }
-

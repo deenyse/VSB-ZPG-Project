@@ -9,11 +9,6 @@ void Scene::switchHeadLight() {
 	headLight->notify(ObservableSubjects::SLight);
 }
 
-void Scene::initScene() {
-	initLights();
-	initObjects();
-}
-
 DrawableObject* Scene::addObject(DrawableObject * object) {
 	objects.push_back(object);
 	return object;

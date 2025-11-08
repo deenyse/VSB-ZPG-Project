@@ -11,9 +11,6 @@
 class Scene
 {
 protected:
-	void virtual initLights() =0;
-	void virtual initObjects() =0;
-	void initScene();
 	DrawableObject* addObject(DrawableObject* object);
 	LightManager* lightManager = new LightManager();
 private:

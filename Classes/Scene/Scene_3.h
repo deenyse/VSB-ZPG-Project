@@ -13,12 +13,8 @@
 
 class Scene_3 : public Scene
 {
-private:
-	void initLights() override;
-	void initObjects() override;
+
 public:
-	Scene_3() {
-		initScene();
-	}
+	Scene_3() ;
 };
 
