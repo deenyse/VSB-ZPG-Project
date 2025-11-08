@@ -14,6 +14,7 @@ protected:
 public:
 	Model(const float* points, int verticesNum);
 	Model(const std::vector<float>& points);
+	int getVerticesNum();
 	void bind() {
 		glBindVertexArray(VAO);
 	}

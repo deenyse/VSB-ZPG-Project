@@ -14,19 +14,16 @@
 #include "../Light/Light.h"
 
 #include "../Observer/Subject.h"
-#include "tiny_obj_loader.h"
 #include "Light/LightManager.h"
-
+#include "../Model/StructModelData.h"
 class DrawableObject : public Subject
 {
 protected:
 	ShaderProgram* shaderProgram = nullptr;
 	Model* model = nullptr;
 	Transform* transformations;
-	int verticesNum = 0;
 public:
-	DrawableObject(const float* points, int verticiesNum, Camera* camera, ShaderPair shaderSource, LightManager* lightManager);
-	DrawableObject(const std::string& objPath, Camera* camera, ShaderPair shaderSource, LightManager* lightManager);
+	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager);
 	Transform* getTransformations();
 	void draw();
 };

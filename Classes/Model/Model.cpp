@@ -6,7 +6,6 @@ Model::Model(const float* points, int verticesNum){
     vertices.assign(points, points + verticesNum * 6);
 
     setupBuffers();
-
 }
 
 Model::Model(const std::vector<float>& points) {

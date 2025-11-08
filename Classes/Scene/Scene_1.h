@@ -5,7 +5,6 @@
 #include "../Transformation/Transform.h"
 #include "../Transformation/RandomTranslation.h"
 
-#include "../../Models/sphere.h"
 
 #include "../Light/PointLight.h"
 #include "../Light/DirectionalLight.h"
