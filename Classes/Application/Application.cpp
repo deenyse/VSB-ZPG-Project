@@ -70,7 +70,7 @@ void App::run() {
 		// update other events like input handling
 		glfwPollEvents();
 
-		sceneManager->moveCamera(inputManager->getMoveDirection());
+		sceneManager->updateCameraPosition(inputManager->getMoveDirection(), inputManager->getAndResetMouseOffset(), inputManager->getDeltaTime());
 
 		sceneManager->renderCurrentScene();
 

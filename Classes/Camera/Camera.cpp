@@ -28,22 +28,25 @@ glm::vec3 Camera::getTarget() {
     return target;
 }
 
-void Camera::updateOrientation(float deltaX, float deltaY) {
-	// Update angles based on mouse movement
-    alpha += deltaX * mouseSensitivity; // Mouse sensivity
-    fi += deltaY * mouseSensitivity;
+void Camera::updateOrientation(glm::vec2 mouseOffset, float deltaTime) {
+    // Update angles based on mouse movement
+    alpha += mouseOffset.x * mouseSensitivity * deltaTime;
+    fi += mouseOffset.y * mouseSensitivity * deltaTime;
 
-	//angle limits
-	alpha = glm::mod(alpha, glm::radians(360.0f)); // Cyclic horizontal rotation
-	fi = glm::clamp(fi, -glm::radians(89.0f), glm::radians(89.0f)); // vertical rotation limit 
+    // Horizontal cyclic rotation
+    const float TWO_PI = glm::radians(360.0f);
+    alpha = std::fmod(alpha, TWO_PI);
+    if (alpha < 0.0f) alpha += TWO_PI;
 
-	// Calculating new target vector
+    // Vertical rotation limit
+    fi = glm::clamp(fi, -glm::radians(89.0f), glm::radians(89.0f));
+
+    // Calculate new target vector
     target.x = cos(fi) * sin(alpha);
     target.y = sin(fi);
     target.z = -cos(fi) * cos(alpha);
-	
 
-    //notify observers
+    // Notify observers
     notify(ObservableSubjects::SCamera);
 }
 
@@ -52,22 +55,22 @@ void Camera::updateScreenSize(int width, int height) {
     notify(ObservableSubjects::SCamera);
 }
 
-void Camera::forward() {
-	this->eye += glm::normalize(glm::vec3(this->target)) * movementSpeed;
+void Camera::forward(float deltaTime) {
+	this->eye += glm::normalize(glm::vec3(this->target)) * movementSpeed * deltaTime;
     notify(ObservableSubjects::SCamera);
 }
 
-void Camera::left() {
-	this->eye -= glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
+void Camera::left(float deltaTime) {
+	this->eye -= glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed * deltaTime;
     notify(ObservableSubjects::SCamera);
 }
 
-void Camera::backward() {
-	this->eye -= glm::normalize(glm::vec3(this->target)) * movementSpeed;
+void Camera::backward(float deltaTime) {
+	this->eye -= glm::normalize(glm::vec3(this->target)) * movementSpeed * deltaTime;
     notify(ObservableSubjects::SCamera);
 }
 
-void Camera::right() {
-	this->eye += glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed;
+void Camera::right(float deltaTime) {
+	this->eye += glm::normalize(glm::cross(glm::vec3(this->target), glm::vec3(this->up))) * movementSpeed * deltaTime;
     notify(ObservableSubjects::SCamera);
 }

@@ -26,8 +26,10 @@ private:
 	glm::vec3 target;//view direction vector
 	glm::vec3 up;// up vec
 
-	float mouseSensitivity = 0.01f;
-	float movementSpeed = 0.07f;
+	float mouseSensitivity = 1.f;
+	float movementSpeed = 6.f;
+
+
 	float screenAspectRatio = 4.0f / 3.0f;
 	glm::mat4 viewMatrix = 0; //view matrix
 	glm::mat4 projectionMatrix= 0;// projection matrics
@@ -44,13 +46,13 @@ public:
 	void updateScreenSize(int width, int height);
 
 	// update angle based on mouse orientation
-	void updateOrientation(float deltaX, float deltaY);
+	void updateOrientation(glm::vec2 mouseOffset, float deltaTime);
 
 	// Movement
-	void forward();
-	void backward();
-	void left();
-	void right();
+	void forward(float deltaTime);
+	void backward(float deltaTime);
+	void left(float deltaTime);
+	void right(float deltaTime);
 
 	
 };

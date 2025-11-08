@@ -29,18 +29,21 @@ void SceneManager::renderCurrentScene()
 	if (currentScene) currentScene->renderAll(); 
 }
 
-void SceneManager::handleMouseMovement(float deltaX, float deltaY) 
-{
-	if (currentScene) currentScene->getCamera()->updateOrientation(deltaX, deltaY); 
-}
 
 
-void SceneManager::moveCamera(int direction) {
+
+void SceneManager::updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime) {
+
+	if (!currentScene)
+		return;
+
+	currentScene->getCamera()->updateOrientation(mouseOffset, deltaTime);
+
 	if (!direction) return;
-	if (direction & Direction::Forward) currentScene->getCamera()->forward();
-	if (direction & Direction::Backward) currentScene->getCamera()->backward();
-	if (direction & Direction::Left) currentScene->getCamera()->left();
-	if (direction & Direction::Right) currentScene->getCamera()->right();
+	if (direction & Direction::Forward) currentScene->getCamera()->forward(deltaTime);
+	if (direction & Direction::Backward) currentScene->getCamera()->backward(deltaTime);
+	if (direction & Direction::Left) currentScene->getCamera()->left(deltaTime);
+	if (direction & Direction::Right) currentScene->getCamera()->right(deltaTime);
 }
 
 void SceneManager::switchHeadLight() {

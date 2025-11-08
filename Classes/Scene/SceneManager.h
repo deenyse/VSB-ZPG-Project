@@ -11,11 +11,13 @@ private:
 	Scene* currentScene = nullptr;
 	void addScene(Scene* scene);
 
+
 public:
 	SceneManager();
+
 	void renderCurrentScene();
-	void handleMouseMovement(float deltaX, float deltaY);
-	void moveCamera(int direction);
+
+	void updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime);
 	void switchHeadLight();
 	void setScene(int id);
 	void handleScreenResize(int width, int height);
