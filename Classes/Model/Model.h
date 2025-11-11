@@ -7,7 +7,7 @@
 class Model
 {
 protected:
-	GLuint VBO, VAO;
+	GLuint VBO, VAO = 0;
 	int verticesNum = 0;
 	void setupBuffers();
 	std::vector<float> vertices;
@@ -15,6 +15,8 @@ public:
 	Model(const float* points, int verticesNum);
 	Model(const std::vector<float>& points);
 	int getVerticesNum();
+	void loadTexture(const std::string& path);
+	GLuint textureID;
 	void bind() {
 		glBindVertexArray(VAO);
 	}

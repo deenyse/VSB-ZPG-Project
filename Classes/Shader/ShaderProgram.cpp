@@ -96,7 +96,7 @@ void ShaderProgram::useProgram() {
 
 void ShaderProgram::update(ObservableSubjects subject) {
 	useProgram();
-	
+
 	if (subject == ObservableSubjects::SCamera) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());

@@ -16,6 +16,11 @@ void DrawableObject::draw()
 	notify(ObservableSubjects::SObject);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
+	model->loadTexture("../Textures/grass.png");
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, model->textureID);
+	shaderProgram->setUniform("textureUnitID", 0);
+
 
 	model->bind(); //bind the VAO of the model
 

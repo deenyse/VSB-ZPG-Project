@@ -38,9 +38,11 @@ uniform Light lights[MAX_LIGHTS];
 uniform int numberOfLights;
 
 uniform vec3 viewPosition;
+uniform sampler2D textureUnitID;
 
 in vec4 worldPosition;
 in vec3 worldNormal;
+in vec2 uv;
 
 out vec4 fragColor;
 
@@ -87,5 +89,7 @@ void main(void) {
         result += attenuation * (diffuse + specular);
     }
 
-    fragColor = vec4(result, 1.0);
+//    fragColor = vec4(result, 1.0);
+    fragColor = texture(textureUnitID, uv);
+
 }

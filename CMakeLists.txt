@@ -69,3 +69,10 @@ add_custom_command(TARGET ZPG_App POST_BUILD
         $<TARGET_FILE_DIR:ZPG_App>/Models
         COMMENT "Copying models to output directory"
 )
+
+add_custom_command(TARGET ZPG_App POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/Textures"
+        $<TARGET_FILE_DIR:ZPG_App>/Textures
+        COMMENT "Copying Textures to output directory"
+)

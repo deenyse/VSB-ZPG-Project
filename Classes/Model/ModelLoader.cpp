@@ -1,5 +1,5 @@
 #include "ModelLoader.h"
-#include "tiny_obj_loader.h"
+#include "../../External/tiny_obj_loader.h"
 
 std::unordered_map<std::string, Model*> ModelLoader::modelCache;
 

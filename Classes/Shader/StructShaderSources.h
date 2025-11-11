@@ -7,4 +7,5 @@ struct ShaderSources
     static const ShaderPair Lamb;
     static const ShaderPair Phong;
     static const ShaderPair Bling;
+    static const ShaderPair Texture;
 };
