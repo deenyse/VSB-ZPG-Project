@@ -1,6 +1,5 @@
 #include "Model.h"
-#include "../External/stb-image-header.h"
-#include <iostream>
+
 Model::Model(const float* points, int verticesNum){
     this->verticesNum = verticesNum;
     // Copy data into vector to ensure pointer stays valid
@@ -15,29 +14,7 @@ Model::Model(const std::vector<float>& points) {
 
     setupBuffers();
 }
-void Model::loadTexture(const std::string& path) {
-    stbi_set_flip_vertically_on_load(true);
 
-    int width, height, channels;
-    unsigned char* data = stbi_load(path.c_str(), &width, &height, &channels, 4);
-    if (!data) {
-        std::cerr << "Error loading texture: " << path << std::endl;
-        return;
-    }
-
-    glGenTextures(1, &textureID);
-    glBindTexture(GL_TEXTURE_2D, textureID);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    stbi_image_free(data);
-}
 void Model::setupBuffers() {
     // Generate VAO and bind it
     glGenVertexArrays(1, &VAO);

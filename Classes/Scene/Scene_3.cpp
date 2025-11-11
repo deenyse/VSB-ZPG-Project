@@ -45,7 +45,7 @@ Scene_3::Scene_3() {
 	// }
 
 
-	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager))
+	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Textures/grass.png")))
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(70.f)))
 	;

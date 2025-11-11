@@ -5,7 +5,7 @@
 
 #include "../Model/Model.h"
 #include "../Transformation/Transform.h"
-#include "../Transformation/TransformBase.h"
+#include "../Texture/Texture.h"
 
 #include <GL/glew.h>
 #include <stdio.h>
@@ -22,8 +22,9 @@ protected:
 	ShaderProgram* shaderProgram = nullptr;
 	Model* model = nullptr;
 	Transform* transformations;
+	Texture* texture;
 public:
-	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager);
+	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
 	Transform* getTransformations();
 	void draw();
 };

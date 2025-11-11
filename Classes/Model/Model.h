@@ -15,8 +15,6 @@ public:
 	Model(const float* points, int verticesNum);
 	Model(const std::vector<float>& points);
 	int getVerticesNum();
-	void loadTexture(const std::string& path);
-	GLuint textureID;
 	void bind() {
 		glBindVertexArray(VAO);
 	}

@@ -36,6 +36,10 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 		lightManager->getLight(i)->attach(this);
 		update(ObservableSubjects::SLight);
 	}
+	useProgram();
+	setUniform("textureUnitID", 0);
+	glUseProgram(0);
+
 }
 
 void ShaderProgram::setUniform(const GLchar* name, glm::mat4 value) {
