@@ -1,7 +1,5 @@
 #include "StructShaderSources.h"
-
-const ShaderPair ShaderSources::Constant = { "ShaderSource/constant.vert", "ShaderSource/constant.frag" };
-const ShaderPair ShaderSources::Lamb = { "ShaderSource/lamb.vert",     "ShaderSource/lamb.frag" };
-const ShaderPair ShaderSources::Phong = { "ShaderSource/phongMultiLight.vert",    "ShaderSource/phongMultiLight.frag" };
-const ShaderPair ShaderSources::Bling = { "ShaderSource/bling.vert",    "ShaderSource/bling.frag" };
-const ShaderPair ShaderSources::Texture = { "ShaderSource/texture.vert",    "ShaderSource/texture.frag" };
+#include "EnumShaderType.h"
+const ShaderPair ShaderSources::Constant = { ShaderType::Constant, "ShaderSource/constant.vert", "ShaderSource/constant.frag" };
+const ShaderPair ShaderSources::Phong = { ShaderType::Multilight, "ShaderSource/phongMultiLight.vert",    "ShaderSource/phongMultiLight.frag" };
+const ShaderPair ShaderSources::Bling = { ShaderType::Multilight, "ShaderSource/bling.vert",    "ShaderSource/bling.frag" };

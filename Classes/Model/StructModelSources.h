@@ -10,4 +10,6 @@ struct ModelSources {
     static const ModelData Plain;
     static const ModelData Bushes;
     static const ModelData Toiled;
+    static const ModelData Shrek;
+    static const ModelData Fiona;
 };

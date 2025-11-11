@@ -137,7 +137,7 @@ InputManager::InputManager(GLFWwindow* win, SceneManager* sceneManager) {
     window = win;
     this->sceneManager = sceneManager;
 
-    firstMouse = true;
+    firstMouse = false;
     lastMousePos = glm::vec2(0, 0);
     lastFrameTime = static_cast<float>(glfwGetTime());
     moveDirection = 0;

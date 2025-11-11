@@ -2,14 +2,17 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-
+#include "Shader.h"
 
 #include "../Light/DirectionalLight.h"
 #include "../Light/PointLight.h"
 #include "../Light/SpotLight.h"
 
-ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camera* camera, LightManager* lightManager) : camera(camera), lightManager(lightManager)
-{	
+ShaderProgram::ShaderProgram(ShaderPair shaderSource, Camera* camera, LightManager* lightManager) : camera(camera), lightManager(lightManager)
+{
+	shaderType = shaderSource.type;
+	Shader* vertexShader = new Shader(GL_VERTEX_SHADER, shaderSource.vertex);
+	Shader* fragmentShader = new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment);
 
 	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
@@ -28,17 +31,20 @@ ShaderProgram::ShaderProgram(Shader* vertexShader, Shader* fragmentShader, Camer
 		fprintf(stderr, "Link failure: %s\n", strInfoLog);
 		delete[] strInfoLog;
 	}
+
+	useProgram();
+	setUniform("textureUnitID", 0);
+	glUseProgram(0);
+
 	if (camera) {
 		camera->attach(this);
 		update(ObservableSubjects::SCamera);
 	}
-	for (int i = 0; i < lightManager->getLightsAmount(); i++) {
-		lightManager->getLight(i)->attach(this);
-		update(ObservableSubjects::SLight);
-	}
-	useProgram();
-	setUniform("textureUnitID", 0);
-	glUseProgram(0);
+	if (shaderType == ShaderType::Multilight)
+		for (int i = 0; i < lightManager->getLightsAmount(); i++) {
+			lightManager->getLight(i)->attach(this);
+			update(ObservableSubjects::SLight);
+		}
 
 }
 
@@ -104,10 +110,11 @@ void ShaderProgram::update(ObservableSubjects subject) {
 	if (subject == ObservableSubjects::SCamera) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
-		setUniform("viewPosition", camera->getPosition());
+		if (shaderType == ShaderType::Multilight)
+			setUniform("viewPosition", camera->getPosition());
 	}
 	else if (subject == ObservableSubjects::SLight) {
-		if (glGetUniformLocation(idShaderProgram, "numberOfLights") <0 )
+		if (shaderType != ShaderType::Multilight)
 			return;
 
 

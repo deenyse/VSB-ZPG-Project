@@ -17,7 +17,7 @@ find_package(GLM REQUIRED)
 # Собираем все .cpp из корня и подпапок Classes
 file(GLOB_RECURSE SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/Source.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/tinyobjloader.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/libsloader.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/Classes/*.cpp"
 )
 
@@ -70,9 +70,3 @@ add_custom_command(TARGET ZPG_App POST_BUILD
         COMMENT "Copying models to output directory"
 )
 
-add_custom_command(TARGET ZPG_App POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_CURRENT_SOURCE_DIR}/Textures"
-        $<TARGET_FILE_DIR:ZPG_App>/Textures
-        COMMENT "Copying Textures to output directory"
-)

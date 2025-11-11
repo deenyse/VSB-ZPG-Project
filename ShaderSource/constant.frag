@@ -1,14 +1,13 @@
 #version 330 core
 
+uniform sampler2D textureUnitID;
+
+in vec2 uv;
+
 out vec4 fragColor;
 
 void main () {
-    // Material color
-    vec3 objectColor = vec3(0.385, 0.647, 0.812);
 
-    // Ambient lighting
-    vec3 ambient = 0.1 * objectColor;
-
-    //fragColor = vec4(ambient, 1.0);
-    fragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    vec4 tex = texture(textureUnitID, uv);
+    fragColor = tex;
 }

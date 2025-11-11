@@ -2,13 +2,13 @@
 #include "../Model/ModelLoader.h"
 
 
-DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* texture){
+DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture){
 	// Initialize shader program
-	shaderProgram = new ShaderProgram(new Shader(GL_VERTEX_SHADER, shaderSource.vertex), new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment), camera, lighMmanager);
+	shaderProgram = new ShaderProgram(shaderSource, camera, lighMmanager);
 	// Load object model
 	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
 	transformations = new Transform();
-	this->texture = texture;
+	texture = objTexture;
 };
 
 
@@ -17,9 +17,7 @@ void DrawableObject::draw()
 	notify(ObservableSubjects::SObject);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
-
 	texture->bind();
-
 	model->bind(); //bind the VAO of the model
 
 	glDrawArrays(GL_TRIANGLES, 0, model->getVerticesNum()); //mode,first,count

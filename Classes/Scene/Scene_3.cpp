@@ -7,7 +7,13 @@
 #include "../Model/StructModelSources.h"
 
 Scene_3::Scene_3() {
-	lightManager->addLight(new DirectionalLight(glm::vec3(-1.f, 0.3f, 0.3f), glm::vec3(0.6f)));
+	lightManager->addLight(new DirectionalLight(glm::vec3(-1.f, 0.3f, 0.3f), glm::vec3(0.9f)));
+	lightManager->addLight(new PointLight(
+		glm::vec3(-1.f, 10.f, -2.f),   // pos
+		glm::vec3(20.f, 20.f, 20.f),    // light white
+		1.f, 0.02f, 0.05f             // less attenuation
+	));
+
 	//
 	// FollowingLight* l = new FollowingLight(glm::vec3(1.f),1.f,0.0001f,0.0005f);
 	// lightManager->addLight(l);
@@ -45,9 +51,18 @@ Scene_3::Scene_3() {
 	// }
 
 
-	addObject(new DrawableObject(ModelSources::Toiled, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/toiled.jpg")))
-		// ->getTransformations()
-		// ->addTransform(new Scale(glm::vec3(70.f)))
+	addObject(new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png")))
+
+	;
+	addObject(new DrawableObject(ModelSources::Fiona, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/fiona.png")))
+	->getTransformations()
+	->addTransform(new Translate(glm::vec3(1.5f, 0.f, 0.f)));
+	;
+
+
+	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Constant, lightManager, new Texture("../Models/grass.png")))
+		->getTransformations()
+		->addTransform(new Scale(glm::vec3(70.f)))
 	;
 
 }
