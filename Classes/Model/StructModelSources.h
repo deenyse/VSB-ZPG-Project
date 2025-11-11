@@ -9,4 +9,5 @@ struct ModelSources {
     static const ModelData Tree;
     static const ModelData Plain;
     static const ModelData Bushes;
+    static const ModelData Toiled;
 };

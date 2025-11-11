@@ -45,10 +45,11 @@ Scene_3::Scene_3() {
 	// }
 
 
-	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Textures/grass.png")))
-		->getTransformations()
-		->addTransform(new Scale(glm::vec3(70.f)))
+	addObject(new DrawableObject(ModelSources::Toiled, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/toiled.jpg")))
+		// ->getTransformations()
+		// ->addTransform(new Scale(glm::vec3(70.f)))
 	;
+
 }
 
 

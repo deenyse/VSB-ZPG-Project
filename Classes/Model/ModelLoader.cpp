@@ -8,21 +8,17 @@ Model* ModelLoader::LoadFromArray(const float* points, int verticesNum) {
 }
 
 Model* ModelLoader::LoadFromFile(const std::string objPath) {
-
-    // TinyOBJLoader structures
     tinyobj::attrib_t attrib;
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
     std::string warn, err;
 
-    // Load OBJ
     if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, objPath.c_str())) {
         throw std::runtime_error(warn + err);
     }
 
-    std::vector<float> vertices;
+    std::vector<float> vertices; // positions + normals + texcoords
 
-    // Convert OBJ data to float array: positions + normals
     for (const auto& shape : shapes) {
         for (const auto& index : shape.mesh.indices) {
             // Position
@@ -30,23 +26,31 @@ Model* ModelLoader::LoadFromFile(const std::string objPath) {
             vertices.push_back(attrib.vertices[3 * index.vertex_index + 1]);
             vertices.push_back(attrib.vertices[3 * index.vertex_index + 2]);
 
-            // Normal (use 0,0,0 if not present)
+            // Normal
             if (!attrib.normals.empty()) {
                 vertices.push_back(attrib.normals[3 * index.normal_index + 0]);
                 vertices.push_back(attrib.normals[3 * index.normal_index + 1]);
                 vertices.push_back(attrib.normals[3 * index.normal_index + 2]);
-            }
-            else {
+            } else {
                 vertices.push_back(0.0f);
+                vertices.push_back(0.0f);
+                vertices.push_back(0.0f);
+            }
+
+            // Texture coordinates
+            if (!attrib.texcoords.empty() && index.texcoord_index >= 0) {
+                vertices.push_back(attrib.texcoords[2 * index.texcoord_index + 0]); // u
+                vertices.push_back(attrib.texcoords[2 * index.texcoord_index + 1]); // v
+            } else {
                 vertices.push_back(0.0f);
                 vertices.push_back(0.0f);
             }
         }
     }
 
-
-    return new Model(vertices);
+    return new Model(vertices); // only the model with vertex buffer, no textures
 }
+
 
 
 

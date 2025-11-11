@@ -89,7 +89,8 @@ void main(void) {
         result += attenuation * (diffuse + specular);
     }
 
-//    fragColor = vec4(result, 1.0);
-    fragColor = texture(textureUnitID, uv);
+    // Combine lighting with texture
+    vec3 texColor = texture(textureUnitID, uv).rgb;
+    fragColor = vec4(result * texColor, 1.0);
 
 }
