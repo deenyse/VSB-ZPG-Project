@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "../Object/DrawableObject.h"
-
+#include "../Object/Skydome.h"
 #include "../Camera/Camera.h"
 
 #include "../Light/HeadLight.h"
@@ -13,6 +13,7 @@ class Scene
 protected:
 	DrawableObject* addObject(DrawableObject* object);
 	LightManager* lightManager = new LightManager();
+	Skydome* skydome = nullptr;
 private:
 	std::vector<DrawableObject*> objects;
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f));

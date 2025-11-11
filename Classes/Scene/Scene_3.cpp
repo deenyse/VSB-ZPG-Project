@@ -7,7 +7,7 @@
 #include "../Model/StructModelSources.h"
 
 Scene_3::Scene_3() {
-	lightManager->addLight(new DirectionalLight(glm::vec3(-1.f, 0.3f, 0.3f), glm::vec3(0.9f)));
+	lightManager->addLight(new DirectionalLight(glm::vec3(0.f, 0.3f, -2.f), glm::vec3(1.5f)));
 	lightManager->addLight(new PointLight(
 		glm::vec3(-1.f, 10.f, -2.f),   // pos
 		glm::vec3(20.f, 20.f, 20.f),    // light white
@@ -62,8 +62,11 @@ Scene_3::Scene_3() {
 
 	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Constant, lightManager, new Texture("../Models/grass.png")))
 		->getTransformations()
-		->addTransform(new Scale(glm::vec3(70.f)))
+		->addTransform(new Scale(glm::vec3(50.f)))
 	;
+
+
+	addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png")));
 
 }
 

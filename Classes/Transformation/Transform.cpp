@@ -6,6 +6,10 @@ Transform* Transform::addTransform(TransformBase* transform) {
 	return this;
 }
 
+void Transform::clearTransformations() {
+	transforms.clear();
+}
+
 
 glm::mat4 Transform::getMatrix() {
 	glm::mat4 outMatrix = transformMatrix;

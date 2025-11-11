@@ -12,4 +12,5 @@ struct ModelSources {
     static const ModelData Toiled;
     static const ModelData Shrek;
     static const ModelData Fiona;
+    static const ModelData Sky;
 };
