@@ -23,12 +23,14 @@ protected:
 	Model* model = nullptr;
 	Transform* transformations;
 	Texture* texture;
-	GLint id;
+	GLuint id;
+	glm::vec3* position;
 public:
 	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
 	Transform* getTransformations();
-	GLint getID();
+	GLuint getID();
 	void setId(GLuint id);
 	void draw();
+	void moveObject(glm::vec3 offset);
 };
 

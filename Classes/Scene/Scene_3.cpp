@@ -50,10 +50,10 @@ Scene_3::Scene_3() {
 	// 	}
 	// }
 
+	auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
+	addObject(shrek);
 
-	addObject(new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png")))
 
-	;
 	addObject(new DrawableObject(ModelSources::Fiona, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/fiona.png")))
 	->getTransformations()
 	->addTransform(new Translate(glm::vec3(1.5f, 0.f, 0.f)));
@@ -66,7 +66,7 @@ Scene_3::Scene_3() {
 	;
 
 
-	//addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png")));
+	addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png")));
 
 }
 

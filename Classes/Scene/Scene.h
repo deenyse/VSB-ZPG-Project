@@ -18,12 +18,13 @@ private:
 	std::vector<DrawableObject*> objects;
 	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f));
 	HeadLight* headLight = new HeadLight(camera);
-
+	DrawableObject* selectedObject = nullptr;
 public:
 	Scene();
 	void renderAll();
 	Camera* getCamera() { return camera; }
 	void switchHeadLight();
-	// LightManager* getLightsManager() { return lightManager; }
+	void setSelectedObject(GLuint id);
+	DrawableObject* getSelectedObject() { return selectedObject; }
 };
 

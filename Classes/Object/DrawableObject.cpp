@@ -1,14 +1,17 @@
 #include "DrawableObject.h"
 #include "../Model/ModelLoader.h"
+#include "Transformation/Translate.h"
 
 
-DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture){
+DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture) : texture(objTexture){
 	// Initialize shader program
 	shaderProgram = new ShaderProgram(shaderSource, camera, lighMmanager);
 	// Load object model
 	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
 	transformations = new Transform();
-	texture = objTexture;
+	auto t = new Translate(glm::vec3(0));
+	position = t->getPosition();
+	transformations->addTransform(t);
 };
 
 
@@ -34,10 +37,14 @@ Transform* DrawableObject::getTransformations() {
 	return transformations;
 }
 
-GLint DrawableObject::getID() {
+GLuint DrawableObject::getID() {
 	return id;
 }
 
 void DrawableObject::setId(GLuint id) {
 	this->id = id;
+}
+
+void DrawableObject::moveObject(glm::vec3 offset) {
+	*position += offset;
 }

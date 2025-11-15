@@ -31,6 +31,16 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
         else if (key == GLFW_KEY_F) inputManager->sceneManager->switchHeadLight();
     }
 
+    if (action == GLFW_PRESS || action == GLFW_REPEAT ) {
+        auto selectedObject = inputManager->sceneManager->getCurrentScene()->getSelectedObject();
+        if (!selectedObject)
+            return;
+
+        if (key == GLFW_KEY_LEFT) selectedObject->moveObject(glm::vec3(-1.f,0.f,0.f));
+        else if (key == GLFW_KEY_RIGHT) selectedObject->moveObject(glm::vec3(1.f,0.f,0.f));
+        else if (key == GLFW_KEY_DOWN) selectedObject->moveObject(glm::vec3(0.f,0.f,1.f));
+        else if (key == GLFW_KEY_UP) selectedObject->moveObject(glm::vec3(0.f,0.f,-1.f));
+    }
     printf("key_callback [%d,%d,%d,%d]\n", key, scancode, action, mods);
 }
 
@@ -105,6 +115,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
     }
 
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+        Scene* scene = inputManager->sceneManager->getCurrentScene();
         double xpos, ypos;
         glfwGetCursorPos(window, &xpos, &ypos);
 
@@ -127,6 +138,8 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         glReadPixels(x, newy, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, color);
         glReadPixels(x, newy, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
         glReadPixels(x, newy, 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+
+        scene->setSelectedObject(index);
 
         printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
 

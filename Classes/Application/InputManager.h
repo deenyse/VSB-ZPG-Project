@@ -18,7 +18,7 @@ class InputManager
 {
 private:
 	GLFWwindow* window = 0;
-	SceneManager* sceneManager= NULL;
+	SceneManager* sceneManager= nullptr;
 
 	// Mouse temp handler
 	glm::vec2 lastMousePos;

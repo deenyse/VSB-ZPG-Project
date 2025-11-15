@@ -9,6 +9,14 @@ void Scene::switchHeadLight() {
 	headLight->notify(ObservableSubjects::SLight);
 }
 
+void Scene::setSelectedObject(GLuint id) {
+	for (auto o : objects) {
+		if (o->getID() == id) {
+			selectedObject = o;
+		}
+	}
+}
+
 DrawableObject* Scene::addObject(DrawableObject * object) {
 	if (dynamic_cast<Skydome*>(object)) {
 		skydome = dynamic_cast<Skydome*>(object);
@@ -28,10 +36,9 @@ void Scene::renderAll() {
 		glDepthMask(GL_TRUE);
 	}
 	// 2. Clear stensill before objects
-	glClear(GL_STENCIL_BUFFER_BIT);
-	glStencilMask(0xFF);
+	// glClear(GL_STENCIL_BUFFER_BIT);
 
-	// 3. Draw obj and write stencil
+	glStencilMask(0xFF);
 	for (auto obj : objects) {
 
 		glStencilFunc(GL_ALWAYS, obj->getID(), 0xFF);
