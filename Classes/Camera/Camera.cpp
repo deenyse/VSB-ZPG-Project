@@ -16,7 +16,7 @@ glm::mat4 Camera::getViewMatrix() {
 
 glm::mat4 Camera::getProjectionMatrix() {
     // Projection perspective: FOV=60°, near plane =0.1, far plane=100
-    projectionMatrix = glm::perspective(glm::radians(60.0f), screenAspectRatio, 0.1f, 100.0f);
+    projectionMatrix = glm::perspective(glm::radians(60.0f), screenAspectRatio, 0.1f, 70.0f);
     return projectionMatrix;
 }
 

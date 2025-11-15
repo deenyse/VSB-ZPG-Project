@@ -123,18 +123,20 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         int fbWidth, fbHeight;
         glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
 
-        glm::vec2 cursor(xpos, ypos);
+        int winWidth, winHeight;
+        glfwGetWindowSize(window, &winWidth, &winHeight);
+
+        //Coordinates size to framebuffer
+        GLint x = static_cast<GLint>(xpos * fbWidth / winWidth);
+        GLint y = static_cast<GLint>(ypos * fbHeight / winHeight);
+        int newy = fbHeight - y;
 
         GLbyte color[4];
         GLfloat depth;
         GLuint index;
 
-        GLint x = (GLint)cursor.x;
-        GLint y = (GLint)cursor.y;
-
         Camera* camera = inputManager->sceneManager->getCurrentScene()->getCamera();
 
-        int newy = fbHeight - y;
 
         glReadPixels(x, newy, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, color);
         glReadPixels(x, newy, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
