@@ -16,6 +16,7 @@ public:
 	SceneManager();
 
 	void renderCurrentScene();
+	Scene* getCurrentScene();
 
 	void updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime);
 	void switchHeadLight();

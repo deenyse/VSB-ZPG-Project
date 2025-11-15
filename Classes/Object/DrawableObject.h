@@ -23,9 +23,12 @@ protected:
 	Model* model = nullptr;
 	Transform* transformations;
 	Texture* texture;
+	GLint id;
 public:
 	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
 	Transform* getTransformations();
+	GLint getID();
+	void setId(GLuint id);
 	void draw();
 };
 

@@ -41,7 +41,8 @@ App::App() {
 	glewExperimental = GL_TRUE;
 	glewInit();
 	glEnable(GL_DEPTH_TEST);//Do depth comparisons and update the depth buffer.
-
+	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
 	// get version info
 	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
@@ -64,20 +65,16 @@ App::App() {
 
 void App::run() {
 	while (!glfwWindowShouldClose(window)) {
-		// clear color and depth buffer
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// update other events like input handling
 		glfwPollEvents();
+
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		sceneManager->updateCameraPosition(inputManager->getMoveDirection(), inputManager->getAndResetMouseOffset(), inputManager->getDeltaTime());
 
 		sceneManager->renderCurrentScene();
 
-
-		// put the stuff we’ve been drawing onto the display
 		glfwSwapBuffers(window);
-
 	}
 }
 

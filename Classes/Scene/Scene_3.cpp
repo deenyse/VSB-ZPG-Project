@@ -66,7 +66,7 @@ Scene_3::Scene_3() {
 	;
 
 
-	addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png")));
+	//addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png")));
 
 }
 

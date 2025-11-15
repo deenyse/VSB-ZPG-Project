@@ -29,8 +29,9 @@ void SceneManager::renderCurrentScene()
 	if (currentScene) currentScene->renderAll(); 
 }
 
-
-
+Scene* SceneManager::getCurrentScene() {
+	return currentScene;
+}
 
 void SceneManager::updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime) {
 

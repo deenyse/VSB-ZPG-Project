@@ -33,3 +33,11 @@ int Model::getVerticesNum() {
 Transform* DrawableObject::getTransformations() {
 	return transformations;
 }
+
+GLint DrawableObject::getID() {
+	return id;
+}
+
+void DrawableObject::setId(GLuint id) {
+	this->id = id;
+}

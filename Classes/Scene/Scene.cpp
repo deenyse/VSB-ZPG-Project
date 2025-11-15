@@ -14,6 +14,7 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 		skydome = dynamic_cast<Skydome*>(object);
 		return skydome;
 	}
+	object->setId(objects.size() + 1);
 	objects.push_back(object);
 	return object;
 }
@@ -22,10 +23,22 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 
 void Scene::renderAll() {
 	if (skydome) {
+		glDepthMask(GL_FALSE);
 		skydome->draw();
-		glClear(GL_DEPTH_BUFFER_BIT);
+		glDepthMask(GL_TRUE);
 	}
-	for (auto obj : objects)
+	// 2. Clear stensill before objects
+	glClear(GL_STENCIL_BUFFER_BIT);
+	glStencilMask(0xFF);
+
+	// 3. Draw obj and write stencil
+	for (auto obj : objects) {
+
+		glStencilFunc(GL_ALWAYS, obj->getID(), 0xFF);
+		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
 		obj->draw();
+	}
+
 }
 
