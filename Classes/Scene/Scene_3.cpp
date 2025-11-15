@@ -54,9 +54,9 @@ Scene_3::Scene_3() {
 	addObject(shrek);
 
 
-	addObject(new DrawableObject(ModelSources::Fiona, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/fiona.png")))
+	addObject(new DrawableObject(ModelSources::Toiled, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/toiled.jpg")))
 	->getTransformations()
-	->addTransform(new Translate(glm::vec3(1.5f, 0.f, 0.f)));
+	->addTransform(new Translate(glm::vec3(2.f, 0.f, -0.5f)));
 	;
 
 

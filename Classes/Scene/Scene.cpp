@@ -49,3 +49,9 @@ void Scene::renderAll() {
 
 }
 
+void Scene::spawnObject(glm::vec3 position) {
+	auto o = new DrawableObject(ModelSources::Sphere, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0, 1, 1)));
+	o->getTransformations()->addTransform(new Translate(position));
+	addObject(o);
+	setSelectedObject(o->getID());
+}

@@ -29,6 +29,7 @@ private:
 	float lastFrameTime;           // Time of the last frame (for delta time)
 	glm::vec2 mouseOffset; // store accumulated mouse movement
 
+	glm::vec3 lastClickWordCords = glm::vec3(0);
 
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void window_focus_callback(GLFWwindow* window, int focused);

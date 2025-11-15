@@ -7,6 +7,8 @@
 
 #include "../Light/HeadLight.h"
 #include "../Light/LightManager.h"
+#include "../Shader/StructShaderSources.h"
+#include "../Model/StructModelSources.h"
 
 class Scene
 {
@@ -26,5 +28,6 @@ public:
 	void switchHeadLight();
 	void setSelectedObject(GLuint id);
 	DrawableObject* getSelectedObject() { return selectedObject; }
+	void spawnObject(glm::vec3 position);
 };
 

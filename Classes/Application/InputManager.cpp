@@ -29,6 +29,7 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
         else if (key == GLFW_KEY_A) inputManager->moveDirection &= ~Direction::Left;
         else if (key == GLFW_KEY_D) inputManager->moveDirection &= ~Direction::Right;
         else if (key == GLFW_KEY_F) inputManager->sceneManager->switchHeadLight();
+        else if (key == GLFW_KEY_N && inputManager->lastClickWordCords != glm::vec3(0)) inputManager->sceneManager->getCurrentScene()->spawnObject(inputManager->lastClickWordCords);
     }
 
     if (action == GLFW_PRESS || action == GLFW_REPEAT ) {
@@ -153,6 +154,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
 
         glm::vec4 viewPort = glm::vec4(0, 0, fbWidth, fbHeight);
         glm::vec3 pos = glm::unProject(screenX, view, projection, viewPort);
+        inputManager->lastClickWordCords = pos;
 
         printf("unProject [%f,%f,%f]\n", pos.x, pos.y, pos.z);
     }

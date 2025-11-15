@@ -42,9 +42,12 @@ void Camera::updateOrientation(glm::vec2 mouseOffset, float deltaTime) {
     fi = glm::clamp(fi, -glm::radians(89.0f), glm::radians(89.0f));
 
     // Calculate new target vector
-    target.x = cos(fi) * sin(alpha);
-    target.y = sin(fi);
-    target.z = -cos(fi) * cos(alpha);
+    glm::vec3 direction;
+    direction.x = cos(fi) * sin(alpha);
+    direction.y = sin(fi);
+    direction.z = -cos(fi) * cos(alpha);
+
+    target = glm::normalize(direction);
 
     // Notify observers
     notify(ObservableSubjects::SCamera);
