@@ -4,7 +4,8 @@
 
 #include "Translate.h"
 
-class RandomTranslation : public Translate
+#include "DynamicTransform.h"
+class RandomTranslation : public Translate, public DynamicTransform
 {
 private:
     glm::vec3 velocity;   
@@ -17,5 +18,5 @@ public:
     RandomTranslation(float range, float cubeSize);
 
     glm::mat4 getMatrix() override;
-
+    void update(float deltaTime) override;
 };

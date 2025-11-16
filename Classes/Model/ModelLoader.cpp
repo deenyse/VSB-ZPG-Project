@@ -6,7 +6,6 @@ std::unordered_map<std::string, Model*> ModelLoader::modelCache;
 Model* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isUv) {
     std::vector<float> expanded;
     expanded.reserve(verticesNum * 8);
-    printf("UV %d\n", isUv);
     int stride = isUv ? 8 : 6;
 
     for (int i = 0; i < verticesNum; i++)

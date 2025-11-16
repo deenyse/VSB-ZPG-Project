@@ -8,7 +8,7 @@ class FollowingLight : public PointLight, public Observer
 {
 private:
 	void update(ObservableSubjects subject) override;
-	DrawableObject* target = nullptr;
+	Transform* targetTransformations = nullptr;
 
 public:
 	void follow(DrawableObject*);

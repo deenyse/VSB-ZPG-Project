@@ -17,7 +17,7 @@
 #include "../Observer/Subject.h"
 #include "Light/LightManager.h"
 #include "../Model/StructModelData.h"
-class DrawableObject : public Subject
+class DrawableObject
 {
 protected:
 	ShaderProgram* shaderProgram = nullptr;
@@ -25,10 +25,10 @@ protected:
 	Transform* transformations;
 	Texture* texture;
 	GLuint id;
-	glm::vec3* position;
 public:
 	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
-	Transform* addTransform(TransformBase*);
+	virtual ~DrawableObject() = default;
+	Transform* getTransformations();
 	void moveObject(glm::vec3 offset);
 
 	GLuint getID();

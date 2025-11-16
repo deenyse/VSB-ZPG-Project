@@ -1,20 +1,24 @@
 #include "Transform.h"
 
-#include "MergedTransform.h"
+#include "DynamicTransform.h"
 
 Transform* Transform::addTransform(TransformBase* transform) {
 	transforms.push_back(transform);
-	if (transforms.size() > 10) {
-		auto MT = new MergedTransform(this->getMatrix());
-		transforms.clear();
-		transforms.push_back(MT);
-	}
-
+	notify(STransformations);
 	return this;
 }
 
 void Transform::clearTransformations() {
 	transforms.clear();
+}
+
+void Transform::updateDynamicTransforms(float deltaTime) {
+	for (auto t : transforms) {
+		if (auto dt = dynamic_cast<DynamicTransform*>(t)) {
+			dt->update(deltaTime);
+		}
+	}
+	notify(STransformations);
 }
 
 glm::mat4 Transform::getMatrix() {

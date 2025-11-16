@@ -14,6 +14,7 @@ DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, Shader
 
 void DrawableObject::draw()
 {
+	transformations->updateDynamicTransforms(1);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
 	texture->bind();
@@ -26,15 +27,13 @@ void DrawableObject::draw()
 
 }
 
+Transform* DrawableObject::getTransformations() {
+	return transformations;
+}
+
 int Model::getVerticesNum() {
 	return verticesNum;
 }
-Transform* DrawableObject::addTransform(TransformBase* transform) {
-	transformations->addTransform(transform);
-	return transformations;
-	notify(ObservableSubjects::SObject);
-}
-
 GLuint DrawableObject::getID() {
 	return id;
 }
@@ -52,5 +51,5 @@ void DrawableObject::moveObject(glm::vec3 offset) {
 
 	glm::vec3 localOffset = glm::transpose(R) * offset;
 
-	addTransform(new Translate(localOffset));
+	transformations->addTransform(new Translate(localOffset));
 }

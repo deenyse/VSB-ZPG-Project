@@ -15,7 +15,6 @@ struct Light {
 };
 
 struct Material {
-    vec3 color;
     float ra; // ambient
     float rd; // diffuse
     float rs; // specular
@@ -23,7 +22,6 @@ struct Material {
 };
 
 Material material = Material(
-    vec3(0.385, 0.647, 0.812), // color
     0.1,  // ra (ambient)
     0.7,  // rd (diffuse)
     0.5,  // rs (specular)
@@ -51,7 +49,7 @@ void main(void) {
     vec3 viewDir = normalize(viewPosition - worldPosition.xyz);
 
     // Ambient
-    vec3 ambient = material.ra * material.color;
+    vec3 ambient = vec3(material.ra);
 
     vec3 result = ambient;
 
@@ -79,7 +77,7 @@ void main(void) {
 
         // Diffuse
         float diff = max(dot(norm, lightDir), 0.0);
-        vec3 diffuse = material.rd * diff * material.color * lights[i].color;
+        vec3 diffuse = material.rd * diff * lights[i].color;
 
         // Specular
         vec3 reflectDir = reflect(-lightDir, norm);
