@@ -115,7 +115,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         }
     }
 
-    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS && !inputManager->isCursorLocked) {
         Scene* scene = inputManager->sceneManager->getCurrentScene();
         double xpos, ypos;
         glfwGetCursorPos(window, &xpos, &ypos);
