@@ -6,6 +6,7 @@
 #include "../../Models/tree.h"// 92814 || tree
 #include "../../Models/plain.h"// 6 || house
 #include "../../Models/sphere.h"// 2880 || sphere
+#include "../../Models/suzi_smooth.h"// 2904 || sphere
 
 
 // Model from file
@@ -14,9 +15,11 @@ const ModelData ModelSources::Toiled("toiled", "Models/toiled.obj");
 const ModelData ModelSources::Shrek("shrek", "Models/shrek.obj");
 const ModelData ModelSources::Fiona("fiona", "Models/fiona.obj");
 const ModelData ModelSources::Sky("sky", "Models/skydome.obj");
+const ModelData ModelSources::SteamMachine("SteamMachine", "Models/SteamMachine.obj");
+const ModelData ModelSources::XboxFridge("XboxFridge", "Models/xbox-fridge.obj");
 // Models from points
 const ModelData ModelSources::Sphere("sphere", sphere, 2880);
 const ModelData ModelSources::Tree("tree", tree, 92814);
-const ModelData ModelSources::Plain("plain", plain, 6);
+const ModelData ModelSources::Plain("plain", plain, 6, true);
+const ModelData ModelSources::Suzi("suzi", suziSmooth, 2904);
 const ModelData ModelSources::Bushes("bushes", bushes, 8730);
-

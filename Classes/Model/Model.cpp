@@ -1,12 +1,5 @@
 #include "Model.h"
 
-Model::Model(const float* points, int verticesNum){
-    this->verticesNum = verticesNum;
-    // Copy data into vector to ensure pointer stays valid
-    vertices.assign(points, points + verticesNum * 8);
-
-    setupBuffers();
-}
 
 Model::Model(const std::vector<float>& points) {
     vertices = points;

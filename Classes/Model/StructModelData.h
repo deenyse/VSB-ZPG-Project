@@ -18,14 +18,15 @@ struct ModelData {
     const std::string modelPath;   // valid if type == FromFile
     const float* points;           // valid if type == FromPoints
     const int verticesNum;         // valid if type == FromPoints
-
+    const bool isUv;
     // Constructor for a model loaded from a file
     ModelData(const std::string& modelName, const std::string& modelPath)
         : type(ModelFileType::File), modelName(modelName), modelPath(modelPath),
-          points(nullptr), verticesNum(0) {}
+          points(nullptr), verticesNum(0), isUv(true) {}
 
     // Constructor for a model defined by points
-    ModelData(const std::string& modelName, const float* points, int verticesNum)
+    ModelData(const std::string& modelName, const float* points, int verticesNum, bool isUv = false)
         : type(ModelFileType::Array), modelName(modelName), modelPath(),
-          points(points), verticesNum(verticesNum) {}
+          points(points), verticesNum(verticesNum), isUv(isUv) {}
+
 };

@@ -50,13 +50,14 @@ Scene_3::Scene_3() {
 	// 	}
 	// }
 
-	auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
-	addObject(shrek);
+	// auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
+	// addObject(shrek);
+	//
 
-
-	addObject(new DrawableObject(ModelSources::Toiled, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/toiled.jpg")))
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f))))
 	->getTransformations()
-	->addTransform(new Translate(glm::vec3(2.f, 0.f, -0.5f)));
+	->addTransform(new Translate(glm::vec3(2.f, 0.f, -0.5f)))
+	// ->addTransform(new Scale(glm::vec3(5.f)))
 	;
 
 
