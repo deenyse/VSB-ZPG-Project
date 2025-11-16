@@ -11,7 +11,7 @@ protected:
     float angle;
     glm::vec3 axis;
 public:
-    Rotate(float a, const glm::vec3& ax) : angle(a), axis(ax) {}
+    Rotate(float a, const glm::vec3& ax) : angle(glm::radians(a)), axis(ax) {}
     glm::mat4 getMatrix() override;
 };
 

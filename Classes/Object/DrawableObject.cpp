@@ -9,15 +9,11 @@ DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, Shader
 	// Load object model
 	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
 	transformations = new Transform();
-	auto t = new Translate(glm::vec3(0));
-	position = t->getPosition();
-	transformations->addTransform(t);
 };
 
 
 void DrawableObject::draw()
 {
-	notify(ObservableSubjects::SObject);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
 	texture->bind();
@@ -33,8 +29,10 @@ void DrawableObject::draw()
 int Model::getVerticesNum() {
 	return verticesNum;
 }
-Transform* DrawableObject::getTransformations() {
+Transform* DrawableObject::addTransform(TransformBase* transform) {
+	transformations->addTransform(transform);
 	return transformations;
+	notify(ObservableSubjects::SObject);
 }
 
 GLuint DrawableObject::getID() {
@@ -46,5 +44,13 @@ void DrawableObject::setId(GLuint id) {
 }
 
 void DrawableObject::moveObject(glm::vec3 offset) {
-	*position += offset;
+	glm::mat4 M = transformations->getMatrix();
+
+	glm::quat q = glm::quat_cast(M);
+
+	glm::mat3 R = glm::mat3_cast(q);
+
+	glm::vec3 localOffset = glm::transpose(R) * offset;
+
+	addTransform(new Translate(localOffset));
 }

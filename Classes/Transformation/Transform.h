@@ -12,6 +12,8 @@ private:
 public:
 	Transform* addTransform(TransformBase* transform);
 	void clearTransformations();
+
 	glm::mat4 getMatrix() override;
+
 };
 

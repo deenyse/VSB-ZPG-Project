@@ -5,6 +5,7 @@
 
 #include "../Model/Model.h"
 #include "../Transformation/Transform.h"
+#include "../Transformation/Translate.h"
 #include "../Texture/Texture.h"
 
 #include <GL/glew.h>
@@ -27,10 +28,12 @@ protected:
 	glm::vec3* position;
 public:
 	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
-	Transform* getTransformations();
+	Transform* addTransform(TransformBase*);
+	void moveObject(glm::vec3 offset);
+
 	GLuint getID();
 	void setId(GLuint id);
+
 	void draw();
-	void moveObject(glm::vec3 offset);
 };
 

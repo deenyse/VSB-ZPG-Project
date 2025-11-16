@@ -7,7 +7,7 @@
 #include "../Model/StructModelSources.h"
 
 Scene_3::Scene_3() {
-	lightManager->addLight(new DirectionalLight(glm::vec3(0.f, 0.3f, -2.f), glm::vec3(1.5f)));
+	// lightManager->addLight(new DirectionalLight(glm::vec3(0.f, 0.3f, -2.f), glm::vec3(1.5f)));
 	lightManager->addLight(new PointLight(
 		glm::vec3(-1.f, 10.f, -2.f),   // pos
 		glm::vec3(20.f, 20.f, 20.f),    // light white
@@ -53,16 +53,20 @@ Scene_3::Scene_3() {
 	// auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
 	// addObject(shrek);
 	//
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f))))
+			->addTransform(new Translate(glm::vec3(2.f, 0.f, 0.f)))
+			;
+
 
 	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f))))
-	->getTransformations()
-	->addTransform(new Translate(glm::vec3(2.f, 0.f, -0.5f)))
-	// ->addTransform(new Scale(glm::vec3(5.f)))
-	;
+			->addTransform(new Translate(glm::vec3(0.f, 0.f, 0.f)))
+			->addTransform(new Rotate(90.0f, glm::vec3(0.f, 1.f, 0.f)))
+
+			;
 
 
-	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Constant, lightManager, new Texture("../Models/grass.png")))
-		->getTransformations()
+
+	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/grass.png")))
 		->addTransform(new Scale(glm::vec3(50.f)))
 	;
 

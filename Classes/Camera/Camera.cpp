@@ -1,7 +1,7 @@
 #include "Camera.h"
 
-Camera::Camera(const glm::vec3& eye, const glm::vec3& up)
-    : eye(eye), up(up), alpha(0.0f), fi(0.0f) {
+Camera::Camera(const glm::vec3& eye)
+    : eye(eye), alpha(0.0f), fi(0.0f) {
 	// init target vector
     target = glm::vec3(0.0f, 0.0f, -1.0f);
     viewMatrix = glm::lookAt(eye, eye + target, up);

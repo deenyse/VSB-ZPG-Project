@@ -13,5 +13,4 @@ protected:
 public:
     Translate(const glm::vec3& o) : offset(o) {}
     glm::mat4 getMatrix() override;
-    glm::vec3* getPosition();
 };

@@ -18,7 +18,7 @@ protected:
 	Skydome* skydome = nullptr;
 private:
 	std::vector<DrawableObject*> objects;
-	Camera* camera = new Camera(glm::vec3(0.f, 0.f, 5.f), glm::vec3(0.f, 1.f, 0.f));
+	Camera* camera = new Camera(glm::vec3(0.f, 1.f, 5.f));
 	HeadLight* headLight = new HeadLight(camera);
 	DrawableObject* selectedObject = nullptr;
 public:

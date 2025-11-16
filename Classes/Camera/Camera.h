@@ -24,7 +24,7 @@ private:
 
 	glm::vec3 eye; //camera location
 	glm::vec3 target;//view direction vector
-	glm::vec3 up;// up vec
+	glm::vec3 up = glm::vec3(0.f, 1.f, 0.f);// up vec
 
 	float mouseSensitivity = 1.f;
 	float movementSpeed = 6.f;
@@ -35,7 +35,7 @@ private:
 	glm::mat4 projectionMatrix= 0;// projection matrics
 
 public:
-	Camera(const glm::vec3& eye, const glm::vec3& up);
+	Camera(const glm::vec3& eye);
 
 
 	// Matrix getter
