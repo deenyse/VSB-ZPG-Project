@@ -9,7 +9,7 @@
 #include "../Light/LightManager.h"
 #include "../Shader/StructShaderSources.h"
 #include "../Model/StructModelSources.h"
-
+#include "../Material/StructMaterials.h"
 class Scene
 {
 protected:

@@ -7,7 +7,7 @@
 #include "../Transformation/Transform.h"
 #include "../Transformation/Translate.h"
 #include "../Texture/Texture.h"
-
+#include "../Material/StructMaterialData.h"
 #include <GL/glew.h>
 #include <stdio.h>
 #include <vector>
@@ -17,6 +17,8 @@
 #include "../Observer/Subject.h"
 #include "Light/LightManager.h"
 #include "../Model/StructModelData.h"
+#include "Material/StructMaterials.h"
+
 class DrawableObject
 {
 protected:
@@ -24,9 +26,10 @@ protected:
 	Model* model = nullptr;
 	Transform* transformations;
 	Texture* texture;
+	MaterialData material;
 	GLuint id;
 public:
-	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
+	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture, const MaterialData materials);
 	virtual ~DrawableObject() = default;
 	Transform* getTransformations();
 	void moveObject(glm::vec3 offset);

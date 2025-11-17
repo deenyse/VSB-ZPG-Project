@@ -50,7 +50,7 @@ void Scene::renderAll() {
 }
 
 void Scene::spawnObject(glm::vec3 position) {
-	auto o = new DrawableObject(ModelSources::Tree, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0, 1, 1)));
+	auto o = new DrawableObject(ModelSources::Tree, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0, 1, 1)), Materials::Wood);
 	o->moveObject(position);
 	addObject(o);
 	setSelectedObject(o->getID());

@@ -3,7 +3,7 @@
 #include "Transformation/Translate.h"
 
 
-DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture) : texture(objTexture){
+DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture, MaterialData material) : texture(objTexture), material(material){
 	// Initialize shader program
 	shaderProgram = new ShaderProgram(shaderSource, camera, lighMmanager);
 	// Load object model
@@ -17,6 +17,12 @@ void DrawableObject::draw()
 	transformations->updateDynamicTransforms(1);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
+	if (shaderProgram->shaderType != ShaderType::Constant) {
+		shaderProgram->setUniform("material.ra", material.ra);
+		shaderProgram->setUniform("material.rd", material.rd);
+		shaderProgram->setUniform("material.rs", material.rs);
+		shaderProgram->setUniform("material.h",  material.h);
+	}
 	texture->bind();
 	model->bind(); //bind the VAO of the model
 

@@ -2,7 +2,7 @@
 
 
 Skydome::Skydome(const ModelData modelData, Camera *camera, Texture *texture)
-    :DrawableObject(modelData, camera, ShaderSources::Constant, nullptr, texture){
+    :DrawableObject(modelData, camera, ShaderSources::Constant, nullptr, texture, Materials::Wood){
 
     this->camera = camera;
     if (camera)

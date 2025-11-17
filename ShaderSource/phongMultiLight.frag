@@ -21,12 +21,14 @@ struct Material {
     float h;  // shininess
 };
 
-Material material = Material(
-    0.1,  // ra (ambient)
-    0.7,  // rd (diffuse)
-    0.5,  // rs (specular)
-    32.0  // h (shininess)
-);
+//Material material = Material(
+//    0.1,  // ra (ambient)
+//    0.7,  // rd (diffuse)
+//    0.5,  // rs (specular)
+//    32.0  // h (shininess)
+//);
+
+uniform Material material;
 
 const int LIGHT_TYPE_DIRECTIONAL = 0;
 const int LIGHT_TYPE_POINT = 1;

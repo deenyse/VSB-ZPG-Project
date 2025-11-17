@@ -17,11 +17,12 @@
 class ShaderProgram : public Observer
 {
 private:
-	ShaderType shaderType;
+
 	GLuint idShaderProgram = 0;
 	Camera* camera = nullptr;
 	LightManager* lightManager = nullptr;
 public:
+	ShaderType shaderType;
 	ShaderProgram(ShaderPair shaderSource, Camera* camera, LightManager* lightManager);
 	void setUniform(const GLchar* name, glm::mat4 value);
 	void setUniform(const GLchar* name, glm::vec3 value);

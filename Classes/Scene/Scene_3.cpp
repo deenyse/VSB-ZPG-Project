@@ -8,25 +8,26 @@
 
 Scene_3::Scene_3() {
 	// lightManager->addLight(new DirectionalLight(glm::vec3(0.f, 0.3f, -2.f), glm::vec3(1.5f)));
-	// lightManager->addLight(new PointLight(
-	// 	glm::vec3(-1.f, 10.f, -2.f),   // pos
-	// 	glm::vec3(20.f, 20.f, 20.f),    // light white
-	// 	1.f, 0.02f, 0.05f             // less attenuation
-	// ));
+	lightManager->addLight(new PointLight(
+		glm::vec3(-1.f, 10.f, -2.f),   // pos
+		glm::vec3(10.f),    // light white
+		1.f, 0.02f, 0.05f             // less attenuation
+	));
 
 
-	FollowingLight* l = new FollowingLight(glm::vec3(1.f),1.f,0.0001f,0.0005f);
-	lightManager->addLight(l);
+	// FollowingLight* l = new FollowingLight(glm::vec3(1.f),1.f,0.0001f,0.0005f);
+	// lightManager->addLight(l);
+	//
+	// DrawableObject* o =	new DrawableObject(ModelSources::Sphere, getCamera(), ShaderSources::Constant, lightManager, new Texture(glm::vec3(1.f)), Materials::Metal);
+	// addObject(o)
+	// 		->getTransformations()
+	// 		->addTransform(new Translate(glm::vec3(0.f, 2.f, 0)))
+	// 		->addTransform(new RandomTranslation(0.1f, 2.f))
+	// 		->addTransform(new Scale(glm::vec3(0.2f)))
+	// 		;
+	//
+	// l->follow(o);
 
-	DrawableObject* o =	new DrawableObject(ModelSources::Sphere, getCamera(), ShaderSources::Constant, lightManager, new Texture(glm::vec3(1.f)));
-	addObject(o)
-			->getTransformations()
-			->addTransform(new Translate(glm::vec3(0.f, 2.f, 0)))
-			->addTransform(new RandomTranslation(0.1f, 2.f))
-			->addTransform(new Scale(glm::vec3(0.2f)))
-			;
-
-	l->follow(o);
 	//
 	// l = new FollowingLight(glm::vec3(1.f), 1.f, 0.0001f, 0.0005f);
 	// lightManager->addLight(l);
@@ -53,13 +54,13 @@ Scene_3::Scene_3() {
 	// auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
 	// addObject(shrek);
 	//
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f))))
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f)), Materials::Plastic))
 			->getTransformations()
 			->addTransform(new Translate(glm::vec3(2.f, 0.f, 0.f)))
 			;
 
 
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f))))
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f)), Materials::Metal))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0.f, 0.f, 0.f)))
 		->addTransform(new Rotate(90.0f, glm::vec3(0.f, 1.f, 0.f)))
@@ -67,7 +68,7 @@ Scene_3::Scene_3() {
 
 
 
-	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/grass.png")))
+	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/grass.png"), Materials::Wood))
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(50.f)))
 		;

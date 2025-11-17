@@ -11,6 +11,7 @@
 #include "../Light/DirectionalLight.h"
 #include "../Light/FollowingLight.h"
 
+#include "../Material/StructMaterials.h"
 class Scene_3 : public Scene
 {
 
