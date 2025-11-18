@@ -34,14 +34,12 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 
 
 
-void Scene::renderAll() {
+void Scene::renderAll(float dt) {
 	if (skydome) {
 		glDepthMask(GL_FALSE);
-		skydome->draw();
+		skydome->draw(dt);
 		glDepthMask(GL_TRUE);
 	}
-	// 2. Clear stensill before objects
-	// glClear(GL_STENCIL_BUFFER_BIT);
 
 	glStencilMask(0xFF);
 	for (auto obj : objects) {
@@ -49,7 +47,7 @@ void Scene::renderAll() {
 		glStencilFunc(GL_ALWAYS, obj->getID(), 0xFF);
 		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
-		obj->draw();
+		obj->draw(dt);
 	}
 
 }

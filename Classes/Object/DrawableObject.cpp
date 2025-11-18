@@ -12,9 +12,10 @@ DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, Shader
 };
 
 
-void DrawableObject::draw()
+
+void DrawableObject::draw(float dt)
 {
-	transformations->updateDynamicTransforms(1);
+	transformations->updateDynamicTransforms(dt);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
 	shaderProgram->setUniform("material",material);

@@ -72,7 +72,7 @@ void App::run() {
 
 		sceneManager->updateCameraPosition(inputManager->getMoveDirection(), inputManager->getAndResetMouseOffset(), inputManager->getDeltaTime());
 
-		sceneManager->renderCurrentScene();
+		sceneManager->renderCurrentScene(inputManager->getDeltaTime());
 
 		glfwSwapBuffers(window);
 	}

@@ -15,7 +15,7 @@ private:
 public:
 	SceneManager();
 
-	void renderCurrentScene();
+	void renderCurrentScene(float dt);
 	Scene* getCurrentScene();
 
 	void updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime);

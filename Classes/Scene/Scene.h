@@ -23,7 +23,7 @@ private:
 	DrawableObject* selectedObject = nullptr;
 public:
 	Scene();
-	void renderAll();
+	void renderAll(float dt);
 	Camera* getCamera();
 	void switchHeadLight();
 	void setSelectedObject(GLuint id);

@@ -38,6 +38,6 @@ public:
 	GLuint getID();
 	void setId(GLuint id);
 
-	void draw();
+	void draw(float dt);
 };
 

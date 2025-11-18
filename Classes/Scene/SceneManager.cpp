@@ -24,9 +24,9 @@ void SceneManager::setScene(int id)
 	if (id >= 0 && id < scenes.size()) currentScene = scenes[id];
 }
 
-void SceneManager::renderCurrentScene() 
+void SceneManager::renderCurrentScene(float dt)
 {
-	if (currentScene) currentScene->renderAll(); 
+	if (currentScene) currentScene->renderAll(dt);
 }
 
 Scene* SceneManager::getCurrentScene() {
