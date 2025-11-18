@@ -27,7 +27,6 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 		skydome = dynamic_cast<Skydome*>(object);
 		return skydome;
 	}
-	object->setId(objects.size() + 1);
 	objects.push_back(object);
 	return object;
 }

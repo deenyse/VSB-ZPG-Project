@@ -2,6 +2,12 @@
 #include "../Model/ModelLoader.h"
 #include "Transformation/Translate.h"
 
+int DrawableObject::objectsCount = 0;
+
+int DrawableObject::generateNewId() {
+	return ++objectsCount;
+}
+
 
 DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture,const MaterialData* material) : texture(objTexture), material(material){
 	// Initialize shader program
@@ -9,6 +15,7 @@ DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, Shader
 	// Load object model
 	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
 	transformations = new Transform();
+	id = this->generateNewId();
 };
 
 
@@ -35,10 +42,6 @@ Transform* DrawableObject::getTransformations() {
 
 GLuint DrawableObject::getID() {
 	return id;
-}
-
-void DrawableObject::setId(GLuint id) {
-	this->id = id;
 }
 
 void DrawableObject::moveObject(glm::vec3 offset) {

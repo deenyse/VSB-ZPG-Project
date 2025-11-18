@@ -22,6 +22,8 @@
 class DrawableObject
 {
 protected:
+	static int objectsCount;
+	static int generateNewId();
 	ShaderProgram* shaderProgram = nullptr;
 	Model* model = nullptr;
 	Transform* transformations = nullptr;
@@ -36,7 +38,6 @@ public:
 	void moveObject(glm::vec3 offset);
 
 	GLuint getID();
-	void setId(GLuint id);
 
 	void draw(float dt);
 };
