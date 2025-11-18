@@ -54,13 +54,13 @@ Scene_3::Scene_3() {
 	// auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
 	// addObject(shrek);
 	//
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f)), Materials::Plastic))
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.5f)), Materials::Plastic))
 			->getTransformations()
 			->addTransform(new Translate(glm::vec3(2.f, 0.f, 0.f)))
 			;
 
 
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.2f)), Materials::Metal))
+	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.5f)), Materials::Metal))
 		->getTransformations()
 		->addTransform(new Translate(glm::vec3(0.f, 0.f, 0.f)))
 		->addTransform(new Rotate(90.0f, glm::vec3(0.f, 1.f, 0.f)))

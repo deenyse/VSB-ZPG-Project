@@ -14,6 +14,7 @@
 #include "../Camera/Camera.h"
 
 #include "Light/LightManager.h"
+#include "../Material/StructMaterialData.h"
 class ShaderProgram : public Observer
 {
 private:
@@ -29,6 +30,7 @@ public:
 	void setUniform(const GLchar* name, int value);
 	void setUniform(const GLchar* name, float value);
 	void setUniform(const GLchar* name, bool value);
+	void setUniform(const GLchar* name, const MaterialData* value);
 	void useProgram();
 	void update(ObservableSubjects subject) override;
 };

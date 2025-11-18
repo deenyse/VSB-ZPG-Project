@@ -99,6 +99,16 @@ void ShaderProgram::setUniform(const GLchar* name, bool value) {
 	glUniform1i(id, static_cast<GLint>(value));
 }
 
+void ShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
+	if (shaderType != ShaderType::Multilight)
+		return;
+	std::string base = std::string(name) + ".";
+
+	setUniform((base + "ra").c_str(), value->ra);
+	setUniform((base + "rd").c_str(), value->rd);
+	setUniform((base + "rs").c_str(), value->rs);
+	setUniform((base + "h").c_str(),  value->h);
+}
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);

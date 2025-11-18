@@ -26,10 +26,10 @@ protected:
 	Model* model = nullptr;
 	Transform* transformations;
 	Texture* texture;
-	MaterialData material;
+	const MaterialData* material;
 	GLuint id;
 public:
-	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture, const MaterialData materials);
+	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture, const MaterialData* materials);
 	virtual ~DrawableObject() = default;
 	Transform* getTransformations();
 	void moveObject(glm::vec3 offset);
