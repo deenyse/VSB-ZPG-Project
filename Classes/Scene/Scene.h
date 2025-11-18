@@ -24,10 +24,10 @@ private:
 public:
 	Scene();
 	void renderAll();
-	Camera* getCamera() { return camera; }
+	Camera* getCamera();
 	void switchHeadLight();
 	void setSelectedObject(GLuint id);
-	DrawableObject* getSelectedObject() { return selectedObject; }
+	DrawableObject* getSelectedObject();
 	void spawnObject(glm::vec3 position);
 };
 

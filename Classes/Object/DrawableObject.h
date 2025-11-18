@@ -24,13 +24,14 @@ class DrawableObject
 protected:
 	ShaderProgram* shaderProgram = nullptr;
 	Model* model = nullptr;
-	Transform* transformations;
-	Texture* texture;
-	const MaterialData* material;
-	GLuint id;
+	Transform* transformations = nullptr;
+	Texture* texture = nullptr;
+	const MaterialData* material = nullptr;
+	GLuint id = 0;
 public:
 	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture, const MaterialData* materials);
 	virtual ~DrawableObject() = default;
+
 	Transform* getTransformations();
 	void moveObject(glm::vec3 offset);
 

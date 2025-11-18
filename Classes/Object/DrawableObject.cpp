@@ -32,9 +32,6 @@ Transform* DrawableObject::getTransformations() {
 	return transformations;
 }
 
-int Model::getVerticesNum() {
-	return verticesNum;
-}
 GLuint DrawableObject::getID() {
 	return id;
 }

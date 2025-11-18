@@ -53,7 +53,5 @@ public:
 	void backward(float deltaTime);
 	void left(float deltaTime);
 	void right(float deltaTime);
-
-	
 };
 

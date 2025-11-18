@@ -18,7 +18,6 @@
 class ShaderProgram : public Observer
 {
 private:
-
 	GLuint idShaderProgram = 0;
 	Camera* camera = nullptr;
 	LightManager* lightManager = nullptr;

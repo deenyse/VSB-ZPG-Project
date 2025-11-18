@@ -4,10 +4,10 @@
 #include <string>
 
 // Enum to distinguish between a model loaded from a file or from raw points
-    enum class ModelFileType {
-        File,
-        Array
-    };
+enum class ModelFileType {
+    File,
+    Array
+};
 
 struct ModelData {
 

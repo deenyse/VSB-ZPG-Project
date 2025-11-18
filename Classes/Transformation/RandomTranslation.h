@@ -13,7 +13,6 @@ private:
     float halfCubeSize;   
 
     float randomFloat(float min, float max);
-
 public:
     RandomTranslation(float range, float cubeSize);
 

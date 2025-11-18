@@ -8,7 +8,6 @@
 class Texture {
 private:
     GLuint textureID;
-
 public:
     Texture(std::string fileName);
     Texture(glm::vec3 color);

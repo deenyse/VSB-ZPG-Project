@@ -4,6 +4,8 @@ Scene::Scene() {
 	lightManager->addLight(headLight);
 }
 
+Camera* Scene::getCamera()  { return camera; }
+
 void Scene::switchHeadLight() {
 	headLight->isOn = !headLight->isOn;
 	headLight->notify(ObservableSubjects::SLight);
@@ -16,6 +18,9 @@ void Scene::setSelectedObject(GLuint id) {
 		}
 	}
 }
+
+DrawableObject *Scene::getSelectedObject()  { return selectedObject; }
+
 
 DrawableObject* Scene::addObject(DrawableObject * object) {
 	if (dynamic_cast<Skydome*>(object)) {

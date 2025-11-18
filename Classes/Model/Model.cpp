@@ -35,3 +35,10 @@ void Model::setupBuffers() {
     // Unbind VAO for safety
     glBindVertexArray(0);
 }
+int Model::getVerticesNum() {
+    return verticesNum;
+}
+
+void Model::bind() {
+    glBindVertexArray(VAO);
+}
