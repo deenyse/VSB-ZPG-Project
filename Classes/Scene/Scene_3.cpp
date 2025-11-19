@@ -64,9 +64,8 @@ Scene_3::Scene_3() {
 	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.5f)), Materials::Metal))
 		->getTransformations()
 		->addTransform(new Rotate(90.0f, glm::vec3(0.f, 1.f, 0.f)))
-		->addTransform(new DynamicRotation(9.f, glm::vec3(0.f, 1.f, 0.f)))
+		->addTransform(new DynamicRotation(1.f, glm::vec3(0.f, 1.f, 0.f)))
 		->addTransform(new Translate(glm::vec3(0.f, 0.f, -2.f)))
-		->addTransform(new DynamicRotation(9.f, glm::vec3(0.f, 1.f, 0.f)))
 
 		;
 
