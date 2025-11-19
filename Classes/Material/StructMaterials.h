@@ -7,4 +7,5 @@ struct Materials
     static const MaterialData* Plastic;
     static const MaterialData* Metal;
     static const MaterialData* Constant;
+    static const MaterialData* Skydome;
 };
