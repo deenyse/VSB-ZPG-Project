@@ -1,8 +1,8 @@
 #include "Skydome.h"
 
 
-Skydome::Skydome(const ModelData modelData, Camera *camera, Texture *texture)
-    :DrawableObject(modelData, camera, ShaderSources::Constant, nullptr, texture, Materials::Wood){
+Skydome::Skydome(const ModelData modelData, Camera *camera, Texture *texture, LightManager *lightManager)
+    :DrawableObject(modelData, camera, ShaderSources::Phong, lightManager, texture, Materials::Constant){
 
     this->camera = camera;
     if (camera)
