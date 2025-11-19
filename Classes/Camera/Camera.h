@@ -28,7 +28,6 @@ private:
 
 	float fov = glm::radians(60.0f);
 
-	float mouseSensitivity = 1.f;
 	float movementSpeed = 6.f;
 
 

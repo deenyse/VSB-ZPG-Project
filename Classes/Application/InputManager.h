@@ -28,6 +28,7 @@ private:
 	int moveDirection = 0;
 	float lastFrameTime;           // Time of the last frame (for delta time)
 	glm::vec2 mouseOffset;			// store accumulated mouse movement
+	float mouseSensitivity = 1.f;
 
 	glm::vec3 lastClickWordCords = glm::vec3(0);
 

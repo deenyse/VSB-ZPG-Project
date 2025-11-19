@@ -30,8 +30,8 @@ glm::vec3 Camera::getTarget() {
 
 void Camera::updateOrientation(glm::vec2 mouseOffset, float deltaTime) {
     // Update angles based on mouse movement
-    alpha += mouseOffset.x * mouseSensitivity * deltaTime;
-    fi += mouseOffset.y * mouseSensitivity * deltaTime;
+    alpha += mouseOffset.x * deltaTime;
+    fi += mouseOffset.y * deltaTime;
 
     // Horizontal cyclic rotation
     const float TWO_PI = glm::radians(360.0f);

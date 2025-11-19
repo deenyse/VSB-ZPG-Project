@@ -173,7 +173,7 @@ int InputManager::getMoveDirection() {
 }
 
 glm::vec2 InputManager::getAndResetMouseOffset() {
-    glm::vec2 tmpMouseOffset = mouseOffset;
+    glm::vec2 tmpMouseOffset = mouseOffset * mouseSensitivity;
     mouseOffset = glm::vec2(0.0f);
     return tmpMouseOffset;
 
