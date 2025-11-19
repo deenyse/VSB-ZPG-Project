@@ -93,7 +93,7 @@ void InputManager::cursor_callback(GLFWwindow* window, double x, double y) {
 
     // Accumulate offset for processing in the main loop
     if (inputManager->isCursorLocked) {
-        inputManager->mouseOffset += glm::vec2(deltaX, deltaY);
+        inputManager->mouseOffset += (glm::vec2(deltaX, deltaY) * inputManager->mouseSensitivity);
     }
 }
 
@@ -173,7 +173,7 @@ int InputManager::getMoveDirection() {
 }
 
 glm::vec2 InputManager::getAndResetMouseOffset() {
-    glm::vec2 tmpMouseOffset = mouseOffset * mouseSensitivity;
+    glm::vec2 tmpMouseOffset = mouseOffset;
     mouseOffset = glm::vec2(0.0f);
     return tmpMouseOffset;
 
