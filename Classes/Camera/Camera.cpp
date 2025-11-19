@@ -16,7 +16,7 @@ glm::mat4 Camera::getViewMatrix() {
 
 glm::mat4 Camera::getProjectionMatrix() {
     // Projection perspective: FOV=60°, near plane =0.1, far plane=100
-    projectionMatrix = glm::perspective(glm::radians(45.0f), screenAspectRatio, 0.1f, 70.0f);
+    projectionMatrix = glm::perspective(fov, screenAspectRatio, 0.1f, 70.0f);
     return projectionMatrix;
 }
 
@@ -55,6 +55,16 @@ void Camera::updateOrientation(glm::vec2 mouseOffset, float deltaTime) {
 
 void Camera::updateScreenSize(int width, int height) {
     screenAspectRatio = width / (float)height;
+
+    float minAspect = 1.0f;   // narrow window
+    float maxAspect = 2.0f;   // wide window
+
+    float t = glm::clamp((screenAspectRatio - minAspect) / (maxAspect - minAspect), 0.0f, 1.0f);
+    float minFov = glm::radians(50.0f);
+    float maxFov = glm::radians(80.0f);
+
+    fov = glm::mix(minFov, maxFov, t);
+
     notify(ObservableSubjects::SCamera);
 }
 

@@ -26,6 +26,8 @@ private:
 	glm::vec3 target;//view direction vector
 	glm::vec3 up = glm::vec3(0.f, 1.f, 0.f);// up vec
 
+	float fov = glm::radians(60.0f);
+
 	float mouseSensitivity = 1.f;
 	float movementSpeed = 6.f;
 
