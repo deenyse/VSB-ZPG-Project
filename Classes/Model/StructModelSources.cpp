@@ -10,16 +10,16 @@
 
 
 // Model from file
-const ModelData ModelSources::Formula1("formula1", "Models/formula1.obj");
-const ModelData ModelSources::Toiled("toiled", "Models/toiled.obj");
-const ModelData ModelSources::Shrek("shrek", "Models/shrek.obj");
-const ModelData ModelSources::Fiona("fiona", "Models/fiona.obj");
-const ModelData ModelSources::Sky("sky", "Models/skydome.obj");
-const ModelData ModelSources::SteamMachine("SteamMachine", "Models/SteamMachine.obj");
-const ModelData ModelSources::XboxFridge("XboxFridge", "Models/xbox-fridge.obj");
+const ModelData ModelSources::Formula1("Models/formula1.obj");
+const ModelData ModelSources::Toiled( "Models/toiled.obj");
+const ModelData ModelSources::Shrek( "Models/shrek.obj");
+const ModelData ModelSources::Fiona( "Models/fiona.obj");
+const ModelData ModelSources::Sky( "Models/skydome.obj");
+const ModelData ModelSources::SteamMachine( "Models/SteamMachine.obj");
+const ModelData ModelSources::XboxFridge( "Models/xbox-fridge.obj");
 // Models from points
-const ModelData ModelSources::Sphere("sphere", sphere, 2880);
-const ModelData ModelSources::Tree("tree", tree, 92814);
-const ModelData ModelSources::Plain("plain", plain, 6, true);
-const ModelData ModelSources::Suzi("suzi", suziSmooth, 2904);
-const ModelData ModelSources::Bushes("bushes", bushes, 8730);
+const ModelData ModelSources::Sphere( sphere, 2880);
+const ModelData ModelSources::Tree( tree, 92814);
+const ModelData ModelSources::Plain(plain, 6, true);
+const ModelData ModelSources::Suzi( suziSmooth, 2904);
+const ModelData ModelSources::Bushes(bushes, 8730);

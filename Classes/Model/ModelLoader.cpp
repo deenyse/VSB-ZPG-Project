@@ -1,7 +1,7 @@
 #include "ModelLoader.h"
 #include "../../External/tiny_obj_loader.h"
 
-std::unordered_map<std::string, Model*> ModelLoader::modelCache;
+std::unordered_map<int, Model*> ModelLoader::modelCache;
 
 Model* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isUv) {
     std::vector<float> expanded;
@@ -83,7 +83,7 @@ Model* ModelLoader::LoadFromFile(const std::string objPath) {
 
 
 Model*  ModelLoader::LoadModel(ModelData modelData) {
-    if (auto it = modelCache.find(modelData.modelName); it != modelCache.end()) {
+    if (auto it = modelCache.find(modelData.id); it != modelCache.end()) {
         return it->second;
     }
 
@@ -96,6 +96,6 @@ Model*  ModelLoader::LoadModel(ModelData modelData) {
         loadedModel = LoadFromArray(modelData.points, modelData.verticesNum, modelData.isUv);
 
 
-    modelCache[modelData.modelName] =loadedModel;
+    modelCache[modelData.id] =loadedModel;
     return loadedModel;
 }
