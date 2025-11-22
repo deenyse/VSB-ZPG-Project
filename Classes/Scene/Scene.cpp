@@ -24,7 +24,7 @@ void Scene::switchHeadLight() {
 	headLight->notify(ObservableSubjects::SLight);
 }
 
-void Scene::setSelectedObject(GLuint id) {
+void Scene::onObjectSelect(GLuint id) {
 	for (auto& [shaderType, objs] : objects) {
 		for (auto o : objs) {
 			if (o->getID() == id) {
@@ -78,10 +78,9 @@ void Scene::renderAll(float dt) {
 		glUseProgram(0);
 	}
 }
-
-void Scene::spawnObject(glm::vec3 position) {
+void Scene::onPositionAction(glm::vec3 position) {
 	auto o = new DrawableObject(ModelSources::Tree, ShaderType::Phong, new Texture(glm::vec3(0, 1, 1)), Materials::Wood);
 	o->moveObject(position);
 	addObject(o);
-	setSelectedObject(o->getID());
+	onObjectSelect(o->getID());
 }

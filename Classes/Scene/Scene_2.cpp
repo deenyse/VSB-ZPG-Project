@@ -28,10 +28,9 @@ Scene_2::Scene_2() {
         glm::vec3(1.f, 1.f, 1.f),
         1.f, 0.0001f, 0.00005f
     ));
-
     auto earth = new DrawableObject(
         ModelSources::Planet,
-        ShaderType::Phong,
+        ShaderType::Constant,
         new Texture("../Models/earth_texture.jpg"), // blue Earth
         Materials::Metal
     );
@@ -48,7 +47,7 @@ Scene_2::Scene_2() {
 
     auto moon = new DrawableObject(
         ModelSources::Planet,
-        ShaderType::Phong,
+        ShaderType::Constant,
         new Texture("../Models/moon_texture.jpg"), // grey Moon
         Materials::Metal
     );

@@ -17,5 +17,6 @@ class Scene_3 : public Scene
 
 public:
 	Scene_3() ;
+	void onObjectSelect(GLuint id) override;
 };
 

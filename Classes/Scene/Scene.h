@@ -17,8 +17,8 @@ protected:
 	LightManager* lightManager = new LightManager();
 	Camera* camera = new Camera(glm::vec3(0.f, 1.f, 5.f));
 	Skydome* skydome = nullptr;
-private:
 	std::unordered_map<ShaderType, std::vector<DrawableObject*>> objects;
+private:
 	HeadLight* headLight = new HeadLight(camera);
 	DrawableObject* selectedObject = nullptr;
 public:
@@ -29,9 +29,9 @@ public:
 
 	void switchHeadLight();
 
-	void setSelectedObject(GLuint id);
+	virtual void onObjectSelect(GLuint id); // default sets selected object
 	DrawableObject* getSelectedObject();
 
-	void spawnObject(glm::vec3 position);
+	void onPositionAction(glm::vec3 position);// default spawn object
 };
 

@@ -26,9 +26,15 @@ void DrawableObject::updateState(float dt) {
 
 void DrawableObject::draw()
 {
-	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
+
 	if (auto mlsp = dynamic_cast<MultiLightShaderProgram*>(shaderProgram))
 		mlsp->setUniform("material",material);
+	else {
+		// shaderProgram->setUniform("w",0.5f);
+	}
+
+	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
+
 
 	texture->bind();
 

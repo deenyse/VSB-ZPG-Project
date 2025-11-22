@@ -8,8 +8,8 @@ uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 
 out vec2 uv; // pass to fragment shader
-
+uniform float w = 1.0;
 void main () {
-    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vp, 1.0);
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vp, w);
     uv = vt;
 }

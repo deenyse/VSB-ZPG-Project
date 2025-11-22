@@ -29,7 +29,7 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
         else if (key == GLFW_KEY_A) inputManager->moveDirection &= ~Direction::Left;
         else if (key == GLFW_KEY_D) inputManager->moveDirection &= ~Direction::Right;
         else if (key == GLFW_KEY_F) inputManager->sceneManager->switchHeadLight();
-        else if (key == GLFW_KEY_N && inputManager->lastClickWordCords != glm::vec3(0)) inputManager->sceneManager->getCurrentScene()->spawnObject(inputManager->lastClickWordCords);
+        else if (key == GLFW_KEY_N && inputManager->lastClickWordCords != glm::vec3(0)) inputManager->sceneManager->getCurrentScene()->onPositionAction(inputManager->lastClickWordCords);
     }
 
     if (action == GLFW_PRESS || action == GLFW_REPEAT ) {
@@ -142,7 +142,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         glReadPixels(x, newy, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
         glReadPixels(x, newy, 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
 
-        scene->setSelectedObject(index);
+        scene->onObjectSelect(index);
 
         printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
 
