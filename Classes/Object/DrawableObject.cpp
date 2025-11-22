@@ -27,8 +27,12 @@ void DrawableObject::updateState(float dt) {
 void DrawableObject::draw()
 {
 
-	if (auto mlsp = dynamic_cast<MultiLightShaderProgram*>(shaderProgram))
-		mlsp->setUniform("material",material);
+	if (auto mlsp = dynamic_cast<MultiLightShaderProgram*>(shaderProgram)) {
+		if (material)
+			mlsp->setUniform("material",material);
+		else
+			mlsp->setUniform("material",Materials::Metal);
+	}
 	else {
 		// shaderProgram->setUniform("w",0.5f);
 	}

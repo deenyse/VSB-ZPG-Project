@@ -42,7 +42,7 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
         else if (key == GLFW_KEY_DOWN) selectedObject->moveObject(glm::vec3(0.f,0.f,1.f));
         else if (key == GLFW_KEY_UP) selectedObject->moveObject(glm::vec3(0.f,0.f,-1.f));
     }
-    printf("key_callback [%d,%d,%d,%d]\n", key, scancode, action, mods);
+    // printf("key_callback [%d,%d,%d,%d]\n", key, scancode, action, mods);
 }
 
 // ======================= WINDOW FOCUS CALLBACK =======================
@@ -108,10 +108,10 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         if (inputManager->isCursorLocked) {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             inputManager->firstMouse = true;
-            printf("Cursor locked\n");
+            // printf("Cursor locked\n");
         } else {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-            printf("Cursor unlocked\n");
+            // printf("Cursor unlocked\n");
         }
     }
 
@@ -144,7 +144,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
 
         scene->onObjectSelect(index);
 
-        printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
+        // printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
 
         //Můžeme nastavit vybrané těleso scena->setSelect(index-1);
 
@@ -158,11 +158,11 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         glm::vec3 pos = glm::unProject(screenX, view, projection, viewPort);
         inputManager->lastClickWordCords = pos;
 
-        printf("unProject [%f,%f,%f]\n", pos.x, pos.y, pos.z);
+        // printf("unProject [%f,%f,%f]\n", pos.x, pos.y, pos.z);
     }
 
     if (action == GLFW_PRESS) {
-        printf("button_callback [%d,%d,%d]\n", button, action, mods);
+        // printf("button_callback [%d,%d,%d]\n", button, action, mods);
     }
 }
 

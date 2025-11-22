@@ -8,9 +8,9 @@
 
 
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
-
+#include <ctime>
+#include <cstdlib>
 App::App() {
-
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
 		fprintf(stderr, "ERROR: could not start GLFW3\n");
@@ -58,6 +58,8 @@ App::App() {
 	inputManager = new InputManager(window, sceneManager);
 	//Set the pointer to this class for the callbacks
 	glfwSetWindowUserPointer(window, inputManager);
+
+	srand(static_cast<unsigned>(time(nullptr)));
 
 }
 

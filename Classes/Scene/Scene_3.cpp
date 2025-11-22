@@ -7,40 +7,89 @@
 #include "Transformation/CustomTransform.h"
 #include "Transformation/DynamicRotation.h"
 
+
 Scene_3::Scene_3() {
+	yellow = new Texture(glm::vec3(1.f, 1.f, 0.f));
+	red    = new Texture(glm::vec3(1.f, 0.f, 0.f));
+
 	lightManager->addLight(new PointLight(
 		glm::vec3(-1.f, 10.f, -2.f),   // pos
 		glm::vec3(10.f),    // light white
 		1.f, 0.02f, 0.05f             // less attenuation
 	));
 
-	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
+	// addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
 
-	addObject(new DrawableObject(ModelSources::Plain,  ShaderType::Phong, new Texture("../Models/grass.png"), Materials::Wood))
-	->getTransformations()
-	->addTransform(new Scale(glm::vec3(50.f)))
-	;
 
-	auto customTransformMat = glm::mat4(1.0f);
-	customTransformMat[3][3] = 20.f;
-
-	addObject(new DrawableObject(ModelSources::SteamMachine, ShaderType::Constant, new Texture(glm::vec3(0.5f))))
+	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red))
 		->getTransformations()
-		// ->addTransform(new CustomTransform(customTransformMat))
+		->addTransform(new RandomTranslation(10.f, 1))
+		->addTransform(new Scale(glm::vec3(0.5f)));
 		;
-
-
+	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
+		->getTransformations()
+		->addTransform(new RandomTranslation(10.f, 1))
+		->addTransform(new Scale(glm::vec3(0.5f)));
+		;
+	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
+		->getTransformations()
+		->addTransform(new RandomTranslation(10.f, 1))
+		->addTransform(new Scale(glm::vec3(0.5f)));
+		;
+	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
+		->getTransformations()
+		->addTransform(new RandomTranslation(10.f, 1))
+		->addTransform(new Scale(glm::vec3(0.5f)));
+		;
 
 }
 
+void Scene_3::spawnNewBall() {
+	int chance = std::rand() % 100;
+
+	if (chance < 20) {
+		auto o  =new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red);
+		highValueBalls.push_back(o->getID());
+		addObject(o)
+			->getTransformations()
+			->addTransform(new RandomTranslation(10.f, 1.5f))
+			->addTransform(new Scale(glm::vec3(0.5f)));
+	} else {
+		addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
+			->getTransformations()
+			->addTransform(new RandomTranslation(10.f, 0.8))
+			->addTransform(new Scale(glm::vec3(0.5f)));
+	}
+}
+
+
 void Scene_3::onObjectSelect(GLuint id) {
+	if (!id)
+		return;
+
 	for (auto& [shaderType, objs] : objects) {
-		for (auto o : objs) {
-			if (o->getID() == id) {
-				// selectedObject = o;
+		for (size_t i = 0; i < objs.size(); ++i) {
+			auto oid = objs[i]->getID();
+			if (oid == id) {
+				for (size_t j = 0; j < highValueBalls.size(); ++j) {
+					if (oid == highValueBalls[j]) {
+						highValueBalls.erase(highValueBalls.begin() + j);
+						points += 4;
+						printf("High score ball cached!\n");
+						break;
+					}
+				}
+				delete objs[i];        // free memory
+				objs.erase(objs.begin() + i);
+				points += 1;
+				spawnNewBall();
+				printf("Score: %d\n", points);
+				return;
 			}
 		}
 	}
+
+
 }
 
 

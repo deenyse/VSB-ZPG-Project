@@ -7,7 +7,6 @@
 #include "DynamicTransform.h"
 class RandomTranslation : public Translate , public DynamicTransform{
 private:
-    float range;
     float halfCubeSize;
 
     std::vector<glm::vec3> controlPoints;
@@ -21,8 +20,8 @@ private:
     float randomFloat(float min, float max);
 
 public:
-    RandomTranslation(float range, float cubeSize, float speed = 0.2f);
+    RandomTranslation(float cubeSize, float speed = 0.2f);
 
     void update(float deltaTime) override;
-    glm::mat4 getMatrix();
+    glm::mat4 getMatrix() override;
 };
