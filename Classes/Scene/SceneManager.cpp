@@ -6,9 +6,9 @@
 #include "Scene_3.h"
 
 SceneManager::SceneManager() {
-	addScene(new Scene_1());
+	// addScene(new Scene_1());
 	addScene(new Scene_2());
-	addScene(new Scene_3());
+	// addScene(new Scene_3());
 
 
 	if (!scenes.empty())
@@ -38,11 +38,11 @@ Scene* SceneManager::getCurrentScene() {
 }
 
 void SceneManager::updateCameraPosition(int direction, glm::vec2 mouseOffset, float deltaTime) {
-
 	if (!currentScene)
 		return;
 
-	currentScene->getCamera()->updateOrientation(mouseOffset, deltaTime);
+	if (mouseOffset.x != 0 || mouseOffset.y != 0)
+		currentScene->getCamera()->updateOrientation(mouseOffset, deltaTime);
 
 	if (!direction) return;
 	if (direction & Direction::Forward) currentScene->getCamera()->forward(deltaTime);

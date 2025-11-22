@@ -16,4 +16,6 @@ struct ModelSources {
     static const ModelData Sky;
     static const ModelData SteamMachine;
     static const ModelData XboxFridge;
+    static const ModelData Planet;
+
 };

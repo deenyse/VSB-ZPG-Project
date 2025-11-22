@@ -17,6 +17,7 @@ const ModelData ModelSources::Fiona( "Models/fiona.obj");
 const ModelData ModelSources::Sky( "Models/skydome.obj");
 const ModelData ModelSources::SteamMachine( "Models/SteamMachine.obj");
 const ModelData ModelSources::XboxFridge( "Models/xbox-fridge.obj");
+const ModelData ModelSources::Planet( "Models/planet.obj");
 // Models from points
 const ModelData ModelSources::Sphere( sphere, 2880);
 const ModelData ModelSources::Tree( tree, 92814);
