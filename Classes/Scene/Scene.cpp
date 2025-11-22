@@ -52,7 +52,7 @@ void Scene::renderAll(float dt) {
 	if (skydome) {
 		ShaderFactory::getShader(skydome->getShaderType())->useProgram();
 		glDepthMask(GL_FALSE);
-		skydome->preDrawUpdate(dt);
+		skydome->updateState(dt);
 		skydome->draw();
 		glDepthMask(GL_TRUE);
 		glUseProgram(0);
@@ -63,7 +63,7 @@ void Scene::renderAll(float dt) {
 
 	for (auto& [shaderType, objs] : objects) {
 		for (auto obj : objs) {
-			obj->preDrawUpdate(dt);
+			obj->updateState(dt);
 		}
 
 		ShaderFactory::getShader(shaderType)->useProgram(); // use the shader program of this group of objects

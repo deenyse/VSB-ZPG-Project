@@ -19,7 +19,7 @@ DrawableObject::DrawableObject(const ModelData modelData, ShaderType shaderType,
 	id = this->generateNewId();
 };
 
-void DrawableObject::preDrawUpdate(float dt) {
+void DrawableObject::updateState(float dt) {
 	transformations->updateDynamicTransforms(dt);
 }
 
