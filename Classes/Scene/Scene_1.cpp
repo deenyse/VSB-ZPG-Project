@@ -29,9 +29,8 @@ Scene_1::Scene_1() {
 	DrawableObject* o1 = addObject(
 		new DrawableObject(
 			ModelSources::Sphere,
-			ShaderType::Phong,
-			new Texture(glm::vec3(1.f)),
-			Materials::Metal
+			ShaderType::Constant,
+			new Texture(glm::vec3(1.f))
 		)
 	);
 
@@ -48,9 +47,8 @@ Scene_1::Scene_1() {
 	DrawableObject* o2 = addObject(
 		new DrawableObject(
 			ModelSources::Sphere,
-			ShaderType::Phong,
-			new Texture(glm::vec3(0.f,1.f,0.f)),
-			Materials::Wood
+			ShaderType::Constant,
+			new Texture(glm::vec3(0.f,1.f,0.f))
 		)
 	);
 
