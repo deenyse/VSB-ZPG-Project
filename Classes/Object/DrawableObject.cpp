@@ -19,12 +19,13 @@ DrawableObject::DrawableObject(const ModelData modelData, ShaderType shaderType,
 	id = this->generateNewId();
 };
 
-
-
-void DrawableObject::draw(float dt)
-{
+void DrawableObject::preDrawUpdate(float dt) {
 	transformations->updateDynamicTransforms(dt);
-	shaderProgram->useProgram();
+}
+
+void DrawableObject::draw()
+{
+	// shaderProgram->useProgram();
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
 	if (material)
 		shaderProgram->setUniform("material",material);
@@ -36,7 +37,7 @@ void DrawableObject::draw(float dt)
 	model->bind(); //bind the VAO of the model
 	glDrawArrays(GL_TRIANGLES, 0, model->getVerticesNum()); //mode,first,count
 	glBindVertexArray(0);
-	glUseProgram(0);
+	// glUseProgram(0);
 }
 ShaderType DrawableObject::getShaderType() {
 	return shaderProgram->getShaderType();

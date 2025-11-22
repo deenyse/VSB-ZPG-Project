@@ -41,6 +41,8 @@ public:
 
 	GLuint getID();
 
-	void draw(float dt);
+	void preDrawUpdate(float dt);
+
+	void draw();
 };
 

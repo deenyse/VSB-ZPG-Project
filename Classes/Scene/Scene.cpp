@@ -50,23 +50,31 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 
 void Scene::renderAll(float dt) {
 	if (skydome) {
+		ShaderFactory::getShader(skydome->getShaderType())->useProgram();
 		glDepthMask(GL_FALSE);
-		skydome->draw(dt);
+		skydome->preDrawUpdate(dt);
+		skydome->draw();
 		glDepthMask(GL_TRUE);
+		glUseProgram(0);
+
 	}
 
 	glStencilMask(0xFF);
 
 	for (auto& [shaderType, objs] : objects) {
-		// ShaderFactory::getShader(shaderType)->useProgram(); // use the shader program of this group of objects
+		for (auto obj : objs) {
+			obj->preDrawUpdate(dt);
+		}
+
+		ShaderFactory::getShader(shaderType)->useProgram(); // use the shader program of this group of objects
 		for (auto obj : objs) {
 
 			glStencilFunc(GL_ALWAYS, obj->getID(), 0xFF);
 			glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
-			obj->draw(dt);
+			obj->draw();
 		}
-		// glUseProgram(0);
+		glUseProgram(0);
 	}
 
 }
