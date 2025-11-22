@@ -31,7 +31,7 @@ protected:
 	const MaterialData* material = nullptr;
 	GLuint id = 0;
 public:
-	DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials);
+	DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials = nullptr);
 	virtual ~DrawableObject() = default;
 
 	ShaderType getShaderType();

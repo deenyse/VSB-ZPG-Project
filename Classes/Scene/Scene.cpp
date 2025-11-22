@@ -8,16 +8,15 @@ Scene::Scene() {
 
 Camera* Scene::getCamera()  { return camera; }
 
-void Scene::bindCameraAndLightToShader(ShaderProgram* shaderProgram) {
-	shaderProgram->attachCamera(camera);
-	shaderProgram->attachLightManager(lightManager);
-}
+
 void Scene::bindCameraAndLightToUsedShaders() {
 	if (skydome)
-		bindCameraAndLightToShader(ShaderFactory::getShader(skydome->getShaderType()));
+		ShaderFactory::getShader(skydome->getShaderType())->attachCamera(camera);
 
 	for (auto& [shaderType, _] : objects) {
-		bindCameraAndLightToShader(ShaderFactory::getShader(shaderType));
+		auto shaderProgram = ShaderFactory::getShader(shaderType);
+		shaderProgram->attachCamera(camera);
+		shaderProgram->attachLightManager(lightManager);
 	}
 }
 

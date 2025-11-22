@@ -2,7 +2,7 @@
 
 
 Skydome::Skydome(const ModelData modelData, Texture *texture, Camera* camera)
-    :DrawableObject(modelData, ShaderType::Phong, texture, Materials::Skydome){
+    :DrawableObject(modelData, ShaderType::Constant, texture){
 
     this->camera = camera;
     camera->attach(this);
@@ -17,6 +17,4 @@ void Skydome::update(ObservableSubjects subject) {
 
     transformations->addTransform(new Translate(camera->getPosition()));
     transformations->addTransform(new Translate(glm::vec3(0,-0.5f,0)));
-
-
 }

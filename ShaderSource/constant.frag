@@ -1,0 +1,12 @@
+#version 330 core
+
+uniform sampler2D textureUnitID;
+
+in vec2 uv;
+
+out vec4 fragColor;
+
+void main () {
+    vec4 tex = texture(textureUnitID, uv);
+    fragColor = tex;
+}

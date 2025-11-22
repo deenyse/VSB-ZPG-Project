@@ -21,14 +21,14 @@ void main(void) {
     float diff = max(dot(norm, lightDir), 0.0);
     vec3 diffuse = diff * objectColor;
 
-    // --- Blinn–Phong specular lighting ---
+    // --- Blinn-Phong specular lighting ---
     float specularStrength = 0.5;
     vec3 viewDir = normalize(viewPosition - worldPosition.xyz);
 
     // Half-vector (between light direction and view direction)
     vec3 halfwayDir = normalize(lightDir + viewDir);
 
-    // Specular term (Blinn–Phong)
+    // Specular term (Blinnï¿½Phong)
     float spec = pow(max(dot(norm, halfwayDir), 0.0), 32.0);
     vec3 specular = specularStrength * spec * vec3(1.0);
 

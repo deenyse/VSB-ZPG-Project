@@ -16,6 +16,12 @@ namespace ShaderSources {
         "ShaderSource/bling.vert",
         "ShaderSource/bling.frag"
     };
+    const ShaderPair Constant = {
+        ShaderType::Constant,
+        "ShaderSource/constant.vert",
+        "ShaderSource/constant.frag"
+    };
+
     const ShaderPair* Get(ShaderType type)
     {
         switch (type)
@@ -25,6 +31,9 @@ namespace ShaderSources {
 
             case ShaderType::Bling:
                 return &Bling;
+
+            case ShaderType::Constant:
+                return &Constant;
 
             default:
                 return nullptr;

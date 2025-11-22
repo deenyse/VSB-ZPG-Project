@@ -26,7 +26,9 @@ void DrawableObject::draw(float dt)
 	transformations->updateDynamicTransforms(dt);
 	shaderProgram->useProgram(); // use the shader program of this object
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
-	shaderProgram->setUniform("material",material);
+	if (material)
+		shaderProgram->setUniform("material",material);
+
 	texture->bind();
 	model->bind(); //bind the VAO of the model
 

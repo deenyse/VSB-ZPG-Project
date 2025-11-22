@@ -59,6 +59,7 @@ Scene_1::Scene_1() {
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(50.f)))
 		;
+
 	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
 
 }

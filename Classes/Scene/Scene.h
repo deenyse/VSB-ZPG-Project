@@ -23,7 +23,6 @@ private:
 	// std::vector<DrawableObject*> objects;
 	HeadLight* headLight = new HeadLight(camera);
 	DrawableObject* selectedObject = nullptr;
-	void bindCameraAndLightToShader(ShaderProgram* shaderProgram);
 public:
 	Scene();
 	void renderAll(float dt);

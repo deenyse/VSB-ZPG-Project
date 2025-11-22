@@ -1,6 +1,7 @@
 #pragma once
 
-enum ShaderType {
+enum class ShaderType {
     Phong,
-    Bling
+    Bling,
+    Constant
 };
