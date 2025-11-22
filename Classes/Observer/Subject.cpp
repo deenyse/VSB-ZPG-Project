@@ -10,3 +10,12 @@ void Subject::notify(ObservableSubjects subject) {
 		observer->update(subject);
 	}
 }
+
+void Subject::detach(Observer* observer) {
+	for (size_t i = 0; i < observers.size(); ++i) {
+		if (observers[i] == observer) {
+			observers.erase(observers.begin() + i);
+			break;
+		}
+	}
+}

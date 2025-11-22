@@ -8,11 +8,11 @@
 #include "../Light/PointLight.h"
 #include "../Light/SpotLight.h"
 
-ShaderProgram::ShaderProgram(ShaderPair shaderSource, Camera* camera, LightManager* lightManager) : camera(camera), lightManager(lightManager)
+ShaderProgram::ShaderProgram(const ShaderPair* shaderSource)
 {
-	shaderType = shaderSource.type;
-	Shader* vertexShader = new Shader(GL_VERTEX_SHADER, shaderSource.vertex);
-	Shader* fragmentShader = new Shader(GL_FRAGMENT_SHADER, shaderSource.fragment);
+	ShaderType shaderType = shaderSource->type;
+	Shader* vertexShader = new Shader(GL_VERTEX_SHADER, shaderSource->vertex);
+	Shader* fragmentShader = new Shader(GL_FRAGMENT_SHADER, shaderSource->fragment);
 
 	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
@@ -36,17 +36,33 @@ ShaderProgram::ShaderProgram(ShaderPair shaderSource, Camera* camera, LightManag
 	setUniform("textureUnitID", 0);
 	glUseProgram(0);
 
-	if (camera) {
-		camera->attach(this);
-		update(ObservableSubjects::SCamera);
-	}
-	if (shaderType == ShaderType::Multilight)
-		for (int i = 0; i < lightManager->getLightsAmount(); i++) {
-			lightManager->getLight(i)->attach(this);
-			update(ObservableSubjects::SLight);
-		}
-
+	camera = nullptr;
+	lightManager = nullptr;
 }
+
+void ShaderProgram::attachCamera(Camera* cam) {
+	if (!cam) return;
+	if (camera)
+		camera->detach(this);
+	camera = cam;
+	camera->attach(this);
+	update(ObservableSubjects::SCamera);
+}
+
+
+void ShaderProgram::attachLightManager(LightManager* lm) {
+	if (!lm) return;
+	if (lightManager)
+		for (int i = 0; i < lightManager->getLightsAmount(); i++) {
+			lightManager->getLight(i)->detach(this);
+		}
+	lightManager = lm;
+	for (int i = 0; i < lightManager->getLightsAmount(); i++) {
+		lightManager->getLight(i)->attach(this);
+	}
+	update(ObservableSubjects::SLight);
+}
+
 
 void ShaderProgram::setUniform(const GLchar* name, glm::mat4 value) {
 	GLint id = glGetUniformLocation(idShaderProgram, name);
@@ -100,7 +116,7 @@ void ShaderProgram::setUniform(const GLchar* name, bool value) {
 }
 
 void ShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
-	if (shaderType != ShaderType::Multilight)
+	if (shaderType != ShaderType::Phong)
 		return;
 	std::string base = std::string(name) + ".";
 
@@ -108,6 +124,10 @@ void ShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
 	setUniform((base + "rd").c_str(), value->rd);
 	setUniform((base + "rs").c_str(), value->rs);
 	setUniform((base + "h").c_str(),  value->h);
+}
+
+ShaderType ShaderProgram::getShaderType() {
+	return shaderType;
 }
 
 void ShaderProgram::useProgram() {
@@ -120,11 +140,11 @@ void ShaderProgram::update(ObservableSubjects subject) {
 	if (subject == ObservableSubjects::SCamera) {
 		setUniform("viewMatrix", camera->getViewMatrix());
 		setUniform("projectionMatrix", camera->getProjectionMatrix());
-		if (shaderType == ShaderType::Multilight)
+		if (shaderType == ShaderType::Phong)
 			setUniform("viewPosition", camera->getPosition());
 	}
 	else if (subject == ObservableSubjects::SLight) {
-		if (shaderType != ShaderType::Multilight)
+		if (shaderType != ShaderType::Phong)
 			return;
 
 

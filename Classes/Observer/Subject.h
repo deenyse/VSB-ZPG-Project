@@ -17,4 +17,5 @@ public:
 
 	void notify(ObservableSubjects subject);
 	void attach(Observer* observer);
+	void detach(Observer* observer);
 }; 

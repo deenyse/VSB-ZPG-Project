@@ -1,5 +1,6 @@
 #include "DrawableObject.h"
 #include "../Model/ModelLoader.h"
+#include "Shader/ShaderFactory.h"
 #include "Transformation/Translate.h"
 
 int DrawableObject::objectsCount = 0;
@@ -9,9 +10,9 @@ int DrawableObject::generateNewId() {
 }
 
 
-DrawableObject::DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lighMmanager, Texture* objTexture,const MaterialData* material) : texture(objTexture), material(material){
+DrawableObject::DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials) : texture(texture), material(materials){
 	// Initialize shader program
-	shaderProgram = new ShaderProgram(shaderSource, camera, lighMmanager);
+	shaderProgram = ShaderFactory::getShader(shaderType);
 	// Load object model
 	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
 	transformations = new Transform();
@@ -34,6 +35,9 @@ void DrawableObject::draw(float dt)
 	glBindVertexArray(0);
 	glUseProgram(0);
 
+}
+ShaderType DrawableObject::getShaderType() {
+	return shaderProgram->getShaderType();
 }
 
 Transform* DrawableObject::getTransformations() {

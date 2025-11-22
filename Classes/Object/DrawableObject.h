@@ -1,7 +1,7 @@
 #pragma once
 #include "../Shader/Shader.h"
 #include "../Shader/ShaderProgram.h"
-#include "../Shader/StructShaderPair.h"
+#include "../Shader/ShaderPair.h"
 
 #include "../Model/Model.h"
 #include "../Transformation/Transform.h"
@@ -31,8 +31,10 @@ protected:
 	const MaterialData* material = nullptr;
 	GLuint id = 0;
 public:
-	DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture, const MaterialData* materials);
+	DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials);
 	virtual ~DrawableObject() = default;
+
+	ShaderType getShaderType();
 
 	Transform* getTransformations();
 	void moveObject(glm::vec3 offset);

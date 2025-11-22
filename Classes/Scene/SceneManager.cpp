@@ -6,12 +6,13 @@
 #include "Scene_3.h"
 
 SceneManager::SceneManager() {
-	// addScene(new Scene_1());
-	// addScene(new Scene_2());
+	addScene(new Scene_1());
+	addScene(new Scene_2());
 	addScene(new Scene_3());
 
 
-	if (!scenes.empty()) currentScene = scenes[0];
+	if (!scenes.empty())
+		setScene(0);
 }
 
 void SceneManager::addScene(Scene* scene) 
@@ -21,7 +22,10 @@ void SceneManager::addScene(Scene* scene)
 
 void SceneManager::setScene(int id)
 {
-	if (id >= 0 && id < scenes.size()) currentScene = scenes[id];
+	if (id < 0 || id >= scenes.size()) return;
+
+	currentScene = scenes[id];
+	currentScene->bindCameraAndLightToUsedShaders();
 }
 
 void SceneManager::renderCurrentScene(float dt)

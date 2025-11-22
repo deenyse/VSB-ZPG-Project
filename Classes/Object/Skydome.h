@@ -1,6 +1,6 @@
 #pragma once
 #include "DrawableObject.h"
-#include "../Shader/StructShaderSources.h"
+#include "../Shader/ShaderSources.h"
 #include "../Observer/Observer.h"
 #include "../Observer/EnumObservableSubjects.h"
 #include "../Transformation/Scale.h"
@@ -9,7 +9,7 @@
 class Skydome : public DrawableObject, public Observer {
     // DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
 public:
-    Skydome(const ModelData modelData, Camera* camera, Texture* texture, LightManager* lightManager);
+    Skydome(const ModelData modelData, Texture* texture, Camera* camera);
 
 private:
     void update(ObservableSubjects subject) override;

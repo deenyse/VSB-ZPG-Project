@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 
-#include "../Shader/StructShaderSources.h"
+#include "../Shader/ShaderSources.h"
 #include "../Model/StructModelSources.h"
 #include "Transformation/DynamicRotation.h"
 
@@ -55,13 +55,13 @@ Scene_3::Scene_3() {
 	// auto shrek = new DrawableObject(ModelSources::Shrek, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/shrek.png"));
 	// addObject(shrek);
 	//
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(1,0,0)), Materials::Constant))
+	addObject(new DrawableObject(ModelSources::SteamMachine,ShaderType::Phong,	new Texture(glm::vec3(1,0,0)), Materials::Constant))
 			->getTransformations()
 			->addTransform(new Translate(glm::vec3(2.f, 0.f, 0.f)))
 			;
 
 
-	addObject(new DrawableObject(ModelSources::SteamMachine, getCamera(), ShaderSources::Phong, lightManager, new Texture(glm::vec3(0.5f)), Materials::Metal))
+	addObject(new DrawableObject(ModelSources::SteamMachine, ShaderType::Phong, new Texture(glm::vec3(0.5f)), Materials::Metal))
 		->getTransformations()
 		->addTransform(new Rotate(90.0f, glm::vec3(0.f, 1.f, 0.f)))
 		->addTransform(new DynamicRotation(1.f, glm::vec3(0.f, 1.f, 0.f)))
@@ -71,13 +71,13 @@ Scene_3::Scene_3() {
 
 
 
-	addObject(new DrawableObject(ModelSources::Plain, getCamera(), ShaderSources::Phong, lightManager, new Texture("../Models/grass.png"), Materials::Wood))
+	addObject(new DrawableObject(ModelSources::Plain,  ShaderType::Phong, new Texture("../Models/grass.png"), Materials::Wood))
 		->getTransformations()
 		->addTransform(new Scale(glm::vec3(50.f)))
 		;
 
 
-	addObject(new Skydome(ModelSources::Sky, getCamera(), new Texture("Models/skydome.png"), lightManager));
+	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
 
 }
 
