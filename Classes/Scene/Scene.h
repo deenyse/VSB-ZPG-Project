@@ -16,7 +16,6 @@ class Scene
 protected:
 	DrawableObject* addObject(DrawableObject* object);
 	LightManager* lightManager = new LightManager();
-	Skydome* skydome = nullptr;
 	Camera* camera = new Camera(glm::vec3(0.f, 1.f, 5.f));
 private:
 	std::unordered_map<ShaderType, std::vector<DrawableObject*>> objects;
