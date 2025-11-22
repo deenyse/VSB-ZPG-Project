@@ -1,7 +1,6 @@
 #pragma once
 #include "../Shader/Shader.h"
 #include "../Shader/ShaderProgram.h"
-#include "../Shader/ShaderPair.h"
 
 #include "../Model/Model.h"
 #include "../Transformation/Transform.h"

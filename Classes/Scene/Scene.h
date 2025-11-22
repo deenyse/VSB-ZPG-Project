@@ -8,7 +8,6 @@
 
 #include "../Light/HeadLight.h"
 #include "../Light/LightManager.h"
-#include "../Shader/ShaderSources.h"
 #include "../Model/StructModelSources.h"
 #include "../Material/StructMaterials.h"
 class Scene

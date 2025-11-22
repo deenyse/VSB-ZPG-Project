@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 #include "Shader/ShaderFactory.h"
-
+#include "Shader/MultiLightShaderProgram.h"
 Scene::Scene() {
 	lightManager->addLight(headLight);
 }
@@ -65,7 +65,8 @@ void Scene::renderAll(float dt) {
 		for (auto obj : objs) {
 			obj->updateState(dt);
 		}
-
+	}
+	for (auto& [shaderType, objs] : objects) {
 		ShaderFactory::getShader(shaderType)->useProgram(); // use the shader program of this group of objects
 		for (auto obj : objs) {
 
@@ -76,7 +77,6 @@ void Scene::renderAll(float dt) {
 		}
 		glUseProgram(0);
 	}
-
 }
 
 void Scene::spawnObject(glm::vec3 position) {

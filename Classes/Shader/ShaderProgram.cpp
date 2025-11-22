@@ -4,15 +4,12 @@
 #include <string>
 #include "Shader.h"
 
-#include "../Light/DirectionalLight.h"
-#include "../Light/PointLight.h"
-#include "../Light/SpotLight.h"
 
-ShaderProgram::ShaderProgram(const ShaderPair* shaderSource)
+
+ShaderProgram::ShaderProgram(const char* vertex, const char* fragment)
 {
-	shaderType = shaderSource->type;
-	Shader* vertexShader = new Shader(GL_VERTEX_SHADER, shaderSource->vertex);
-	Shader* fragmentShader = new Shader(GL_FRAGMENT_SHADER, shaderSource->fragment);
+	Shader* vertexShader = new Shader(GL_VERTEX_SHADER, vertex);
+	Shader* fragmentShader = new Shader(GL_FRAGMENT_SHADER, fragment);
 
 	// Link shaders to create a shader program
 	idShaderProgram = glCreateProgram();
@@ -47,18 +44,6 @@ void ShaderProgram::attachCamera(Camera* cam) {
 }
 
 
-void ShaderProgram::attachLightManager(LightManager* lm) {
-	if (!lm) return;
-	if (lightManager)
-		for (int i = 0; i < lightManager->getLightsAmount(); i++) {
-			lightManager->getLight(i)->detach(this);
-		}
-	lightManager = lm;
-	for (int i = 0; i < lightManager->getLightsAmount(); i++) {
-		lightManager->getLight(i)->attach(this);
-	}
-	update(ObservableSubjects::SLight);
-}
 
 
 void ShaderProgram::setUniform(const GLchar* name, glm::mat4 value) {
@@ -113,8 +98,6 @@ void ShaderProgram::setUniform(const GLchar* name, bool value) {
 }
 
 void ShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
-	if (shaderType != ShaderType::Phong)
-		return;
 	std::string base = std::string(name) + ".";
 
 	setUniform((base + "ra").c_str(), value->ra);
@@ -123,69 +106,8 @@ void ShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
 	setUniform((base + "h").c_str(),  value->h);
 }
 
-ShaderType ShaderProgram::getShaderType() {
-	return shaderType;
-}
 
 void ShaderProgram::useProgram() {
 	glUseProgram(idShaderProgram);
 }
 
-void ShaderProgram::update(ObservableSubjects subject) {
-	useProgram();
-
-	switch (subject) {
-		case ObservableSubjects::SCamera: {
-			setUniform("viewMatrix", camera->getViewMatrix());
-			setUniform("projectionMatrix", camera->getProjectionMatrix());
-			if (shaderType == ShaderType::Phong || shaderType == ShaderType::Bling)
-				setUniform("viewPosition", camera->getPosition());
-
-			break;
-		}
-		case ObservableSubjects::SLight: {
-			if (shaderType != ShaderType::Phong && shaderType != ShaderType::Bling)
-				break;
-
-			setUniform("numberOfLights", lightManager->getLightsAmount());
-
-			for (int i = 0; i < lightManager->getLightsAmount(); i++)
-			{
-				std::string prefix = "lights[" + std::to_string(i) + "]";
-
-				if (!lightManager->getLight(i)) continue;
-
-				// Set common uniforms
-				setUniform((prefix + ".type").c_str(), static_cast<int>(lightManager->getLight(i)->getType()));
-				setUniform((prefix + ".color").c_str(), lightManager->getLight(i)->color);
-				setUniform((prefix + ".isOn").c_str(), lightManager->getLight(i)->isOn);
-				// Set uniforms depending on the light type
-				if (lightManager->getLight(i)->getType() == LightType::DIRECTIONAL) {
-					DirectionalLight* dirLight = (DirectionalLight*)lightManager->getLight(i);
-					setUniform((prefix + ".direction").c_str(), dirLight->direction);
-				}
-				else if (lightManager->getLight(i)->getType() == LightType::POINT) {
-					PointLight* pointLight = (PointLight*)lightManager->getLight(i);
-					setUniform((prefix + ".position").c_str(), pointLight->position);
-					setUniform((prefix + ".constant").c_str(), pointLight->constant);
-					setUniform((prefix + ".linear").c_str(), pointLight->linear);
-					setUniform((prefix + ".quadratic").c_str(), pointLight->quadratic);
-				}
-				else if (lightManager->getLight(i)->getType() == LightType::SPOT) {
-					SpotLight* spotLight = (SpotLight*)lightManager->getLight(i);
-					setUniform((prefix + ".position").c_str(), spotLight->position);
-					setUniform((prefix + ".direction").c_str(), spotLight->direction);
-					setUniform((prefix + ".cutOff").c_str(), spotLight->cutOff);
-					setUniform((prefix + ".outerCutOff").c_str(), spotLight->outerCutOff);
-					setUniform((prefix + ".constant").c_str(), 1.0f);
-					setUniform((prefix + ".linear").c_str(), 0.09f);
-					setUniform((prefix + ".quadratic").c_str(), 0.032f);
-				}
-			}
-
-			break;
-		}
-	}
-
-	glUseProgram(0);
-}

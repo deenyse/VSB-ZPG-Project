@@ -1,6 +1,5 @@
 #include "Scene_1.h"
 
-#include "Shader/ShaderSources.h"
 #include "../Model/StructModelSources.h"
 Scene_1::Scene_1() {
 	for (int i = 0; i < 15; i++) {

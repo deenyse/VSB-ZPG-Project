@@ -2,6 +2,6 @@
 
 enum class ShaderType {
     Phong,
-    Bling,
+    Blinn,
     Constant
 };

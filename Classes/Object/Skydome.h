@@ -1,6 +1,5 @@
 #pragma once
 #include "DrawableObject.h"
-#include "../Shader/ShaderSources.h"
 #include "../Observer/Observer.h"
 #include "../Observer/EnumObservableSubjects.h"
 #include "../Transformation/Scale.h"

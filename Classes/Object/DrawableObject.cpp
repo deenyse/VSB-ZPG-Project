@@ -1,5 +1,6 @@
 #include "DrawableObject.h"
 #include "../Model/ModelLoader.h"
+#include "Shader/MultiLightShaderProgram.h"
 #include "Shader/ShaderFactory.h"
 #include "Transformation/Translate.h"
 
@@ -25,20 +26,17 @@ void DrawableObject::updateState(float dt) {
 
 void DrawableObject::draw()
 {
-	// shaderProgram->useProgram();
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
-	if (material)
-		shaderProgram->setUniform("material",material);
-	else
-		shaderProgram->setUniform("material", Materials::Constant);
+	if (auto mlsp = dynamic_cast<MultiLightShaderProgram*>(shaderProgram))
+		mlsp->setUniform("material",material);
 
 	texture->bind();
 
 	model->bind(); //bind the VAO of the model
 	glDrawArrays(GL_TRIANGLES, 0, model->getVerticesNum()); //mode,first,count
 	glBindVertexArray(0);
-	// glUseProgram(0);
 }
+
 ShaderType DrawableObject::getShaderType() {
 	return shaderProgram->getShaderType();
 }
