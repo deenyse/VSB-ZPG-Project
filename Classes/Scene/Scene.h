@@ -17,9 +17,9 @@ protected:
 	DrawableObject* addObject(DrawableObject* object);
 	LightManager* lightManager = new LightManager();
 	Camera* camera = new Camera(glm::vec3(0.f, 1.f, 5.f));
+	Skydome* skydome = nullptr;
 private:
 	std::unordered_map<ShaderType, std::vector<DrawableObject*>> objects;
-	// std::vector<DrawableObject*> objects;
 	HeadLight* headLight = new HeadLight(camera);
 	DrawableObject* selectedObject = nullptr;
 public:

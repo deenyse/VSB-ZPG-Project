@@ -41,6 +41,6 @@ public:
 
 	GLuint getID();
 
-	virtual void draw(float dt);
+	void draw(float dt);
 };
 

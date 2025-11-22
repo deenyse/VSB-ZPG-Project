@@ -10,6 +10,8 @@ Camera* Scene::getCamera()  { return camera; }
 
 
 void Scene::bindCameraAndLightToUsedShaders() {
+	if (skydome)
+		ShaderFactory::getShader(skydome->getShaderType())->attachCamera(camera);
 	for (auto& [shaderType, _] : objects) {
 		auto shaderProgram = ShaderFactory::getShader(shaderType);
 		shaderProgram->attachCamera(camera);
@@ -36,7 +38,10 @@ DrawableObject *Scene::getSelectedObject()  { return selectedObject; }
 
 
 DrawableObject* Scene::addObject(DrawableObject * object) {
-
+	if (dynamic_cast<Skydome*>(object)) {
+		skydome = dynamic_cast<Skydome*>(object);
+		return skydome;
+	}
 	objects[object->getShaderType()].push_back(object);
 	return object;
 }
@@ -44,8 +49,16 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 
 
 void Scene::renderAll(float dt) {
+	if (skydome) {
+		glDepthMask(GL_FALSE);
+		skydome->draw(dt);
+		glDepthMask(GL_TRUE);
+	}
+
 	glStencilMask(0xFF);
+
 	for (auto& [shaderType, objs] : objects) {
+		// ShaderFactory::getShader(shaderType)->useProgram(); // use the shader program of this group of objects
 		for (auto obj : objs) {
 
 			glStencilFunc(GL_ALWAYS, obj->getID(), 0xFF);
@@ -53,7 +66,9 @@ void Scene::renderAll(float dt) {
 
 			obj->draw(dt);
 		}
+		// glUseProgram(0);
 	}
+
 }
 
 void Scene::spawnObject(glm::vec3 position) {

@@ -6,7 +6,7 @@
 #include "Scene_3.h"
 
 SceneManager::SceneManager() {
-	// addScene(new Scene_1());
+	addScene(new Scene_1());
 	// addScene(new Scene_2());
 	addScene(new Scene_3());
 

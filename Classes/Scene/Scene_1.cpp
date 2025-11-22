@@ -3,6 +3,27 @@
 #include "Shader/ShaderSources.h"
 #include "../Model/StructModelSources.h"
 Scene_1::Scene_1() {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			addObject(
+				new DrawableObject(
+					ModelSources::Tree,
+					ShaderType::Phong,
+					new Texture(glm::vec3(0, 1, 1)),
+					Materials::Wood
+				)
+			)->getTransformations()
+				->addTransform(new Scale(glm::vec3(0.1f)))
+				->addTransform(new Translate(glm::vec3(5.f * i, 0, 5.f * j)));
+		}
+	}
+	addObject(new DrawableObject(ModelSources::Plain,  ShaderType::Phong, new Texture("../Models/grass.png"), Materials::Wood))
+		->getTransformations()
+		->addTransform(new Scale(glm::vec3(50.f)))
+		;
+
+	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
+
 	FollowingLight* l1 = new FollowingLight(glm::vec3(1.f), 1.f, 0.0001f, 0.0005f);
 	lightManager->addLight(l1);
 
@@ -41,25 +62,6 @@ Scene_1::Scene_1() {
 	;
 	l2->follow(o2);
 
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			addObject(
-				new DrawableObject(
-					ModelSources::Tree,
-					ShaderType::Phong,
-					new Texture(glm::vec3(0, 1, 1)),
-					Materials::Wood
-				)
-			)->getTransformations()
-				->addTransform(new Scale(glm::vec3(0.1f)))
-				->addTransform(new Translate(glm::vec3(5.f * i, 0, 5.f * j)));
-		}
-	}
-	addObject(new DrawableObject(ModelSources::Plain,  ShaderType::Phong, new Texture("../Models/grass.png"), Materials::Wood))
-		->getTransformations()
-		->addTransform(new Scale(glm::vec3(50.f)))
-		;
 
-	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
 
 }

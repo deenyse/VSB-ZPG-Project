@@ -8,13 +8,6 @@ Skydome::Skydome(const ModelData modelData, Texture *texture, Camera* camera)
     camera->attach(this);
 }
 
-void Skydome::draw(float dt) {
-    glDepthMask(GL_FALSE);
-    glDisable(GL_STENCIL_TEST);
-    DrawableObject::draw(dt);
-    glDepthMask(GL_TRUE);
-    glEnable(GL_STENCIL_TEST);
-}
 
 void Skydome::update(ObservableSubjects subject) {
     if (subject != ObservableSubjects::SCamera)
