@@ -21,26 +21,20 @@ Scene_3::Scene_3() {
 	// addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
 
 
-	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red))
+	auto o  =new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red);
+	highValueBalls.push_back(o->getID());
+	addObject(o)
 		->getTransformations()
-		->addTransform(new RandomTranslation(10.f, 1))
-		->addTransform(new Scale(glm::vec3(0.5f)));
+		->addTransform(new RandomTranslation(10.f, 1.2f))
+		->addTransform(new Scale(glm::vec3(0.5f)))
 		;
+	for (int i =0; i < 3; i++)
 	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
 		->getTransformations()
-		->addTransform(new RandomTranslation(10.f, 1))
+		->addTransform(new RandomTranslation(10.f, 0.8))
 		->addTransform(new Scale(glm::vec3(0.5f)));
 		;
-	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
-		->getTransformations()
-		->addTransform(new RandomTranslation(10.f, 1))
-		->addTransform(new Scale(glm::vec3(0.5f)));
-		;
-	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
-		->getTransformations()
-		->addTransform(new RandomTranslation(10.f, 1))
-		->addTransform(new Scale(glm::vec3(0.5f)));
-		;
+
 
 }
 
@@ -52,7 +46,7 @@ void Scene_3::spawnNewBall() {
 		highValueBalls.push_back(o->getID());
 		addObject(o)
 			->getTransformations()
-			->addTransform(new RandomTranslation(10.f, 1.5f))
+			->addTransform(new RandomTranslation(10.f, 1.2f))
 			->addTransform(new Scale(glm::vec3(0.5f)));
 	} else {
 		addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))

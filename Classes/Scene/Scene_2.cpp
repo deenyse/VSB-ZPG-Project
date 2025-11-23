@@ -17,7 +17,7 @@ Scene_2::Scene_2() {
 
     addObject(sun)
         ->getTransformations()
-        ->addTransform(new Scale(glm::vec3(1.5f))) // sun is larger than planets
+        ->addTransform(new Scale(glm::vec3(1.3f))) // sun is larger than planets
         ->addTransform(new DynamicRotation(0.5f, glm::vec3(0.f, 1.f, 0.f))) // Sun rotation on its axis
         ->addTransform(new Rotate(180.f, glm::vec3(0.f, 0.f, 1.f))) // texture rotation
 
@@ -25,14 +25,14 @@ Scene_2::Scene_2() {
 
     lightManager->addLight(new PointLight(
         glm::vec3(0.f, 0.f, 0.f),
-        glm::vec3(1.f, 1.f, 1.f),
+        glm::vec3(1.3f, 1.3f, 1.3f),
         1.f, 0.0001f, 0.00005f
     ));
     auto earth = new DrawableObject(
         ModelSources::Planet,
-        ShaderType::Constant,
+        ShaderType::Blinn,
         new Texture("../Models/earth_texture.jpg"), // blue Earth
-        Materials::Metal
+        Materials::Wood
     );
 
     auto earthTransforms = addObject(earth)
@@ -47,9 +47,9 @@ Scene_2::Scene_2() {
 
     auto moon = new DrawableObject(
         ModelSources::Planet,
-        ShaderType::Constant,
+        ShaderType::Blinn,
         new Texture("../Models/moon_texture.jpg"), // grey Moon
-        Materials::Metal
+        Materials::Wood
     );
 
     auto moonTransforms = addObject(moon)
@@ -59,7 +59,7 @@ Scene_2::Scene_2() {
         ->addTransform(earthTransforms)
 
         //Moon rotation around Earth
-        ->addTransform(new DynamicRotation(-0.8f, glm::vec3(0.f, 1.f, 0.f))) //moon rotation on earth axis
+        ->addTransform(new DynamicRotation(-3.f, glm::vec3(0.f, 1.f, 0.f))) //moon rotation on earth axis
         ->addTransform(new Translate(glm::vec3(2.f, 0.f, 0.f))) // distance from Earth
         ->addTransform(new DynamicRotation(-1.f, glm::vec3(0.f, 1.f, 0.f))) // Moon rotation on its axis
 

@@ -34,7 +34,7 @@ void DrawableObject::draw()
 			mlsp->setUniform("material",Materials::Metal);
 	}
 	else {
-		// shaderProgram->setUniform("w",0.5f);
+		// shaderProgram->setUniform("w",1.f);
 	}
 
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
