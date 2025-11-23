@@ -26,22 +26,22 @@ Model* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isU
             expanded.push_back(points[base + 6]);
             expanded.push_back(points[base + 7]);
         } else {
-            // expanded.push_back(0.0f);
-            // expanded.push_back(0.0f);
-            float x = points[base + 0];
-            float y = points[base + 1];
-            float z = points[base + 2];
-
-            // Spherical mapping
-            float u = 0.5f + (atan2(z, x) / (2.0f * 3.14159265f));
-            float v = 0.5f - (asin(y) / 3.14159265f);
-
-            // Fix UV seam (clamp to [0,1])
-            if (u < 0.f) u += 1.f;
-            if (u > 1.f) u -= 1.f;
-
-            expanded.push_back(u);
-            expanded.push_back(v);
+            expanded.push_back(0.0f);
+            expanded.push_back(0.0f);
+            // float x = points[base + 0];
+            // float y = points[base + 1];
+            // float z = points[base + 2];
+            //
+            // // Spherical mapping
+            // float u = 0.5f + (atan2(z, x) / (2.0f * 3.14159265f));
+            // float v = 0.5f - (asin(y) / 3.14159265f);
+            //
+            // // Fix UV seam (clamp to [0,1])
+            // if (u < 0.f) u += 1.f;
+            // if (u > 1.f) u -= 1.f;
+            //
+            // expanded.push_back(u);
+            // expanded.push_back(v);
         }
     }
 
