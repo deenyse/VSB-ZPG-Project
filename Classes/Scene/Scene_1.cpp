@@ -1,11 +1,11 @@
 #include "Scene_1.h"
 
-#include "../Model/StructModelSources.h"
+#include "../Model/Models.h"
 #include "../Transformation/CustomTransform.h"
 #include "Model/ModelLoader.h"
 #include "Shader/ShaderFactory.h"
 #include "Texture/Textures.h"
-#include "../Model/StructModelSources.h"
+#include "../Model/Models.h"
 Scene_1::Scene_1() {
 	// //FOREST SCENE
 	// for (int i = 0; i < 15; i++) {
@@ -75,7 +75,7 @@ Scene_1::Scene_1() {
 	addLight(new DirectionalLight(glm::vec3(0.f, -2.f, 1.f), glm::vec3(1.f)));
 
 	auto s = new Skydome(
-		ModelSources::Sky,
+		Models::Sky,
 		Textures::Skydome
 		, camera);
 	s->setAmbientIntensity(0.4f);
@@ -83,7 +83,7 @@ Scene_1::Scene_1() {
 
 
 	addObject(new DrawableObject(
-		ModelSources::Plain,
+		Models::Plain,
 		ShaderType::Blinn,
 		Textures::Grass,
 		Materials::Wood)

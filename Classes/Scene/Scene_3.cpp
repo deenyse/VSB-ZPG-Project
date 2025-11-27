@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 
-#include "../Model/StructModelSources.h"
+#include "../Model/Models.h"
 #include "Transformation/CustomTransform.h"
 #include "Transformation/DynamicRotation.h"
 

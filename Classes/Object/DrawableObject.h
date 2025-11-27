@@ -2,7 +2,7 @@
 #include "../Shader/Shader.h"
 #include "../Shader/ShaderProgram.h"
 
-#include "../Model/Model.h"
+#include "../Model/ModelInstance.h"
 #include "../Transformation/Transform.h"
 #include "../Transformation/Translate.h"
 #include "../Texture/TextureInstance.h"
@@ -15,7 +15,7 @@
 
 #include "../Observer/Subject.h"
 #include "Light/LightManager.h"
-#include "../Model/StructModelData.h"
+#include "../Model/ModelData.h"
 #include "Material/StructMaterials.h"
 #include "../Texture/TextureData.h"
 class DrawableObject
@@ -24,7 +24,7 @@ protected:
 	static int objectsCount;
 	static int generateNewId();
 	ShaderProgram* shaderProgram = nullptr;
-	Model* model = nullptr;
+	ModelInstance* model = nullptr;
 	Transform* transformations = nullptr;
 	TextureInstance* texture = nullptr;
 	const MaterialData* material = nullptr;

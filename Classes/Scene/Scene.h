@@ -8,7 +8,7 @@
 
 #include "../Light/HeadLight.h"
 #include "../Light/LightManager.h"
-#include "../Model/StructModelSources.h"
+#include "../Model/Models.h"
 #include "../Material/StructMaterials.h"
 class Scene
 {

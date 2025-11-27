@@ -2,8 +2,8 @@
 
 
 #include <string>
-#include "StructModelData.h"
-struct ModelSources {
+#include "ModelData.h"
+struct Models {
     static const ModelDataBase* Sphere;
     static const ModelDataBase* Tree;
     static const ModelDataBase* Plain;

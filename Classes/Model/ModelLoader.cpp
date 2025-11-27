@@ -1,9 +1,9 @@
 #include "ModelLoader.h"
 #include "../../External/tiny_obj_loader.h"
 #include <glm/glm.hpp>
-std::unordered_map<int, Model*> ModelLoader::modelCache;
+std::unordered_map<int, ModelInstance*> ModelLoader::modelCache;
 
-Model* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isUv) {
+ModelInstance* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isUv) {
     std::vector<float> expanded;
     expanded.reserve(verticesNum * 8);
     int stride = isUv ? 8 : 6;
@@ -32,11 +32,11 @@ Model* ModelLoader::LoadFromArray(const float* points, int verticesNum, bool isU
         }
     }
 
-    return new Model(expanded);
+    return new ModelInstance(expanded);
 }
 
 
-Model* ModelLoader::LoadFromFile(const std::string objPath) {
+ModelInstance* ModelLoader::LoadFromFile(const std::string objPath) {
     tinyobj::attrib_t attrib;
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
@@ -77,18 +77,18 @@ Model* ModelLoader::LoadFromFile(const std::string objPath) {
         }
     }
 
-    return new Model(vertices); // only the model with vertex buffer, no textures
+    return new ModelInstance(vertices); // only the model with vertex buffer, no textures
 }
 
 
 
 
-Model*  ModelLoader::LoadModel(const ModelDataBase* modelData) {
+ModelInstance*  ModelLoader::LoadModel(const ModelDataBase* modelData) {
     if (auto it = modelCache.find(modelData->id); it != modelCache.end()) {
         return it->second;
     }
 
-    Model* loadedModel = nullptr;
+    ModelInstance* loadedModel = nullptr;
     if (auto fm = dynamic_cast<const FileModel*>(modelData))
         loadedModel = LoadFromFile(fm->modelPath);
     else {

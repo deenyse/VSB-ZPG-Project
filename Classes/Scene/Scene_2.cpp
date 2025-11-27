@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 
 #include "../Light/PointLight.h"
-#include "Model/StructModelSources.h"
+#include "Model/Models.h"
 #include "../Transformation/DynamicRotation.h"
 Scene_2::Scene_2() {
 	// lightManager->addLight(new PointLight(glm::vec3(-1.f, 2.f, 0.f), glm::vec3(1.f, 1.f, 1.f)));

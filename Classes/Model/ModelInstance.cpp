@@ -1,14 +1,14 @@
-#include "Model.h"
+#include "ModelInstance.h"
 
 
-Model::Model(const std::vector<float>& points) {
+ModelInstance::ModelInstance(const std::vector<float>& points) {
     vertices = points;
     verticesNum = vertices.size() / 8; // Assuming stride=6 (pos + normal)
 
     setupBuffers();
 }
 
-void Model::setupBuffers() {
+void ModelInstance::setupBuffers() {
     // Generate VAO and bind it
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
@@ -35,10 +35,10 @@ void Model::setupBuffers() {
     // Unbind VAO for safety
     glBindVertexArray(0);
 }
-int Model::getVerticesNum() {
+int ModelInstance::getVerticesNum() {
     return verticesNum;
 }
 
-void Model::bind() {
+void ModelInstance::bind() {
     glBindVertexArray(VAO);
 }

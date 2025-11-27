@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <vector>
-class Model
+class ModelInstance
 {
 protected:
 	GLuint VBO, VAO = 0;
@@ -12,7 +12,7 @@ protected:
 	void setupBuffers();
 	std::vector<float> vertices;
 public:
-	Model(const std::vector<float>& points);
+	ModelInstance(const std::vector<float>& points);
 	int getVerticesNum();
 	void bind();
 };
