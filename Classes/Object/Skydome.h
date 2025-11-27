@@ -10,8 +10,7 @@
 class Skydome : public DrawableObject, public Observer {
     // DrawableObject(const ModelData modelData, Camera* camera, ShaderPair shaderSource, LightManager* lightManager, Texture* texture);
 public:
-    Skydome(const ModelDataBase* model, TextureDataBase *texture, Camera* camera);
-    void draw() override;
+    Skydome(const ModelDataBase* model, TextureDataBase *texture, const MaterialData* material, Camera* camera);
     void setAmbientIntensity(float intensity);
 private:
     void update(ObservableSubjects subject) override;

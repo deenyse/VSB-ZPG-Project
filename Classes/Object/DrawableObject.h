@@ -30,7 +30,7 @@ protected:
 	const MaterialData* material = nullptr;
 	GLuint id = 0;
 public:
-	DrawableObject(const ModelDataBase* model, ShaderType type, TextureDataBase* texture, const MaterialData* materials = nullptr);
+	DrawableObject(const ModelDataBase* model, ShaderType type, TextureDataBase* texture, const MaterialData* materials);
 
 	virtual ~DrawableObject() = default;
 
@@ -43,6 +43,6 @@ public:
 
 	void updateState(float dt);
 
-	virtual void draw() ;
+	void draw() ;
 };
 

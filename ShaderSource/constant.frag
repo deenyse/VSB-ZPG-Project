@@ -7,7 +7,6 @@ in vec2 uv;
 out vec4 fragColor;
 
 uniform float ambient = 1.0f;
-//asdasd
 
 void main () {
     vec4 tex = texture(textureUnitID, uv);

@@ -14,7 +14,7 @@
         Models::Planet,
         ShaderType::Constant,
         Textures::Sun, // yellow sun
-        Materials::Metal
+        Materials::Constant
     );
 
     addObject(sun)

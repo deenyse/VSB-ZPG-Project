@@ -76,8 +76,9 @@ Scene_1::Scene_1() {
 
 	auto s = new Skydome(
 		Models::Sky,
-		Textures::Skydome
-		, camera);
+		Textures::Skydome,
+		Materials::Skydome,
+		camera);
 	s->setAmbientIntensity(0.4f);
 	addObject(s);
 

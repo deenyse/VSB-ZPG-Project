@@ -21,5 +21,5 @@ ShaderType ConstantShaderProgram::getShaderType() {
 }
 
 void ConstantShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
-	return;
+	setUniform("ambient", value->ra);
 }

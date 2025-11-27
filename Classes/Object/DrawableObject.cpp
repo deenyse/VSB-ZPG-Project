@@ -25,13 +25,9 @@ void DrawableObject::updateState(float dt) {
 
 void DrawableObject::draw()
 {
-
-	if (material)
-		shaderProgram->setUniform("material",material);
-
+	shaderProgram->setUniform("material",material);
 
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
-
 
 	texture->bind();
 

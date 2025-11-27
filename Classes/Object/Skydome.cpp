@@ -1,8 +1,8 @@
 #include "Skydome.h"
 
 
-Skydome::Skydome(const ModelDataBase* model, TextureDataBase *texture, Camera* camera)
-    :DrawableObject(model, ShaderType::Constant, texture){
+Skydome::Skydome(const ModelDataBase* model, TextureDataBase *texture, const MaterialData* material, Camera* camera)
+    :DrawableObject(model, ShaderType::Constant, texture, material){
 
     this->camera = camera;
     camera->attach(this);
@@ -10,12 +10,6 @@ Skydome::Skydome(const ModelDataBase* model, TextureDataBase *texture, Camera* c
 
 void Skydome::setAmbientIntensity(float intensity) {
     ambientLightIntensity = intensity;
-}
-
-void Skydome::draw() {
-    shaderProgram->setUniform("ambient", ambientLightIntensity);
-    DrawableObject::draw();
-
 }
 
 void Skydome::update(ObservableSubjects subject) {
