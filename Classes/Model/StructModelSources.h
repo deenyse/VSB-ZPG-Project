@@ -4,18 +4,16 @@
 #include <string>
 #include "StructModelData.h"
 struct ModelSources {
-    static const ModelData Formula1;
-    static const ModelData Sphere;
-    static const ModelData Tree;
-    static const ModelData Plain;
-    static const ModelData Suzi;
-    static const ModelData Bushes;
-    static const ModelData Toiled;
-    static const ModelData Shrek;
-    static const ModelData Fiona;
-    static const ModelData Sky;
-    static const ModelData SteamMachine;
-    static const ModelData XboxFridge;
-    static const ModelData Planet;
+    static const ModelDataBase* Sphere;
+    static const ModelDataBase* Tree;
+    static const ModelDataBase* Plain;
+    static const ModelDataBase* Suzi;
+    static const ModelDataBase* Bushes;
+    static const ModelDataBase* Toiled;
+    static const ModelDataBase* Shrek;
+    static const ModelDataBase* Fiona;
+    static const ModelDataBase* Sky;
+    static const ModelDataBase* SteamMachine;
+    static const ModelDataBase* Planet;
 
 };

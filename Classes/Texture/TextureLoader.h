@@ -1,10 +1,9 @@
 #pragma once
 #include"TextureInstance.h"
-
+#include"TextureData.h"
 class TextureLoader {
 private:
-    static std::unordered_map<std::string, TextureInstance*> textureCache;
+    static std::unordered_map<int, TextureInstance*> textureCache;
 public:
-    static TextureInstance* loadTexture(std::string fileName);
-    static TextureInstance* loadTexture(glm::vec3 color);
+    static TextureInstance* loadTexture(TextureDataBase* textureData);
 };

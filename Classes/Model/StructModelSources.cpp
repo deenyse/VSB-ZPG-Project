@@ -10,17 +10,15 @@
 
 
 // Model from file
-const ModelData ModelSources::Formula1("Models/formula1.obj");
-const ModelData ModelSources::Toiled( "Models/toiled.obj");
-const ModelData ModelSources::Shrek( "Models/shrek.obj");
-const ModelData ModelSources::Fiona( "Models/fiona.obj");
-const ModelData ModelSources::Sky( "Models/skydome.obj");
-const ModelData ModelSources::SteamMachine( "Models/SteamMachine.obj");
-const ModelData ModelSources::XboxFridge( "Models/xbox-fridge.obj");
-const ModelData ModelSources::Planet( "Models/planet.obj");
+const ModelDataBase*  ModelSources::Toiled = new FileModel( "Models/toiled.obj");
+const ModelDataBase*  ModelSources::Shrek= new FileModel( "Models/shrek.obj");
+const ModelDataBase*  ModelSources::Fiona= new FileModel( "Models/fiona.obj");
+const ModelDataBase*  ModelSources::Sky= new FileModel( "Models/skydome.obj");
+const ModelDataBase*  ModelSources::SteamMachine= new FileModel( "Models/SteamMachine.obj");
+const ModelDataBase*  ModelSources::Planet= new FileModel( "Models/planet.obj");
 // Models from points
-const ModelData ModelSources::Sphere( sphere, 2880);
-const ModelData ModelSources::Tree( tree, 92814);
-const ModelData ModelSources::Plain(plain, 6, true);
-const ModelData ModelSources::Suzi( suziSmooth, 2904);
-const ModelData ModelSources::Bushes(bushes, 8730);
+const ModelDataBase* ModelSources::Sphere= new ArrayModel( sphere, 2880);
+const ModelDataBase* ModelSources::Tree= new ArrayModel( tree, 92814);
+const ModelDataBase* ModelSources::Plain= new ArrayModel(plain, 6, true);
+const ModelDataBase* ModelSources::Suzi= new ArrayModel( suziSmooth, 2904);
+const ModelDataBase* ModelSources::Bushes= new ArrayModel(bushes, 8730);

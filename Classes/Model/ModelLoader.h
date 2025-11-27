@@ -14,6 +14,6 @@ private:
     static Model* LoadFromFile(const std::string objPath);
     static Model* LoadFromArray(const float* points, int verticesNum, bool isUv);
 public:
-    static Model* LoadModel(ModelData modelData);
+    static Model* LoadModel(const ModelDataBase* modelData);
 
 };

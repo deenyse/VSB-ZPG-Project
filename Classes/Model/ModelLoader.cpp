@@ -83,19 +83,19 @@ Model* ModelLoader::LoadFromFile(const std::string objPath) {
 
 
 
-Model*  ModelLoader::LoadModel(ModelData modelData) {
-    if (auto it = modelCache.find(modelData.id); it != modelCache.end()) {
+Model*  ModelLoader::LoadModel(const ModelDataBase* modelData) {
+    if (auto it = modelCache.find(modelData->id); it != modelCache.end()) {
         return it->second;
     }
 
     Model* loadedModel = nullptr;
+    if (auto fm = dynamic_cast<const FileModel*>(modelData))
+        loadedModel = LoadFromFile(fm->modelPath);
+    else {
+        auto am = dynamic_cast<const ArrayModel*>(modelData);
+        loadedModel = LoadFromArray(am->points, am->verticesNum, am->isUv);
+    }
 
-    if (modelData.points == nullptr)
-        loadedModel = LoadFromFile(modelData.modelPath);
-    else
-        loadedModel = LoadFromArray(modelData.points, modelData.verticesNum, modelData.isUv);
-
-
-    modelCache[modelData.id] =loadedModel;
+    modelCache[modelData->id] =loadedModel;
     return loadedModel;
 }

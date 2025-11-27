@@ -1,16 +1,15 @@
 #include "Textures.h"
 
-
 namespace Textures {
-    glm::vec3 Red = glm::vec3(1.0f, 0.0f, 0.0f);
-    glm::vec3 Yellow = glm::vec3(1.0f, 0.0f, 0.0f);
-    std::string Shrek = "../Models/shrek.png";
+    TextureDataBase* Red =  new ColorTexture(glm::vec3(1.0f, 0.0f, 0.0f));
+    TextureDataBase* Yellow = new ColorTexture(glm::vec3(1.0f, 0.0f, 0.0f));
 
-    std::string Fiona = "../Models/fiona.png";
-    std::string Earth = "../Models/earth_texture.jpg";
-    std::string Moon = "../Models/moon_texture.jpg";
-    std::string Sun = "../Models/sun_texture.jpg";
-    std::string Grass = "../Models/grass.png";
-    std::string Skydome = "../Models/skydome.png";
-    std::string Toiled = "../Models/toiled.jpg";
+    TextureDataBase* Shrek = new FileTexture( "../Models/shrek.png");
+    TextureDataBase* Fiona = new FileTexture( "../Models/fiona.png");
+    TextureDataBase* Earth = new FileTexture( "../Models/earth_texture.jpg");
+    TextureDataBase* Moon = new FileTexture( "../Models/moon_texture.jpg");
+    TextureDataBase* Sun = new FileTexture( "../Models/sun_texture.jpg");
+    TextureDataBase* Grass = new FileTexture( "../Models/grass.png");
+    TextureDataBase* Skydome = new FileTexture( "../Models/skydome.png");
+    TextureDataBase* Toiled = new FileTexture( "../Models/toiled.jpg");
 }

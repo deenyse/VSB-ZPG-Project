@@ -8,24 +8,23 @@ std::string colorToString(const glm::vec3& color) {
 }
 
 
-std::unordered_map<std::string, TextureInstance*> TextureLoader::textureCache;
+std::unordered_map<int, TextureInstance*> TextureLoader::textureCache;
 
-TextureInstance* TextureLoader::loadTexture(std::string fileName) {
-    if (auto it = textureCache.find(fileName); it != textureCache.end()) {
+TextureInstance* TextureLoader::loadTexture(TextureDataBase* textureData) {
+
+    if (auto it = textureCache.find(textureData->id); it != textureCache.end()) {
         return it->second;
     }
+    TextureInstance* texture;
 
-    TextureInstance* texture = new TextureInstance(fileName);
-    textureCache[fileName] = texture;
-    return texture;
-}
-TextureInstance* TextureLoader::loadTexture(glm::vec3 color) {
-    auto key = colorToString(color);
-    if (auto it = textureCache.find(key); it != textureCache.end()) {
-        return it->second;
+    if (auto ft = dynamic_cast<FileTexture*>(textureData)) {
+        texture = new TextureInstance(ft->texturePath);
+    }
+    else {
+        auto ct = dynamic_cast<ColorTexture*>(textureData);
+        texture = new TextureInstance(ct->color);
     }
 
-    TextureInstance* texture = new TextureInstance(color);
-    textureCache[key] = texture;
+    textureCache[textureData->id] = texture;
     return texture;
 }

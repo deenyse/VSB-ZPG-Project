@@ -1,7 +1,7 @@
 #include "StructModelData.h"
 
-int ModelData::modelsCount = 0;
+int ModelDataBase::modelsCount = 0;
 
-int ModelData::generateNewId() {
+int ModelDataBase::generateNewId() {
     return modelsCount++;
 }
