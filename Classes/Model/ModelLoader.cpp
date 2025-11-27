@@ -103,10 +103,9 @@ Model*  ModelLoader::LoadModel(ModelData modelData) {
 
     Model* loadedModel = nullptr;
 
-    if (modelData.type == ModelFileType::File)
+    if (modelData.points == nullptr)
         loadedModel = LoadFromFile(modelData.modelPath);
-
-    if (modelData.type == ModelFileType::Array)
+    else
         loadedModel = LoadFromArray(modelData.points, modelData.verticesNum, modelData.isUv);
 
 
