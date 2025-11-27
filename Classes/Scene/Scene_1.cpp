@@ -5,7 +5,7 @@
 #include "Model/ModelLoader.h"
 #include "Shader/ShaderFactory.h"
 #include "Texture/Textures.h"
-
+#include "../Model/StructModelSources.h"
 Scene_1::Scene_1() {
 	// //FOREST SCENE
 	// for (int i = 0; i < 15; i++) {
@@ -75,17 +75,17 @@ Scene_1::Scene_1() {
 	addLight(new DirectionalLight(glm::vec3(0.f, -2.f, 1.f), glm::vec3(1.f)));
 
 	auto s = new Skydome(
-		ModelLoader::LoadModel(ModelSources::Sky),
-		TextureLoader::loadTexture(Textures::Skydome)
+		ModelSources::Sky,
+		Textures::Skydome
 		, camera);
 	s->setAmbientIntensity(0.4f);
 	addObject(s);
 
 
 	addObject(new DrawableObject(
-		ModelLoader::LoadModel(ModelSources::Plain),
-		ShaderFactory::getShader(ShaderType::Blinn),
-		TextureLoader::loadTexture(Textures::Grass),
+		ModelSources::Plain,
+		ShaderType::Blinn,
+		Textures::Grass,
 		Materials::Wood)
 	)
 	->getTransformations()

@@ -1,8 +1,8 @@
 #include "Skydome.h"
 
 
-Skydome::Skydome(Model* model, TextureInstance *texture, Camera* camera)
-    :DrawableObject(model, ShaderFactory::getShader(ShaderType::Constant), texture){
+Skydome::Skydome(const ModelDataBase* model, TextureDataBase *texture, Camera* camera)
+    :DrawableObject(model, ShaderType::Constant, texture){
 
     this->camera = camera;
     camera->attach(this);

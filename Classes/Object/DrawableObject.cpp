@@ -11,7 +11,10 @@ int DrawableObject::generateNewId() {
 	return ++objectsCount;
 }
 
-DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram, TextureInstance* texture, const MaterialData* materials) : model(model), shaderProgram(shaderProgram), texture(texture), material(materials){
+DrawableObject::DrawableObject(const ModelDataBase* modelData, ShaderType type, TextureDataBase* textureData, const MaterialData* materials) : material(materials){
+	shaderProgram = ShaderFactory::getShader(type);
+	model = ModelLoader::LoadModel(modelData);
+	texture = TextureLoader::loadTexture(textureData);
 	transformations = new Transform();
 	id = generateNewId();
 };

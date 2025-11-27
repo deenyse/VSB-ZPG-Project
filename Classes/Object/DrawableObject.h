@@ -17,7 +17,7 @@
 #include "Light/LightManager.h"
 #include "../Model/StructModelData.h"
 #include "Material/StructMaterials.h"
-
+#include "../Texture/TextureData.h"
 class DrawableObject
 {
 protected:
@@ -30,7 +30,7 @@ protected:
 	const MaterialData* material = nullptr;
 	GLuint id = 0;
 public:
-	DrawableObject(Model* model, ShaderProgram* shaderProgram, TextureInstance* texture, const MaterialData* materials = nullptr);
+	DrawableObject(const ModelDataBase* model, ShaderType type, TextureDataBase* texture, const MaterialData* materials = nullptr);
 
 	virtual ~DrawableObject() = default;
 
