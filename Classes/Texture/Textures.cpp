@@ -2,7 +2,8 @@
 
 namespace Textures {
     TextureDataBase* Red =  new ColorTexture(glm::vec3(1.0f, 0.0f, 0.0f));
-    TextureDataBase* Yellow = new ColorTexture(glm::vec3(1.0f, 0.0f, 0.0f));
+    TextureDataBase* Yellow = new ColorTexture(glm::vec3(1.0f, 1.0f, 0.0f));
+    TextureDataBase* Green = new ColorTexture(glm::vec3(0.0f, 1.0f, 0.0f));
 
     TextureDataBase* Shrek = new FileTexture( "../Models/shrek.png");
     TextureDataBase* Fiona = new FileTexture( "../Models/fiona.png");

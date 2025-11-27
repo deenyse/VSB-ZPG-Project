@@ -2,6 +2,8 @@
 
 #include "Shader/ShaderFactory.h"
 #include "Shader/MultiLightShaderProgram.h"
+#include "Texture/Textures.h"
+
 Scene::Scene() {
 	lightManager->addLight(headLight);
 }
@@ -43,14 +45,15 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 		return skydome;
 	}
 	objects[object->getShaderType()].push_back(object);
+	auto shaderProgram = ShaderFactory::getShader(object->getShaderType());
+	shaderProgram->attachCamera(camera);
+	shaderProgram->attachLightManager(lightManager);
 	return object;
 }
 Light* Scene::addLight(Light * light) {
 	lightManager->addLight(light);
 	return light;
 }
-
-
 
 void Scene::renderAll(float dt) {
 	if (skydome) {
@@ -83,9 +86,9 @@ void Scene::renderAll(float dt) {
 	}
 }
 void Scene::onPositionAction(glm::vec3 position) {
-	// auto o = new DrawableObject(ModelSources::Tree, ShaderType::Phong, new TextureInstance(glm::vec3(0, 1, 1)), Materials::Wood);
-	// o->moveObject(position);
-	// addObject(o);
-	// onObjectSelect(o->getID());
-	return;
+	printf("Position Action\n");
+	auto o = new DrawableObject(Models::Tree, ShaderType::Phong, Textures::Green, Materials::Wood);
+	o->moveObject(position);
+	addObject(o);
+	onObjectSelect(o->getID());
 }

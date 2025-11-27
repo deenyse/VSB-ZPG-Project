@@ -144,7 +144,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
 
         scene->onObjectSelect(index);
 
-        // printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
+        printf("Clicked on pixel %d, %d, color %02hhx%02hhx%02hhx%02hhx, depth%f, stencil index %u\n", x, y, color[0], color[1], color[2], color[3], depth, index);
 
         //Můžeme nastavit vybrané těleso scena->setSelect(index-1);
 
@@ -158,7 +158,7 @@ void InputManager::button_callback(GLFWwindow* window, int button, int action, i
         glm::vec3 pos = glm::unProject(screenX, view, projection, viewPort);
         inputManager->lastClickWordCords = pos;
 
-        // printf("unProject [%f,%f,%f]\n", pos.x, pos.y, pos.z);
+        printf("unProject [%f,%f,%f]\n", pos.x, pos.y, pos.z);
     }
 
     if (action == GLFW_PRESS) {

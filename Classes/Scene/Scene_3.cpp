@@ -4,6 +4,7 @@
 
 
 #include "../Model/Models.h"
+#include "Texture/Textures.h"
 #include "Transformation/CustomTransform.h"
 #include "Transformation/DynamicRotation.h"
 
@@ -18,22 +19,22 @@ Scene_3::Scene_3() {
 		1.f, 0.02f, 0.05f             // less attenuation
 	));
 
-	// addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
+	addObject(new Skydome(Models::Sky, Textures::Skydome, camera));
 
-	//
-	// auto o  =new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red);
-	// highValueBalls.push_back(o->getID());
-	// addObject(o)
-	// 	->getTransformations()
-	// 	->addTransform(new RandomTranslation(10.f, 1.2f))
-	// 	->addTransform(new Scale(glm::vec3(0.5f)))
-	// 	;
-	// for (int i =0; i < 3; i++)
-	// addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
-	// 	->getTransformations()
-	// 	->addTransform(new RandomTranslation(10.f, 0.8))
-	// 	->addTransform(new Scale(glm::vec3(0.5f)));
-	// 	;
+	
+	auto o  =new DrawableObject(Models::Sphere, ShaderType::Blinn, Textures::Red);
+	highValueBalls.push_back(o->getID());
+	addObject(o)
+		->getTransformations()
+		->addTransform(new RandomTranslation(10.f, 1.2f))
+		->addTransform(new Scale(glm::vec3(0.5f)))
+		;
+	for (int i =0; i < 3; i++)
+	addObject(new DrawableObject(Models::Sphere, ShaderType::Blinn, Textures::Yellow))
+		->getTransformations()
+		->addTransform(new RandomTranslation(10.f, 0.8))
+		->addTransform(new Scale(glm::vec3(0.5f)));
+		;
 
 
 }
@@ -41,19 +42,19 @@ Scene_3::Scene_3() {
 void Scene_3::spawnNewBall() {
 	int chance = std::rand() % 100;
 
-	// if (chance < 20) {
-	// 	auto o  =new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, red);
-	// 	highValueBalls.push_back(o->getID());
-	// 	addObject(o)
-	// 		->getTransformations()
-	// 		->addTransform(new RandomTranslation(10.f, 1.2f))
-	// 		->addTransform(new Scale(glm::vec3(0.5f)));
-	// } else {
-	// 	addObject(new DrawableObject(ModelSources::Sphere, ShaderType::Blinn, yellow))
-	// 		->getTransformations()
-	// 		->addTransform(new RandomTranslation(10.f, 0.8))
-	// 		->addTransform(new Scale(glm::vec3(0.5f)));
-	// }
+	if (chance < 20) {
+		auto o  =new DrawableObject(Models::Sphere, ShaderType::Blinn, Textures::Red);
+		highValueBalls.push_back(o->getID());
+		addObject(o)
+			->getTransformations()
+			->addTransform(new RandomTranslation(10.f, 1.2f))
+			->addTransform(new Scale(glm::vec3(0.5f)));
+	} else {
+		addObject(new DrawableObject(Models::Sphere, ShaderType::Blinn, Textures::Yellow))
+			->getTransformations()
+			->addTransform(new RandomTranslation(10.f, 0.8))
+			->addTransform(new Scale(glm::vec3(0.5f)));
+	}
 }
 
 
