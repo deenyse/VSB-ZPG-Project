@@ -2,6 +2,7 @@
 #include "../Model/ModelLoader.h"
 #include "Shader/MultiLightShaderProgram.h"
 #include "Shader/ShaderFactory.h"
+#include "Texture/TextureLoader.h"
 #include "Transformation/Translate.h"
 
 int DrawableObject::objectsCount = 0;
@@ -10,14 +11,9 @@ int DrawableObject::generateNewId() {
 	return ++objectsCount;
 }
 
-
-DrawableObject::DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials) : texture(texture), material(materials){
-	// Initialize shader program
-	shaderProgram = ShaderFactory::getShader(shaderType);
-	// Load object model
-	model = ModelLoader::LoadModel(modelData); // create the model (VAO,VBO)
+DrawableObject::DrawableObject(Model* model, ShaderProgram* shaderProgram, TextureInstance* texture, const MaterialData* materials) : model(model), shaderProgram(shaderProgram), texture(texture), material(materials){
 	transformations = new Transform();
-	id = this->generateNewId();
+	id = generateNewId();
 };
 
 void DrawableObject::updateState(float dt) {
@@ -27,15 +23,9 @@ void DrawableObject::updateState(float dt) {
 void DrawableObject::draw()
 {
 
-	if (auto mlsp = dynamic_cast<MultiLightShaderProgram*>(shaderProgram)) {
-		if (material)
-			mlsp->setUniform("material",material);
-		else
-			mlsp->setUniform("material",Materials::Metal);
-	}
-	else {
-		// shaderProgram->setUniform("w",1.f);
-	}
+	if (material)
+		shaderProgram->setUniform("material",material);
+
 
 	shaderProgram->setUniform("modelMatrix", transformations->getMatrix()); //set the model matrix uniform in the shader
 

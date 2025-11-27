@@ -19,3 +19,7 @@ void ConstantShaderProgram::update(ObservableSubjects subject) {
 ShaderType ConstantShaderProgram::getShaderType() {
 	return ShaderType::Constant;
 }
+
+void ConstantShaderProgram::setUniform(const GLchar* name, const MaterialData* value) {
+	return;
+}

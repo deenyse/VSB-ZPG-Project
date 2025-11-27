@@ -5,11 +5,11 @@
 #include <string>
 #include <glm/vec3.hpp> // glm::vec3
 
-class Texture {
+class TextureInstance {
 private:
     GLuint textureID;
 public:
-    Texture(std::string fileName);
-    Texture(glm::vec3 color);
+    TextureInstance(std::string fileName);
+    TextureInstance(glm::vec3 color);
     void bind();
 };

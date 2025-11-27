@@ -18,8 +18,8 @@ class Scene_3 : public Scene
 private:
 	int points = 0;
 	std::vector<GLuint> highValueBalls;
-	Texture* yellow;
-	Texture* red;
+	TextureInstance* yellow;
+	TextureInstance* red;
 	void spawnNewBall();
 public:
 	Scene_3() ;

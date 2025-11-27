@@ -5,7 +5,7 @@
 #include "../Model/Model.h"
 #include "../Transformation/Transform.h"
 #include "../Transformation/Translate.h"
-#include "../Texture/Texture.h"
+#include "../Texture/TextureInstance.h"
 #include "../Material/StructMaterialData.h"
 #include <GL/glew.h>
 #include <stdio.h>
@@ -26,11 +26,12 @@ protected:
 	ShaderProgram* shaderProgram = nullptr;
 	Model* model = nullptr;
 	Transform* transformations = nullptr;
-	Texture* texture = nullptr;
+	TextureInstance* texture = nullptr;
 	const MaterialData* material = nullptr;
 	GLuint id = 0;
 public:
-	DrawableObject(const ModelData modelData, ShaderType shaderType, Texture* texture, const MaterialData* materials = nullptr);
+	DrawableObject(Model* model, ShaderProgram* shaderProgram, TextureInstance* texture, const MaterialData* materials = nullptr);
+
 	virtual ~DrawableObject() = default;
 
 	ShaderType getShaderType();
@@ -42,6 +43,6 @@ public:
 
 	void updateState(float dt);
 
-	void draw();
+	virtual void draw() ;
 };
 

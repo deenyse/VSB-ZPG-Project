@@ -2,6 +2,10 @@
 
 #include "../Model/StructModelSources.h"
 #include "../Transformation/CustomTransform.h"
+#include "Model/ModelLoader.h"
+#include "Shader/ShaderFactory.h"
+#include "Texture/Textures.h"
+
 Scene_1::Scene_1() {
 	// //FOREST SCENE
 	// for (int i = 0; i < 15; i++) {
@@ -62,27 +66,38 @@ Scene_1::Scene_1() {
 	// l2->follow(o2);
 	//
 
-	lightManager->addLight(new PointLight(
-	glm::vec3(-1.f, 10.f, -2.f),   // pos
-	glm::vec3(10.f),    // light white
+	addLight(new PointLight(
+	glm::vec3(-1.f, 3.f, 2.f),   // pos
+	glm::vec3(1.f),    // light white
 	1.f, 0.02f, 0.05f             // less attenuation
 	));
 
-	lightManager->addLight(new DirectionalLight(glm::vec3(0.f, -2.f, 1.f), glm::vec3(1.f)));
+	addLight(new DirectionalLight(glm::vec3(0.f, -2.f, 1.f), glm::vec3(1.f)));
 
-	addObject(new Skydome(ModelSources::Sky, new Texture("Models/skydome.png"), camera));
+	auto s = new Skydome(
+		ModelLoader::LoadModel(ModelSources::Sky),
+		TextureLoader::loadTexture(Textures::Skydome)
+		, camera);
+	s->setAmbientIntensity(0.4f);
+	addObject(s);
 
-	addObject(new DrawableObject(ModelSources::Plain,  ShaderType::Constant, new Texture("../Models/grass.png")))
+
+	addObject(new DrawableObject(
+		ModelLoader::LoadModel(ModelSources::Plain),
+		ShaderFactory::getShader(ShaderType::Blinn),
+		TextureLoader::loadTexture(Textures::Grass),
+		Materials::Wood)
+	)
 	->getTransformations()
 	->addTransform(new Scale(glm::vec3(50.f)))
 	;
 
-	auto customTransformMat = glm::mat4(1.0f);
-	customTransformMat[3][3] = 20.f;
-	addObject(new DrawableObject(ModelSources::Shrek, ShaderType::Blinn, new Texture("../Models/shrek.png")))
-		->getTransformations()
-		->addTransform(new CustomTransform(customTransformMat))
-		;
+	// auto customTransformMat = glm::mat4(1.0f);
+	// customTransformMat[3][3] = 20.f;
+	// addObject(new DrawableObject(ModelSources::Shrek, ShaderType::Blinn, new TextureInstance("../Models/shrek.png"), Materials::Wood))
+	// 	->getTransformations()
+	// 	// ->addTransform(new CustomTransform(customTransformMat))
+	// 	;
 
 
 }

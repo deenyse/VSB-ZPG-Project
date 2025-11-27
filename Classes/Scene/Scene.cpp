@@ -45,6 +45,10 @@ DrawableObject* Scene::addObject(DrawableObject * object) {
 	objects[object->getShaderType()].push_back(object);
 	return object;
 }
+Light* Scene::addLight(Light * light) {
+	lightManager->addLight(light);
+	return light;
+}
 
 
 
@@ -79,8 +83,9 @@ void Scene::renderAll(float dt) {
 	}
 }
 void Scene::onPositionAction(glm::vec3 position) {
-	auto o = new DrawableObject(ModelSources::Tree, ShaderType::Phong, new Texture(glm::vec3(0, 1, 1)), Materials::Wood);
-	o->moveObject(position);
-	addObject(o);
-	onObjectSelect(o->getID());
+	// auto o = new DrawableObject(ModelSources::Tree, ShaderType::Phong, new TextureInstance(glm::vec3(0, 1, 1)), Materials::Wood);
+	// o->moveObject(position);
+	// addObject(o);
+	// onObjectSelect(o->getID());
+	return;
 }

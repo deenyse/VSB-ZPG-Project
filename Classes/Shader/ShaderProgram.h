@@ -26,7 +26,7 @@ public:
 	void setUniform(const GLchar* name, int value);
 	void setUniform(const GLchar* name, float value);
 	void setUniform(const GLchar* name, bool value);
-	void setUniform(const GLchar* name, const MaterialData* value);
+	virtual void setUniform(const GLchar* name, const MaterialData* value);
 	void useProgram();
 	void attachCamera(Camera* cam);
 

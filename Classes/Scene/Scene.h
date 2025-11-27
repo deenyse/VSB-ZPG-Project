@@ -13,12 +13,14 @@
 class Scene
 {
 protected:
+	std::unordered_map<ShaderType, std::vector<DrawableObject*>> objects;
+
 	DrawableObject* addObject(DrawableObject* object);
-	LightManager* lightManager = new LightManager();
+	Light* addLight(Light* light);
 	Camera* camera = new Camera(glm::vec3(0.f, 1.f, 5.f));
 	Skydome* skydome = nullptr;
-	std::unordered_map<ShaderType, std::vector<DrawableObject*>> objects;
 private:
+	LightManager* lightManager = new LightManager();
 	HeadLight* headLight = new HeadLight(camera);
 	DrawableObject* selectedObject = nullptr;
 public:

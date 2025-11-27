@@ -1,7 +1,7 @@
-#include "Texture.h"
+#include "TextureInstance.h"
 
 
-Texture::Texture(std::string path) {
+TextureInstance::TextureInstance(std::string path) {
     stbi_set_flip_vertically_on_load(true);
 
     int width, height, channels;
@@ -26,7 +26,7 @@ Texture::Texture(std::string path) {
 }
 
 // Constructor for a solid RGB texture
-Texture::Texture(glm::vec3 color) {
+TextureInstance::TextureInstance(glm::vec3 color) {
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
 
@@ -48,7 +48,7 @@ Texture::Texture(glm::vec3 color) {
 }
 
 
-void Texture::bind() {
+void TextureInstance::bind() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureID);
 }
