@@ -9,9 +9,9 @@
 Scene_1::Scene_1() {
 
 	addLight(new PointLight(
-	glm::vec3(-1.f, 3.f, 2.f),   // pos
-	glm::vec3(1.f),    // light white
-	1.f, 0.02f, 0.05f             // less attenuation
+	glm::vec3(-1.f, 3.f, 2.f),
+	glm::vec3(1.f),
+	1.f, 0.02f, 0.05f
 	));
 
 	addLight(new DirectionalLight(glm::vec3(0.f, -2.f, 1.f), glm::vec3(1.f)));
@@ -35,10 +35,28 @@ Scene_1::Scene_1() {
 	->addTransform(new Scale(glm::vec3(50.f)))
 	;
 
+	bT = new BezierTranslation(1.f, glm::vec3(0.f, 0.f, 0.f));
 
-	addObject(new DrawableObject(Models::Shrek, ShaderType::Blinn,Textures::Shrek, Materials::Wood))
-		->getTransformations()
-		;
+	addObject(new DrawableObject(
+		Models::SteamMachine,
+		ShaderType::Blinn,
+		Textures::Shrek,
+		Materials::Metal
+	))
+	->getTransformations()
+	->addTransform(bT)
+	// ->addTransform(new Scale(glm::vec3(0.3f)))
+
+	;
+
+	// addObject(new DrawableObject(Models::Shrek, ShaderType::Blinn,Textures::Shrek, Materials::Wood))
+	// 	->getTransformations()
+	// 	;
 
 
+}
+
+void Scene_1::onPositionUpdateAction(glm::vec3 position) {
+	if (bT)
+		bT->addPoint(position);
 }
