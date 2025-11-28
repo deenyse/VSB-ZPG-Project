@@ -15,5 +15,6 @@ struct Models {
     static const ModelDataBase* Sky;
     static const ModelDataBase* SteamMachine;
     static const ModelDataBase* Planet;
+    static const ModelDataBase* Formula1;
 
 };

@@ -16,6 +16,7 @@ const ModelDataBase*  Models::Fiona= new FileModel( "Models/fiona.obj");
 const ModelDataBase*  Models::Sky= new FileModel( "Models/skydome.obj");
 const ModelDataBase*  Models::SteamMachine= new FileModel( "Models/SteamMachine.obj");
 const ModelDataBase*  Models::Planet= new FileModel( "Models/planet.obj");
+const ModelDataBase*  Models::Formula1= new FileModel( "Models/formula1.obj");
 // Models from points
 const ModelDataBase* Models::Sphere= new ArrayModel( sphere, 2880);
 const ModelDataBase* Models::Tree= new ArrayModel( tree, 92814);

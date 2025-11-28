@@ -5,7 +5,7 @@ BezierTranslation::BezierTranslation(float speed, glm::vec3 translate)
 {
     addPoint(translate);
     offset = translate;
-    currentDirection = glm::vec3(0.0f, 0.0f, -1.0f);
+    currentDirection = glm::vec3(0.0f, 0.0f, 1.0f);
 }
 
 glm::vec3 BezierTranslation::bezierTangent(float t) {
@@ -74,6 +74,7 @@ glm::mat4 BezierTranslation::getMatrix() {
     glm::mat4 rotation = glm::inverse(glm::lookAt(glm::vec3(0.0f), glm::vec3(0.0f) + currentDirection, glm::vec3(0.0f, 1.0f, 0.0f)));
 
     model = model * rotation;
+
 
     return model;
 }
