@@ -8,6 +8,7 @@ namespace Textures {
     extern TextureDataBase* Red;
     extern TextureDataBase* Yellow;
     extern TextureDataBase* Green;
+    extern TextureDataBase* White;
 
     extern TextureDataBase* Shrek;
     extern TextureDataBase* Fiona;

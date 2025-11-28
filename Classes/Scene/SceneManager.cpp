@@ -4,11 +4,13 @@
 #include "Scene_1.h"
 #include "Scene_2.h"
 #include "Scene_3.h"
+#include "Scene_4.h"
 
 SceneManager::SceneManager() {
-	addScene(new Scene_1());
-	addScene(new Scene_2());
-	addScene(new Scene_3());
+	// addScene(new Scene_1());
+	// addScene(new Scene_2());
+	// addScene(new Scene_3());
+	addScene(new Scene_4());
 
 
 	if (!scenes.empty())

@@ -23,21 +23,18 @@ RandomTranslation::RandomTranslation(float cubeSize, float speed)
 
 
 void RandomTranslation::update(float deltaTime) {
-    if (controlPoints.size() < 2) return;
-
-    glm::vec3 A = controlPoints[currentIndex];
-    glm::vec3 B = controlPoints[(currentIndex + 1) % controlPoints.size()];
-
-
     t += speed * deltaTime;
-
-    offset = (1.0f - t) * A + t * B;
 
     if (t >= 1.0f) {
         t = 0.0f;
-        currentIndex++;
-        controlPoints.push_back(randomPointInCube());
+        controlPoints[0] = controlPoints[1];
+        controlPoints[1] = randomPointInCube();
     }
+
+    glm::vec3 A = controlPoints[0];
+    glm::vec3 B = controlPoints[1];
+
+    offset = (1.0f - t) * A + t * B;
 }
 
 
