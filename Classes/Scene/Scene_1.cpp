@@ -35,23 +35,22 @@ Scene_1::Scene_1() {
 	->addTransform(new Scale(glm::vec3(50.f)))
 	;
 
-	bT = new BezierTranslation(1.f, glm::vec3(0.f, 0.f, 0.f));
+	bT = new BezierTranslation(0.5f, glm::vec3(0.f, 1.f, 0.f));
 
 	addObject(new DrawableObject(
-		Models::SteamMachine,
+		Models::Shrek,
 		ShaderType::Blinn,
 		Textures::Shrek,
 		Materials::Metal
 	))
 	->getTransformations()
 	->addTransform(bT)
-	// ->addTransform(new Scale(glm::vec3(0.3f)))
-
 	;
 
-	// addObject(new DrawableObject(Models::Shrek, ShaderType::Blinn,Textures::Shrek, Materials::Wood))
-	// 	->getTransformations()
-	// 	;
+	addObject(new DrawableObject(Models::SteamMachine, ShaderType::Blinn,Textures::Black, Materials::Wood))
+		->getTransformations()
+		->addTransform(new Rotate(90.f, glm::vec3(0.f, 1.f, 0.f)));
+		;
 
 
 }
