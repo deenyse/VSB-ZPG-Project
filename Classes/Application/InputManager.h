@@ -30,7 +30,6 @@ private:
 	glm::vec2 mouseOffset;			// store accumulated mouse movement
 	float mouseSensitivity = 1.f;
 
-	glm::vec3 lastClickWordCords = glm::vec3(0);
 
 	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void window_focus_callback(GLFWwindow* window, int focused);

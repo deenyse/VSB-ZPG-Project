@@ -93,12 +93,10 @@ Scene_1::Scene_1() {
 	->addTransform(new Scale(glm::vec3(50.f)))
 	;
 
-	// auto customTransformMat = glm::mat4(1.0f);
-	// customTransformMat[3][3] = 20.f;
-	// addObject(new DrawableObject(ModelSources::Shrek, ShaderType::Blinn, new TextureInstance("../Models/shrek.png"), Materials::Wood))
-	// 	->getTransformations()
-	// 	// ->addTransform(new CustomTransform(customTransformMat))
-	// 	;
+
+	addObject(new DrawableObject(Models::Shrek, ShaderType::Blinn,Textures::Shrek, Materials::Wood))
+		->getTransformations()
+		;
 
 
 }

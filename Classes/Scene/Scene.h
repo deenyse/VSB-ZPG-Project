@@ -31,9 +31,8 @@ public:
 
 	void switchHeadLight();
 
-	virtual void onObjectSelect(GLuint id); // default sets selected object
 	DrawableObject* getSelectedObject();
-
-	void onPositionAction(glm::vec3 position);// default spawn object
+	virtual void onObjectSelect(GLuint id); // default sets selected object
+	virtual void onPositionUpdateAction(glm::vec3 position);
 };
 

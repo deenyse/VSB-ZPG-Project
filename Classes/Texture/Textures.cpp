@@ -13,4 +13,9 @@ namespace Textures {
     TextureDataBase* Grass = new FileTexture( "../Models/grass.png");
     TextureDataBase* Skydome = new FileTexture( "../Models/skydome.png");
     TextureDataBase* Toiled = new FileTexture( "../Models/toiled.jpg");
+
+    TextureDataBase* AddCustom(std::string name) {
+        return new FileTexture(name);
+    }
+
 }

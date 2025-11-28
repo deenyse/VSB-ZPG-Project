@@ -85,9 +85,4 @@ void Scene::renderAll(float dt) {
 		glUseProgram(0);
 	}
 }
-void Scene::onPositionAction(glm::vec3 position) {
-	auto o = new DrawableObject(Models::Tree, ShaderType::Phong, Textures::Green, Materials::Wood);
-	o->moveObject(position);
-	addObject(o);
-	onObjectSelect(o->getID());
-}
+void Scene::onPositionUpdateAction(glm::vec3 position) {}

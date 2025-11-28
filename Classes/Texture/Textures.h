@@ -18,4 +18,5 @@ namespace Textures {
     extern TextureDataBase* Skydome;
     extern TextureDataBase* Toiled;
 
+    static TextureDataBase* AddCustom(std::string name);
 }
