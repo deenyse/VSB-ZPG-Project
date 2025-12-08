@@ -18,6 +18,7 @@ void InputManager::key_callback(GLFWwindow* window, int key, int scancode, int a
         else if (key == GLFW_KEY_2) inputManager->sceneManager->setScene(1);
         else if (key == GLFW_KEY_3) inputManager->sceneManager->setScene(2);
         else if (key == GLFW_KEY_4) inputManager->sceneManager->setScene(3);
+        else if (key == GLFW_KEY_5) inputManager->sceneManager->setScene(4);
         else if (key == GLFW_KEY_W) inputManager->moveDirection |= Direction::Forward;
         else if (key == GLFW_KEY_S) inputManager->moveDirection |= Direction::Backward;
         else if (key == GLFW_KEY_A) inputManager->moveDirection |= Direction::Left;
